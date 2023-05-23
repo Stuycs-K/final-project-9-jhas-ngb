@@ -1,4 +1,4 @@
-public class Enemies {
+public class Enemies{
   private int health;
   private int speed;
   private boolean explosive;
@@ -15,6 +15,6 @@ public class Enemies {
   *Enemy explosions do a full heart of damage to player.
   */
   public void enemyExplosion(Player player){
-    
+   
   }
 }
