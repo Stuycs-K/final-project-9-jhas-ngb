@@ -1,9 +1,6 @@
 public class Fly extends Enemies{
-  public Fly(PVector position){
-   // super(3, 5, PVector position);
-  }
-  public Fly(int health, int speed, PVector position){
-    // super (health, speed ekgnesksges)
+  public Fly(){
+    //initialize health(3 for Fly), speed, position, and timer
   }
   /**
   *Moves around the room randomly, but gravitates towards player (weak gravity)
