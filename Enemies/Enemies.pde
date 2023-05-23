@@ -1,4 +1,4 @@
-public class Enemies{
+public class Enemies {
   int health;
   int speed;
   boolean explosive;
@@ -11,8 +11,8 @@ public class Enemies{
     this.position = position;
     this.timer = timer;
   }
-  /*
-  Enemy explosions do a full heart of damage to player.
+  /**
+  *Enemy explosions do a full heart of damage to player.
   */
   public void enemyExplosion(Player player){
     
