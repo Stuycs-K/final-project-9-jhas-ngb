@@ -1,12 +1,19 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Baron
 
-### date x
+### 5/22/23
 
-info
+- setup Main
+- setup Bullet class
+- setup Door Class
+- setup Map Class
+- setup NormalRoom Class
+- setup Player Class
+- setup Room Class
+- Wrote documentation explaining each method's purpose
 
-### date y
+### 5/23/23
 
 info
 
@@ -25,6 +32,6 @@ info
 - setup TNT class
 - setup Sprites folder
 
-### date y
+### 5/23/23
 
 info
