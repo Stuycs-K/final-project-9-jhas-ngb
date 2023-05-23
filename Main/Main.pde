@@ -11,5 +11,5 @@ void setup(){
 }
 
 void draw(){
-  // idk man
+  // calls the player and map's draw functions every frame
 }

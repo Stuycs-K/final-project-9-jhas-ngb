@@ -3,6 +3,7 @@ public class Bullet{
   private PVector velocity;
   private PVector position;
   private int damage;
+  private Player origin;
   private static final int firingPower = 10;
   
   public Bullet(PVector playerV, int damage){
