@@ -1,18 +1,20 @@
 public class AttackFly extends Fly{
-  int health = 5;
-  public AttackFly(int health, int speed, PVector position, int timer){
-    super(int health, int speed, PVector position, int timer);
+  
+  public AttackFly(){
+    //initialize health(5 for AttackFly), speed, position, and timer
   }
   /*
   *Chases the player, stronger gravity than Fly
   **/
   public void move(Player player){
+    //attracted to the player's position
+    //when in contact with player, cause it damage
   }
   
   /*
-  *Damages player when in contact
+  *checks if in contact with player 
   **/
   public boolean contact(Player player){
-    
+    //checks if position is same as position of player 
   }
 }
