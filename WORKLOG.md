@@ -1,22 +1,29 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Baron
 
-### date x
+### 5/22/23
+
+- setup Main
+- setup Bullet class
+- setup Door Class
+- setup Map Class
+- setup NormalRoom Class
+- setup Player Class
+- setup Room Class
+- Wrote documentation explaining each method's purpose
+
+### 5/23/23
 
 info
 
-### date y
+
+## Lana
+
+### 5/22/23
 
 info
 
-
-## GROUP MEMBER 2
-
-### date x
-
-info
-
-### date y
+### 5/23/23
 
 info
