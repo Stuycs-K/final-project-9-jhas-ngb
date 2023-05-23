@@ -11,11 +11,19 @@ info
 info
 
 
-## GROUP MEMBER 2
+## Lana
 
-### date x
+### 5/22/23
 
-info
+- setup Enemies class
+- setup Fly class
+- setup AttackFly class
+- setup Obstacle class
+- setup Blocks class
+- setup Rocks class
+- setup Spikes class
+- setup TNT class
+- setup Sprites folder
 
 ### date y
 
