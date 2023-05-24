@@ -21,26 +21,42 @@ public class Player{
   }
   */
   
-  public void moveL (){
-    //move left
+  private void moveL (){
+    //move position.x to the left by 10 pixels if input (from Main) is true
   }
   
-  public void moveU (){
-    //move up
+  private void moveU (){
+    //move position.y to the up by 10 pixels if input (from Main) is true
   }
   
-  public void moveR (){
-    //move right
+  private void moveR (){
+    //move position.x to the right by 10 pixels if input (from Main) is true
   }
   
-  public void moveD (){
-    //move down
+  private void moveD (){
+    //move position.y to the down by 10 pixels if input (from Main) is true
   }
   
   public void draw(){
     // draw player
     // checks if bullets are die, then remove them from the arraylist (I think unreferencing them kills them)
     // draw all bullets in bullet list
+  }
+  
+  public int getHealth(){
+    return health;
+  }
+  
+  public void setHealth(int change){
+    health = change;
+  }
+  
+  public PVector getPosition (){
+    return position;
+  }
+  
+  public void setPosition (PVector change){
+    position = change;
   }
   
 }
