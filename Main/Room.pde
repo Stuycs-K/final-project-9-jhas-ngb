@@ -1,5 +1,5 @@
 public class Room{
- 
+ private boolean loaded;
  private PVector position;
  private int config;
  private int[][] grid;
@@ -13,6 +13,7 @@ public class Room{
    // initializes position relative to the top left corner of the screen and size of screen
    // NOTE: the size of the grid will be determined the width and height of the screen
    // the grid will have 0 (empty space) everywhere
+   // initializes loaded to false
  }
  
 }

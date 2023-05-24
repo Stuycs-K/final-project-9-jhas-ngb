@@ -18,4 +18,9 @@ public class Map{
     // only activates if the player steps on a door AND the new room doesnt exist yet
   }
   
+  public void draw(){
+    // draws the map ui (additional feature)
+    // calls the draw function of the currentRoom
+  }
+  
 }

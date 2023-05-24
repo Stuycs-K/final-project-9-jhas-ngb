@@ -5,7 +5,7 @@ public class Player{
   private int maxHealth;
   private int damage;
   private int fireRate;
-  private bullet[] bullets;
+  private ArrayList<Bullet> bullets;
   public Player (){
     //initialize speed, health, maxHealth, damage, fireRate, position as the middle of the room
   }
@@ -39,6 +39,7 @@ public class Player{
   
   public void draw(){
     // draw player
+    // checks if bullets are die, then remove them from the arraylist (I think unreferencing them kills them)
     // draw all bullets in bullet list
   }
   

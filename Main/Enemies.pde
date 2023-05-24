@@ -2,7 +2,7 @@ public class Enemies{
   private int health;
   private int speed;
   private boolean explosive;
-  private PVector position;
+  private PVector position; // This references the location within the ROOM GRID, not the screen
   private int timer;
   
   public Enemies(int health, int speed, PVector position, int timer){
@@ -17,4 +17,9 @@ public class Enemies{
   public void enemyExplosion(Player player){
    
   }
+  
+  public void draw(){
+    // draws enemy
+  }
+  
 }
