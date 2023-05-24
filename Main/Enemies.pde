@@ -16,7 +16,18 @@ public class Enemies{
   *Enemy explosions do a full heart of damage to player.
   */
   public void enemyExplosion(Player player){
-   //inflict damage on player
+   if(player.getHealth() >= 2){
+     player.setHealth() = player.getHealth()-2;
+  }
+  else{
+    player.setHealth() = 0;
+  }
+  
+  public int getHealth(){
+    return health;
+  }
+  public void setHealth(int newHealth){
+    health = newHealth;
   }
   
   public void draw(){
