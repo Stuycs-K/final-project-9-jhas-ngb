@@ -3,7 +3,7 @@ public class Obstacle{
   private PVector position; // This references the location within the ROOM GRID, not the screen
   private boolean loaded;
   
-  public Obstacle(){
+  public Obstacle(PVector position){
    // initializes collision and position
    // initializes drawn as false
   }
