@@ -15,7 +15,8 @@
 
 ### 5/23/23
 
-info
+- reformated documentation
+- came up with draw implementation and modified classes appropriately
 
 
 ## Lana
