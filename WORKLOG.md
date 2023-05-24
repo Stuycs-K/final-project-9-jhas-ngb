@@ -35,4 +35,5 @@
 
 ### 5/23/23
 
-info
+- added pseudocode for move functions in enemy subclasses
+- created constructor pseudocode for all subclasses of enemy and obstacle
