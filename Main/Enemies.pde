@@ -16,7 +16,7 @@ public class Enemies{
   *Enemy explosions do a full heart of damage to player.
   */
   public void enemyExplosion(Player player){
-   
+   //inflict damage on player
   }
   
   public void draw(){
