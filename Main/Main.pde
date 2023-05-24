@@ -13,10 +13,12 @@ void keyPressed(){
     run moveD
   if (key == D)
     run moveR
+    */
 }
 
 void setup(){
-  // initialize player and map
+  player = new Player ();
+  map = new Map ();
 }
 
 void draw(){
