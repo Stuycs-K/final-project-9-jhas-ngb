@@ -1,5 +1,7 @@
 public class Player{
   private PVector position;
+  private PVector velocity;
+  private char direction;
   private int speed;
   private int health;
   private int maxHealth;
@@ -8,11 +10,11 @@ public class Player{
   private ArrayList<Bullet> bullets;
   public Player (){
     //initialize speed, health, maxHealth, damage, fireRate, position as the middle of the room
+    // initializes direction as 'N' (null)
   }
   
   public void shoot(){
-    // create bullet
-    // adds it to bullets list
+    // bullets.add(new Bullet (velocity)
   }
   
   /*
@@ -21,24 +23,43 @@ public class Player{
   }
   */
   
+  private void move (){
+    // calls all other move functions
+    // calls apply Velocity
+    // calls slowDown
+  }
+  
+  private void slowDown (){
+    // slowly changes velocity unil it reaches 0
+  }
+  
+  private applyVelocity (){
+    // applys velocity to position
+  }
+  
   private void moveL (){
-    //move position.x to the left by 10 pixels if input (from Main) is true
+    //move position.x to the left by changing velocity.x if input (from Main) is true
+    //if move past the wall, move back to the wall
   }
   
   private void moveU (){
-    //move position.y to the up by 10 pixels if input (from Main) is true
+    //move position.y to the up by changing velocity.y if input (from Main) is true
+    //if move past the wall, move back to the wall
   }
   
   private void moveR (){
-    //move position.x to the right by 10 pixels if input (from Main) is true
+    //move position.x to the right by changing velocity.x if input (from Main) is true
+    //if move past the wall, move back to the wall
   }
   
   private void moveD (){
-    //move position.y to the down by 10 pixels if input (from Main) is true
+    //move position.y to the down by changing velocity.y if input (from Main) is true
+    //if move past the wall, move back to the wall
   }
   
   public void draw(){
-    // draw player
+    // calls move function
+    // draw player at position using direction (for the head), and movement (for body), for right now though, just use the basic sprite
     // checks if bullets are die, then remove them from the arraylist (I think unreferencing them kills them)
     // draw all bullets in bullet list
   }

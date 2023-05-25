@@ -6,10 +6,12 @@ public class Bullet{
   private char origin;
   private static final int firingPower = 10;
   
-  public Bullet(PVector playerV, int damage, char c){
-    // makes a velocity with playerV and increases magnitude by firingPower
+  public Bullet(PVector vel, int damage, char origin, char direction){
+    // if from player:
+      // makes a new velocity with vel and direction (determined by inputs[3-7]) and increases magnitude by firingPower
+      //
     // initialize damage to 2 if player, 1 if enemy (because player is weak af)
-    // sets origin to 'p' if from player, 'e' if from enemy
+    // sets this.origin to 'p' if from player, 'e' if from enemy
   }
   
   public void hurt(String origin){
