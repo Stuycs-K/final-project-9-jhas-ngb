@@ -30,6 +30,7 @@ public class Bullet{
   
   public void draw(){
     // draws bullet
+    //calls the die function
   }
   
   public void die (){
