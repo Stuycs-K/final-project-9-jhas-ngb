@@ -26,8 +26,14 @@ public class Enemies{
   public int getHealth(){
     return health;
   }
+  
   public void setHealth(int newHealth){
     health = newHealth;
+  }
+  
+  public boolean within (PVector other){
+    // calculates distance between position and other position
+    // return distance < radius
   }
   
   public void draw(){
