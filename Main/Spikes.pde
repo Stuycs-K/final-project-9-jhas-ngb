@@ -6,8 +6,15 @@ public class Spikes extends Obstacle{
     damage = 1;
   }
   
-  public boolean touch(PVector player){
-    
-  //inflicts damage on player/enemy if in the same position as spike
+  public boolean damage(Player player){
+    if(player.getHealth() >= 1){
+     player.setHealth() = player.getHealth()-1;
+  }
+    else{
+     player.setHealth() = 0;
+    }
+  }
+  public boolean touch(Player player){
+    return(Player.position.x == this.position.x && Player.position.y == this.position.y);
   }
 }

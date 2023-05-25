@@ -4,8 +4,10 @@ public class Obstacle{
   private boolean loaded;
   
   public Obstacle(PVector position){
+    this.position = position;
+    collision = false;
    // initializes collision and position
-   // initializes drawn as false
+  
   }
   
   public void obstruct(){
