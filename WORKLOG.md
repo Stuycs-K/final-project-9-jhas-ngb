@@ -18,6 +18,12 @@
 - reformated documentation
 - came up with draw implementation and modified classes appropriately
 
+### 5/24/23
+
+- wrote unchecked implementation, may or may not work
+- implementation for Main, Bullet, Door, Map, NormalRoom, Player, Room
+- Set up player input
+
 
 ## Lana
 
