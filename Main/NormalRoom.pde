@@ -1,13 +1,14 @@
 public class NormalRoom extends Room{
   private Enemies type1;
   private Enemies type2;
-  public ArrayList<Enemies> enemies; //this needs to be edited by Bullet and Player class
+  private ArrayList<Enemies> enemies; //this needs to be edited by Bullet and Player class
   private ArrayList<Obstacle> obstacles;
   
   public NormalRoom (){
     // initializes type1 and type2, creates those enemy on the Room grid based on the type number of the Enemy
     // the grid will have 0 (empty space), 1(enemy type 1), 2 (enemy type 2), and 3 (obstacle)
     // only two-three 1s and two-three 2s in the grid placed randomly around the center
+    
   }
   
   public void draw(){
@@ -15,6 +16,27 @@ public class NormalRoom extends Room{
     // calls the draw functions of enemies
     // calls the draw function of obstacles
     // calls the draw function of doors
+  }
+  
+  public boolean withinBullet (int index, PVector bulletP){
+    return enemies.get(index).within(bulletP);
+  }
+  
+  public void reduceHealth (int index){
+    Enemies enemy = enemies.get(index);
+    enemy.setHealth(enemy.getHealth() - 1);
+  }
+  
+  public void bulletHit (PVector bulletP){
+    for (int i = 0; i < enemies.size(); i++){
+      if (withinBullet (i, bulletP)){
+        reduceHealth (i);
+        if (enemies.get(i).getHealth() <= 0){
+          enemies.remove(i);
+        }
+      }
+      
+    }
   }
   
 }
