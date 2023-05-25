@@ -1,7 +1,7 @@
 public class NormalRoom extends Room{
   private Enemies type1;
   private Enemies type2;
-  private ArrayList<Enemies> enemies;
+  public ArrayList<Enemies> enemies; //this needs to be edited by Bullet and Player class
   private ArrayList<Obstacle> obstacles;
   
   public NormalRoom (){

@@ -80,4 +80,12 @@ public class Player{
     position = change;
   }
   
+  public void removeBullet (int index){
+    bullets.remove(index);
+  }
+  
+  public Bullet getBullet (int index){
+    return bullets.get(index);
+  }
+  
 }

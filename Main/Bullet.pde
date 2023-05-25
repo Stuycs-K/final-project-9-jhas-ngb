@@ -23,6 +23,7 @@ public class Bullet{
   public void move (){
     //self explanatory
     // make sure the bullet dies if it hits enemy or wall
+    // use dist function to inflict damage to any enemy within range, NormalRoom enemies arraylist is PUBLIC
     // make die = true if moves into a wall
     
   }
@@ -31,8 +32,8 @@ public class Bullet{
     // draws bullet
   }
   
-  public boolean getDie (){
-    return this.die;
+  public void die (){
+    // if (die), then go through player bullets arraylist, look for yourself using getBullet method, and remove yourself using removeBullet method from existence :O
   }
   
 }

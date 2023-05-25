@@ -16,4 +16,12 @@ public class Room{
    // initializes loaded to false
  }
  
+ public void setLoaded(boolean b){
+   loaded = b;
+ }
+ 
+ public boolean getLoaded(){
+   return loaded;
+ }
+ 
 }
