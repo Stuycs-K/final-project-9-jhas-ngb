@@ -14,6 +14,7 @@ public class NormalRoom extends Room{
     //if (loaded is false), if so, turn loaded to true and draw the room backdrop
     // calls the draw functions of enemies
     // calls the draw function of obstacles
+    // calls the draw function of doors
   }
   
 }
