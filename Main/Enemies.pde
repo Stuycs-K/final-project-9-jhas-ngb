@@ -19,8 +19,9 @@ public class Enemies{
    if(player.getHealth() >= 2){
      player.setHealth() = player.getHealth()-2;
   }
-  else{
-    player.setHealth() = 0;
+    else{
+      player.setHealth() = 0;
+    }
   }
   
   public int getHealth(){
