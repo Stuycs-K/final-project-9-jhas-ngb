@@ -2,9 +2,9 @@ public class Obstacle{
   private boolean collision;
   private PVector position; // This references the location within the ROOM GRID, not the screen
   
-  public Obstacle(PVector position){
+  public Obstacle(PVector position, boolean collision){
     this.position = position;
-    collision = false;
+    this.collision = collision;
    // initializes collision = false and position
   
   }
