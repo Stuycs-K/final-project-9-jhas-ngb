@@ -36,7 +36,7 @@ public class Enemies{
     // return distance < radius
   }
   
-  public void draw(){
+  public void subDraw(){
     // draws enemy
   }
   
