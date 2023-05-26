@@ -53,3 +53,7 @@
 - finished constructors for Enemy classes and subclasses
 - added to move methods for Enemy classes
 
+### 5/25/23
+
+- implemented direction for Enemies
+- implemented most of move function for Enemies
