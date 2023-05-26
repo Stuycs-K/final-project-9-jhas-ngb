@@ -20,10 +20,14 @@
 
 ### 5/24/23
 
-- wrote unchecked implementation, may or may not work
+- wrote unchecked Door implementation, may or may not work
 - implementation for Main, Bullet, Door, Map, NormalRoom, Player, Room
 - Set up player input
 
+### 5/25/23
+
+-constructor for Bullet, Door, Map, Normal Room, Room, Player
+- implemented draw functions
 
 ## Lana
 
