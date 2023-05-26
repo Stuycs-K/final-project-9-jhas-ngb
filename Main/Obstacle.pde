@@ -5,12 +5,12 @@ public class Obstacle{
   public Obstacle(PVector position){
     this.position = position;
     collision = false;
-   // initializes collision and position
+   // initializes collision = false and position
   
   }
   
   public void obstruct(){
-    //
+    // keep the player from going inside of the obstacle
   }
   
   public void subDraw(){
