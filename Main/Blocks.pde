@@ -1,5 +1,8 @@
 public class Blocks extends Obstacle{
   
+  public boolean collisoin(){
+  }
+  
   public Blocks(PVector position){
     super(position);
   }
