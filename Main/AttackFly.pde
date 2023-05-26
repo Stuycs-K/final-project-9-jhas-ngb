@@ -3,7 +3,7 @@ public class AttackFly extends Fly{
   private PVector velocity;
   
   public AttackFly(PVector position){
-    super(5, 6, PVector position);
+    super(5, 6, position);
   }
   /*
   *Chases the player, stronger gravity than Fly

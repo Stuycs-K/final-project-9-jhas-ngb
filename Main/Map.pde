@@ -7,10 +7,15 @@ public class Map{
     //initializes a map with ONLY a startingRoom (dimensions: 5 by 5)
     // initialize startingRoom as the (2,2) indexes btw (and currentRoom)
     // call load function (for a premade map)
+    startingRoom = new PVector(2,2);
+    currentRoom = new PVector (2,2);
+    map = new Room [5][5];
+    map[startRoom.x][startingRoom.y] = new NormalRoom();
   }
   
   public void moveRoom (char direction){
     // changes currentRoom if Player on door
+    // also set currentRoom loaded to false before moving
     // changes the screen to show that room (not every room will be loaded, only the currentRoom)
       // direction determines which room to move to (using the map 2d array of rooms)
   }
@@ -25,9 +30,12 @@ public class Map{
     // for the MVP, don't need to randomize bc I am not spending a millenium on room generation
   }
   
-  public void draw(){
+  public void subDraw(){
     // draws the map ui (additional feature)
     // calls the draw function of the currentRoom
+    int col = currentRoom.x;
+    int row = currentRoom.y;
+    map[row][col].subDraw();
   }
   
 }

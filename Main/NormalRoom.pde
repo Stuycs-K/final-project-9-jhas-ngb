@@ -8,14 +8,25 @@ public class NormalRoom extends Room{
     // initializes type1 and type2, creates those enemy on the Room grid based on the type number of the Enemy
     // the grid will have 0 (empty space), 1(enemy type 1), 2 (enemy type 2), and 3 (obstacle)
     // only two-three 1s and two-three 2s in the grid placed randomly around the center
+    enemies = new ArrayList <>();
+    obstacles = new ArrayList <>();
+    type1 = new Fly(); // literally dunno how to make this work
+    type2 = new AttackFly();
     
   }
   
-  public void draw(){
+  public void subDraw(){
     //if (loaded is false), if so, turn loaded to true and draw the room backdrop
     // calls the draw functions of enemies
     // calls the draw function of obstacles
     // calls the draw function of doors
+    for (int i = 0; i < enemies.size(); i++){
+      enemy.get(i).subDraw();
+    }
+    for (int i = 0; i < obstacles.size(); i++){
+      obstacles.get(i).subDraw();
+    }
+    super.subDraw();
   }
   
   public boolean withinBullet (int index, PVector bulletP){

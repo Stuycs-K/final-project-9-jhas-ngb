@@ -24,4 +24,13 @@ public class Room{
    return loaded;
  }
  
+ public subDraw (){
+   // draw doors
+   doorL.subDraw();
+   doorU.subDraw();
+   doorR.subDraw();
+   doorD.subDraw();
+   // draw backdrop
+ }
+ 
 }

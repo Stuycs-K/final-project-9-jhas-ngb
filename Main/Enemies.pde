@@ -7,7 +7,7 @@ public class Enemies{
   private Enemies(int health, int speed, PVector position){
     this.health = health;
     this.speed = speed;
-    this.position = position; //<>//
+    this.position = position; //<>// //<>//
     
   }
   

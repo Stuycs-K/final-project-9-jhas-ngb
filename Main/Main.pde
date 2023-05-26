@@ -88,9 +88,11 @@ void setup(){
   player = new Player ();
   map = new Map ();
   inputs = new boolean [9];
+  frameRate(30); // set framerate to 30 fps
 }
 
 void draw(){
-  //clear
-  // calls the player and map's draw functions every 2 frames (unless it looks terrible)
+  clear();
+  map.subDraw();
+  player.subDraw();
 }

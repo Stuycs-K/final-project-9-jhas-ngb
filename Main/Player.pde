@@ -11,6 +11,13 @@ public class Player{
   public Player (){
     //initialize speed, health, maxHealth, damage, fireRate, position as the middle of the room
     // initializes direction as 'N' (null)
+    health = 6;
+    maxHealth = 6;
+    damage = 1;
+    fireRate = 1; // 1 sec delay between shooting
+    position = new PVector (width / 2, height / 2);
+    direction = 'N';
+    bullets = new ArrayList <>();
   }
   
   public void shoot(){
@@ -57,11 +64,21 @@ public class Player{
     //if move past the wall, move back to the wall
   }
   
-  public void draw(){
+  public void subDraw(){
     // calls move function
+    move();
     // draw player at position using direction (for the head), and movement (for body), for right now though, just use the basic sprite
+    
     // checks if bullets are die, then remove them from the arraylist (I think unreferencing them kills them)
+    
     // draw all bullets in bullet list
+    for (int i = 0; i < bullets.size(); i++){
+      if (bullets.get(i).getDie()){
+        bullets.remove(i); // might need to adjust index for this
+        
+      }
+      bullets.get(i).subDraw();
+    }
   }
   
   public int getHealth(){
@@ -78,14 +95,6 @@ public class Player{
   
   public void setPosition (PVector change){
     position = change;
-  }
-  
-  public void removeBullet (int index){
-    bullets.remove(index);
-  }
-  
-  public Bullet getBullet (int index){
-    return bullets.get(index);
   }
   
 }

@@ -33,8 +33,8 @@ public class Bullet{
     //calls the die function
   }
   
-  public void die (){
-    // if (die), then go through player bullets arraylist, look for yourself using getBullet method, and remove yourself using removeBullet method from existence :O
+  public void getDie (){
+    return die;
   }
   
 }
