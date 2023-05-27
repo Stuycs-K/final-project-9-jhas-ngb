@@ -26,8 +26,13 @@
 
 ### 5/25/23
 
--constructor for Bullet, Door, Map, Normal Room, Room, Player
+- constructor for Bullet, Door, Map, Normal Room, Room, Player
 - implemented draw functions
+
+### 5/26/23
+
+- fixed obstacle constructor
+- added documentation for obstacle
 
 ## Lana
 
