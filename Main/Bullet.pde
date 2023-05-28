@@ -4,9 +4,11 @@ public class Bullet{
   private PVector position;
   private int damage;
   private char origin;
+  private PImage sprite;
   private static final int firingPower = 10;
   
   public Bullet(PVector vel, int damage, char origin, char direction){
+    sprite = loadImage("Main\Sprites\Tear.png");
     // if from player:
       // makes a new velocity with vel and direction (determined by inputs[3-7]) and increases magnitude by firingPower
       //

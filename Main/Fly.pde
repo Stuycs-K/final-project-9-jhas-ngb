@@ -2,7 +2,7 @@ public class Fly extends Enemies{
   private int direction;
   
   public Fly(PVector position){
-    super(3, 5, PVector position, 5);
+    super(3, 5, PVector position, "Main\Sprites\Enemies\Fly.png");
     direction = 0;
   }
   public Fly(int health, int speed, PVector position){

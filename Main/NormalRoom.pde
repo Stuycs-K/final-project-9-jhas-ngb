@@ -5,6 +5,7 @@ public class NormalRoom extends Room{
   private ArrayList<Obstacle> obstacles;
   
   public NormalRoom (){
+    super();
     // initializes type1 and type2, creates those enemy on the Room grid based on the type number of the Enemy
     // the grid will have 0 (empty space), 1(enemy type 1), 2 (enemy type 2), and 3 (obstacle)
     // only two-three 1s and two-three 2s in the grid placed randomly around the center

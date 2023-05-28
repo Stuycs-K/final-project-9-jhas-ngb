@@ -8,7 +8,10 @@ public class Player{
   private int damage;
   private int fireRate;
   private ArrayList<Bullet> bullets;
+  private PImage sprite;
+  
   public Player (){
+    sprite = loadImage ();
     //initialize speed, health, maxHealth, damage, fireRate, position as the middle of the room
     // initializes direction as 'N' (null)
     health = 6;

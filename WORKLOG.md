@@ -34,6 +34,11 @@
 - fixed obstacle constructor
 - added documentation for obstacle
 
+### 5/27/23
+
+- set up the PImage sprites
+- modified constructors to initialize sprites
+
 ## Lana
 
 ### 5/22/23

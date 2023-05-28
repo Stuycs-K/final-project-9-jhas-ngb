@@ -3,8 +3,10 @@ public class Door{
   private PVector teleport;
   private char direction;
   private Room currentRoom;
+  private PImage sprite;
   
    public Door (char direction, Room currentRoom){
+     sprite = loadImage ("Main\Sprites\Door.png");
      // creates the position of the door using the direction
      if (direction == 'U'){
        position = new PVector (width / 2, 20);

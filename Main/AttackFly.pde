@@ -4,7 +4,7 @@ public class AttackFly extends Fly{
   private int direction;
   
   public AttackFly(PVector position){
-    super(5, 6, position);
+    super(5, 6, position, "Main\Sprites\Enemies\AttackFly.png");
     direction = 0;
   }
   /*

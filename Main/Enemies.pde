@@ -2,13 +2,21 @@ public class Enemies{
   private int health;
   private int speed;
   private boolean explosive;
+  private PImage sprite;
   private PVector position; // This references the location within the ROOM GRID, not the screen
  
-  private Enemies(int health, int speed, PVector position){
+  private Enemies(int health, int speed, PVector position, String path){
+    sprite = loadImage (path);
     this.health = health;
     this.speed = speed;
-    this.position = position; //<>// //<>//
-    
+    this.position = position; //<>//
+  }
+  
+  private Enemies(){ // base enemy constructor
+    sprite = loadImage (path);
+    this.health = health;
+    this.speed = speed;
+    this.position = position;
   }
   
   /**
