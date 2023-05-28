@@ -49,6 +49,7 @@ public class Door{
    
    public void subDraw(){
      //draws the door and the entered function
+     image(sprite, position.x - sprite.width/2, position.y - sprite.height/2);
    }
   
 }

@@ -2,7 +2,7 @@ public class Spikes extends Obstacle{
   private int damage;
   
   public Spikes(PVector position){
-    super(position);
+    super(position, false, "Main\Sprites\Obstacles\Spikes.png"); // super constructer arguments (position, collision, path of image)
     damage = 1;
   }
   

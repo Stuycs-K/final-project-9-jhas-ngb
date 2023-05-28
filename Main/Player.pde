@@ -11,7 +11,7 @@ public class Player{
   private PImage sprite;
   
   public Player (){
-    sprite = loadImage ();
+    sprite = loadImage ("Main\Sprites\Player\Isaac.png");
     //initialize speed, health, maxHealth, damage, fireRate, position as the middle of the room
     // initializes direction as 'N' (null)
     health = 6;
@@ -71,7 +71,7 @@ public class Player{
     // calls move function
     move();
     // draw player at position using direction (for the head), and movement (for body), for right now though, just use the basic sprite
-    
+    image(sprite, position.x - sprite.width/2, position.y - sprite.height/2);
     // checks if bullets are die, then remove them from the arraylist (I think unreferencing them kills them)
     
     // draw all bullets in bullet list
@@ -100,4 +100,7 @@ public class Player{
     position = change;
   }
   
+  public void setSprite (String newSprite){
+   sprite = newSprite; 
+  }
 }

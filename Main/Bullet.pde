@@ -30,8 +30,9 @@ public class Bullet{
     
   }
   
-  public void draw(){
+  public void subDraw(){
     // draws bullet
+    image(sprite, position.x - sprite.width/2, position.y - sprite.height/2);
     //calls the die function
   }
   

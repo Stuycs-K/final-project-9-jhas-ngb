@@ -9,7 +9,7 @@ public class Enemies{
     sprite = loadImage (path);
     this.health = health;
     this.speed = speed;
-    this.position = position; //<>//
+    this.position = position; //<>// //<>// //<>//
   }
   
   private Enemies(){ // base enemy constructor
@@ -46,6 +46,7 @@ public class Enemies{
   
   public void subDraw(){
     // draws enemy
+    image(sprite, position.x - sprite.width/2, position.y - sprite.height/2);
   }
   
 }
