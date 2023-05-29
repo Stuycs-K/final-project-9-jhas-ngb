@@ -67,3 +67,17 @@
 
 - implemented direction for Enemies
 - implemented most of move function for Enemies
+
+### 5/26/23
+
+- added collision method to blocks
+
+### 5/28/23
+
+- finished move methods for AttackFly and Fly
+- finished subDraw methods for AttackFly and Fly
+
+### 5/29/23
+
+- finished obstruct method for Obstacles
+- loaded sprites into constructors for Obstacles
