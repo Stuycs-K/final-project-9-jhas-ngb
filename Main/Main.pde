@@ -27,7 +27,6 @@ void keyPressed(){
     inputs[KEY_RIGHT] = true;
   if (key == 'S')
     inputs[KEY_DOWN] = true;
-    
   if (key == ' ')
     inputs[SHOOT] = true;
     

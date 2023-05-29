@@ -5,8 +5,9 @@ public class Fly extends Enemies{
     super(3, 5, PVector position, "Main\Sprites\Enemies\Fly.png");
     direction = 0;
   }
-  public Fly(int health, int speed, PVector position){
-     super(int health, int speed, int position, 5);
+  
+  public Fly(int health, int speed, PVector position, String sprite){
+     super( health, speed, position, sprite);
   }
   /**
   *Moves around the room randomly

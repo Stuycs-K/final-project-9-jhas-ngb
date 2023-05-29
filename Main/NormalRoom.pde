@@ -50,4 +50,8 @@ public class NormalRoom extends Room{
     }
   }
   
+  public ArrayList<Enemies> getEnemies (){
+    return enemies;
+  }
+  
 }

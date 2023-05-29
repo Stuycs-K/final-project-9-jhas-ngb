@@ -1,30 +1,35 @@
 public class Player{
   private PVector position;
   private PVector velocity;
-  private char direction;
+  private PVector acceleration;
   private int speed;
   private int health;
   private int maxHealth;
   private int damage;
   private int fireRate;
   private ArrayList<Bullet> bullets;
+  private int timer;
   private PImage sprite;
   
   public Player (){
     sprite = loadImage ("Main\Sprites\Player\Isaac.png");
     //initialize speed, health, maxHealth, damage, fireRate, position as the middle of the room
     // initializes direction as 'N' (null)
+    position = new PVector (width / 2, height / 2);
+    velocity = new PVector (0,0);
+    acceleration = new PVector (0,0);
+    speed = 3;
     health = 6;
     maxHealth = 6;
     damage = 1;
-    fireRate = 1; // 1 sec delay between shooting
-    position = new PVector (width / 2, height / 2);
-    direction = 'N';
+    fireRate = 20; // 20 frame delay between shooting
     bullets = new ArrayList <>();
+    timer = 0;
   }
   
   public void shoot(){
     // bullets.add(new Bullet (velocity)
+    bullets.add(new Bullet (velocity, position, 'p', direction);
   }
   
   /*
@@ -43,8 +48,11 @@ public class Player{
     // slowly changes velocity unil it reaches 0
   }
   
-  private applyVelocity (){
+  private applyVelocity (){    // not working yet
     // applys velocity to position
+    if (acceleration.mag
+    velocity.add(accleration);
+    position.add(velocity);
   }
   
   private void moveL (){
@@ -82,6 +90,26 @@ public class Player{
       }
       bullets.get(i).subDraw();
     }
+    // decrease timer every frame
+    timer--;
+    if (timer <= 0 && inputs[SHOOT]){ // player can only shoot after cooldown is up
+      shoot();
+      timer = 20;
+    }
+    
+    if (inputs[KEY_LEFT]){
+      moveL();
+    }
+    if (inputs[KEY_UP]){
+      moveU();
+    }
+    if (inputs[KEY_RIGHT]){
+      moveR();
+    }
+    if (inputs[KEY_DOWN]){
+      moveD();
+    }
+    applyVelocity(); // Note that all of these move functions can't just replace velocity, they have to affect it
   }
   
   public int getHealth(){

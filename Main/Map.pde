@@ -38,4 +38,7 @@ public class Map{
     map[row][col].subDraw();
   }
   
+  public getCurrent(){
+    return this.map[currentRoom.y][currentRoom.x];
+  }
 }
