@@ -5,13 +5,35 @@ public class Bullet{
   private int damage;
   private char origin;
   private PImage sprite;
-  private static final int firingPower = 10;
+  private static final int firingPower = 2;
   
-  public Bullet(PVector vel, int damage, char origin, char direction){
+  public Bullet(PVector vel, PVector position, char origin){
     sprite = loadImage("Main\Sprites\Tear.png");
     // if from player:
+    if (origin == 'p'){
+      this.origin = 'p';
       // makes a new velocity with vel and direction (determined by inputs[3-7]) and increases magnitude by firingPower
-      //
+      PVector fired = new PVector (0,0);
+      if (inputs[D_LEFT]){
+        fired = new PVector ();
+      }
+      if (inputs[D_UP]){
+        fired = new PVector ();
+      }
+      if (inputs[D_RIGHT]){
+        fired = new PVector ();
+      }
+      if (inputs[D_DOWN]){
+        fired = new PVector ();
+      }
+      this.velocity = PVector.add(vel, fired);
+      this.position = position;
+      this.damage = 2;
+    }else{
+      this.origin = 'e';
+      this.damage = 1;
+    }
+    this.die = false;
     // initialize damage to 2 if player, 1 if enemy (because player is weak af)
     // sets this.origin to 'p' if from player, 'e' if from enemy
   }
@@ -20,6 +42,18 @@ public class Bullet{
     // if bullet origin is player, hurt if on enemy
     // if bullet origin is enemy, hurt if on player
     // make die = true if bullet hits either
+    if (origin == 'p'){
+      for (int i = 0; i < map.getCurrent().
+      if (this.position.dist(player.getPosition()) < 30){
+        
+        die = true;
+      }
+    }else{
+      if (this.position.dist(player.getPosition()) < 30){
+        
+        die = true;
+      }
+    }
   }
   
   public void move (){
@@ -30,9 +64,10 @@ public class Bullet{
     
   }
   
-  public void draw(){
+  public void subDraw(){
     // draws bullet
-    //calls the die function
+    move();
+    image(sprite, position.x - sprite.width/2, position.y - sprite.height/2);
   }
   
   public void getDie (){

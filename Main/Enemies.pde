@@ -46,6 +46,7 @@ public class Enemies{
   
   public void subDraw(){
     // draws enemy
+    image(sprite, position.x - sprite.width/2, position.y - sprite.height/2);
   }
   
 }

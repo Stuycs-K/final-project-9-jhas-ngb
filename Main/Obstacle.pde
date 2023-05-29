@@ -23,5 +23,10 @@ public class Obstacle{
   
   public void subDraw(){
     // draw the obstacle
+    image(sprite, position.x - sprite.width/2, position.y - sprite.height/2);
+  }
+  
+  public void setSprite (String newSprite){
+   sprite = newSprite; 
   }
 }

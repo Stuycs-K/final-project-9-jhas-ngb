@@ -39,6 +39,10 @@
 - set up the PImage sprites
 - modified constructors to initialize sprites
 
+### 5/28/23
+
+- Tried making bullet physics and player movement, but the class structures are completely broken
+
 ## Lana
 
 ### 5/22/23

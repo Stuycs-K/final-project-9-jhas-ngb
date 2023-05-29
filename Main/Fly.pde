@@ -7,9 +7,15 @@ public class Fly extends Enemies{
     direction = 0;
     this.position = position;
   }
+<<<<<<< HEAD
   public Fly(int health, int speed, PVector position, String path){
      super(health, speed, position, path);
      this.position = position;
+=======
+  
+  public Fly(int health, int speed, PVector position, String sprite){
+     super( health, speed, position, sprite);
+>>>>>>> Baron
   }
   /**
   *Moves around the room randomly

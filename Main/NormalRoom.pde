@@ -17,7 +17,7 @@ public class NormalRoom extends Room{
   }
   
   public void subDraw(){
-    //if (loaded is false), if so, turn loaded to true and draw the room backdrop
+    super.subDraw();
     // calls the draw functions of enemies
     // calls the draw function of obstacles
     // calls the draw function of doors
@@ -27,7 +27,6 @@ public class NormalRoom extends Room{
     for (int i = 0; i < obstacles.size(); i++){
       obstacles.get(i).subDraw();
     }
-    super.subDraw();
   }
   
   public boolean withinBullet (int index, PVector bulletP){
@@ -49,6 +48,10 @@ public class NormalRoom extends Room{
       }
       
     }
+  }
+  
+  public ArrayList<Enemies> getEnemies (){
+    return enemies;
   }
   
 }
