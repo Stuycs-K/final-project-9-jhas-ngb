@@ -2,7 +2,7 @@ public class Rocks extends Obstacle{
   private boolean destroyed;
   
   public Rocks(PVector position){
-    super(position);
+    super(position, false, "Main\Sprites\Obstacles\Rocks.png");
     destroyed == false;
  
   }

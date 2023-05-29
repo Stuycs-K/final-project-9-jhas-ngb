@@ -2,11 +2,11 @@ public class Spikes extends Obstacle{
   private int damage;
   
   public Spikes(PVector position){
-    super(position);
+    super(position, false, "Main\Sprites\Obstacles\Spikes.png");
     damage = 1;
   }
   
-  public boolean damage(Player player){
+  public boolean obstruct(Player player){
     if(player.getHealth() >= 1){
      player.setHealth() = player.getHealth()-1;
   }

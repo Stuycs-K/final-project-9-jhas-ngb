@@ -6,7 +6,7 @@ public class Enemies{
   private PVector position; // This references the location within the ROOM GRID, not the screen
  
   private Enemies(int health, int speed, PVector position, String path){
-    sprite = loadImage (path);
+    sprite = loadImage(path);
     this.health = health;
     this.speed = speed;
     this.position = position; //<>//
