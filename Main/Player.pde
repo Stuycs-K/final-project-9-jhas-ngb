@@ -5,7 +5,6 @@ public class Player{
   private int speed;
   private int health;
   private int maxHealth;
-  private int damage;
   private int fireRate;
   private ArrayList<Bullet> bullets;
   private int timer;
@@ -21,7 +20,6 @@ public class Player{
     speed = 3;
     health = 6;
     maxHealth = 6;
-    damage = 1;
     fireRate = 20; // 20 frame delay between shooting
     bullets = new ArrayList <>();
     timer = 0;
@@ -40,6 +38,18 @@ public class Player{
   
   private void move (){
     // calls all other move functions
+    if (inputs[KEY_LEFT]){
+      moveL();
+    }
+    if (inputs[KEY_UP]){
+      moveU();
+    }
+    if (inputs[KEY_RIGHT]){
+      moveR();
+    }
+    if (inputs[KEY_DOWN]){
+      moveD();
+    }
     // calls apply Velocity
     // calls slowDown
   }
@@ -97,18 +107,6 @@ public class Player{
       timer = 20;
     }
     
-    if (inputs[KEY_LEFT]){
-      moveL();
-    }
-    if (inputs[KEY_UP]){
-      moveU();
-    }
-    if (inputs[KEY_RIGHT]){
-      moveR();
-    }
-    if (inputs[KEY_DOWN]){
-      moveD();
-    }
     applyVelocity(); // Note that all of these move functions can't just replace velocity, they have to affect it
   }
   
