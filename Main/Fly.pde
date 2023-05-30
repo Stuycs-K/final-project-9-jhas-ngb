@@ -1,22 +1,11 @@
 public class Fly extends Enemies{
   private int direction;
-  private position;
   
   public Fly(PVector position){
     super(3, 5, position, "Main\Sprites\Enemies\Fly.png");
     direction = 0;
-    this.position = position;
   }
-<<<<<<< HEAD
-  public Fly(int health, int speed, PVector position, String path){
-     super(health, speed, position, path);
-     this.position = position;
-=======
   
-  public Fly(int health, int speed, PVector position, String sprite){
-     super( health, speed, position, sprite);
->>>>>>> Baron
-  }
   /**
   *Moves around the room randomly
   */

@@ -6,7 +6,7 @@ public class Spikes extends Obstacle{
     damage = 1;
   }
   
-  public boolean obstruct(Player player){
+  public boolean obstruct(P){
     if(player.getHealth() >= 1){
      player.setHealth() = player.getHealth()-1;
   }
@@ -14,7 +14,7 @@ public class Spikes extends Obstacle{
      player.setHealth() = 0;
     }
   }
-  public boolean touch(Player player){
+  public boolean touch(){
     return(Player.position.x == this.position.x && Player.position.y == this.position.y);
   }
 }

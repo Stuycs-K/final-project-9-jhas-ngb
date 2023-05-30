@@ -2,12 +2,17 @@ public class Room{
  private boolean loaded;
  private PVector position;
  private int config;
- private int[][] grid;
  private Door doorL;
  private Door doorU;
  private Door doorR;
  private Door doorD;
  private PImage sprite;
+ // The 4 bound variables describe the cordinates of the walls of the room
+ private final LEFT_BOUND = ;
+ private final UP_BOUND = ;
+ private final RIGHT_BOUND = ;
+ private final DOWN_BOUND = ;
+ 
  
  public Room(){
    sprite = loadImage ( place holder text ); // I don't have a sprite for this yet

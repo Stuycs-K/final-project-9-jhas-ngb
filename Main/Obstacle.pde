@@ -12,7 +12,7 @@ public class Obstacle{
   }
   
   //check edge cases for this
-  public void obstruct(Player player){
+  public void obstruct(){
     if(player.position.x + 1 == this.position.x || player.position.x - 1 == this.position.x || player.position.y + 1 == this.position.y || player.position.y - 1 == this.position.y){
       Pvector change = new PVector(position.x-1);
       player.setPosition(change);

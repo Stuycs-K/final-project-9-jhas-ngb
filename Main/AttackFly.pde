@@ -1,18 +1,13 @@
-public class AttackFly extends Fly{
+public class AttackFly extends Enemies{
   private PVector acceleration;
-  private PVector velocity;
-  private int direction;
-  private PVector position;
   
   public AttackFly(PVector position){
     super(5, 6, position, "Main\Sprites\Enemies\AttackFly.png");
-    direction = 0;
-    this.position = position;
   }
   /*
   *Chases the player, stronger gravity than Fly
   **/
-  public void move(Player player){
+  public void move(){
     velocity.add(acceleration);
     position.add(PVector.add(velocity, acceleration));
     acceleration.x = 0;
@@ -23,13 +18,13 @@ public class AttackFly extends Fly{
     //create attractTo and apply force methods similar to orb physics with pvectors, use accceleration PVector
   }
   
-  public void changeDirection(Player player){
+  public void changeDirection(){
     
     //the direction is attracted to player
     //check player;s posiiton, uses slope to adjust position and movement of player
   }
   
-   PVector attractTo(Player player){
+   PVector attractTo(){
      float distance = this.position.dist(player.position);
      distance = max(15.0, distance);
      double mag = (0.01*mass*other.mass)/(distance*distance);

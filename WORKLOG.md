@@ -43,6 +43,11 @@
 
 - Tried making bullet physics and player movement, but the class structures are completely broken
 
+### 5/29/23
+
+- Redesigned all classes (on paper) including methods/variables/implementation
+
+
 ## Lana
 
 ### 5/22/23

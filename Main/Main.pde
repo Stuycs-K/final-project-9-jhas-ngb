@@ -84,6 +84,7 @@ void keyReleased(){
 }
 
 void setup(){
+  size(1800, 800);
   player = new Player ();
   map = new Map ();
   inputs = new boolean [9];
