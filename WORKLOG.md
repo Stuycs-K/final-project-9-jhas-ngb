@@ -50,6 +50,8 @@
 ### 5/30/23
 
 - Redesigned all classes on pc
+- fixed up player inputs
+- worked on Map, Room, NormalRoom, Player, and Bullet (mostly worked on connecting classes properly)
 
 
 ## Lana
