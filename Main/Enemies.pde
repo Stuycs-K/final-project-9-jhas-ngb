@@ -11,7 +11,7 @@ public class Enemies{
   private Enemies(int health, int speed, PVector position, String path){
     sprite = loadImage(path);
     this.health = health;
-    this.speed = speed; //<>//
+    this.speed = speed; //<>// //<>//
     this.position = position;
   }
   
@@ -42,6 +42,11 @@ public class Enemies{
     if (health <= 0){
       die = true;
     }
+  }
+  
+  //used by Bullet in hurt()
+  public void getPosition (){
+    return position;
   }
   
   // apply Velocity, Reset Velocity, THEN draw the sprite

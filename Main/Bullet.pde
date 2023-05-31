@@ -40,19 +40,31 @@ public class Bullet{
   }
   
   // if bullet origin is player && position.dist(enemy.position) < range, THEN hurt enemy AND die = true
-  public void hurt(String origin){
-    
+  public void hurt(){
+    if (origin == 'p'){
+      ArrayList<Enemies> enemies = map.getCurrent().getEnemies();
+      int i = 0;
+      while (position.dist(enemies.get(i).getPosition()) < 20 || !(i < enemies.size())){ // almost 100% sure this conditional is wrong
+        enemies.get(i).setHealth(enemies.get(i).getHealth() - 1);
+        die = true;
+      }
+    }
     
   }
   
   // if player is out of bounds, set die = true
   public void applyVelocity (){
-    
+    position.add(velocity);
+    if (position.x < LEFT_BOUND || position.y < UP_BOUND || position.x < RIGHT_BOUND || position.y > DOWN_BOUND){
+      die = true;
+    }
   }
   
   //move and draw sprite
   public void subDraw(){
-    
+    applyVelocity();
+    hurt();
+    image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
   }
   
   public boolean getDie (){

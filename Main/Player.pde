@@ -84,7 +84,7 @@ public class Player{
   // move()
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
-    image(sprite, position.x, position.y);
+    //image(sprite, position.x, position.y);
   }
   
   //used by enemies

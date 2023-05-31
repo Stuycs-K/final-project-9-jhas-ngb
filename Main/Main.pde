@@ -19,40 +19,54 @@ void keyPressed(){
   // might need to change these characters to lowercase and uppercase
   // not sure if ' ' is the same as the spacebar
   
-  if (key == 'A')
+  if (key == 'A' || key == 'a'){
     inputs[KEY_LEFT] = true;
-  if (key == 'W')
+    println("A");
+  }
+  if (key == 'W' || key == 'w'){
     inputs[KEY_UP] = true;
-  if (key == 'D')
+    println("W");
+  }
+  if (key == 'D' || key == 'd'){
     inputs[KEY_RIGHT] = true;
-  if (key == 'S')
+    println("D");
+  }
+  if (key == 'S' || key == 's'){
     inputs[KEY_DOWN] = true;
-  if (key == ' ')
+    println("S");
+  }
+  if (key == ' '){
     inputs[SHOOT] = true;
+    println("_");
+  }
     
-  if (key == 'J'){
+  if (key == 'J' || key == 'j'){
     inputs[D_LEFT] = true;
     inputs[D_UP] = false;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = false;
+    println("J");
   }else
-  if (key == 'I'){
+  if (key == 'I' || key == 'i'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = true;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = false;
+    println("I");
   }else
-  if (key == 'L'){
+  if (key == 'L' || key == 'l'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = false;
     inputs[D_RIGHT] = true;
     inputs[D_DOWN] = false;
+    println("L");
   }else
-  if (key == 'K'){
+  if (key == 'K' || key == 'k'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = false;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = true;
+    println("K");
   }
     
 }
@@ -84,7 +98,7 @@ void keyReleased(){
 }
 
 void setup(){
-  size(1800, 800);
+  size(1200, 900);
   player = new Player ();
   map = new Map ();
   inputs = new boolean [9];
