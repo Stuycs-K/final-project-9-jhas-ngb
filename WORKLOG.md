@@ -96,3 +96,8 @@
 
 - finished obstruct method for Obstacles
 - loaded sprites into constructors for Obstacles
+
+### 5/30/23
+
+- finished methods in Enemy classes after the redesign
+- finished methods in Obstacle classes after the redesign
