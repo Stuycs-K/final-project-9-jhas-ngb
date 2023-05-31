@@ -47,6 +47,10 @@
 
 - Redesigned all classes (on paper) including methods/variables/implementation
 
+### 5/30/23
+
+- Redesigned all classes on pc
+
 
 ## Lana
 
