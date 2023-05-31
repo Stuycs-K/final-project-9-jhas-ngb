@@ -1,14 +1,15 @@
 public class Rocks extends Obstacle{
-  private boolean destroyed;
   
+  // used by Normal Room to make rocks
+  // collision = true
   public Rocks(PVector position){
-    super(position, true, "Main\Sprites\Obstacles\Rocks.png"); // super constructer arguments (position, collision, path of image)
-    destroyed == false;
+    super(position, true, "Main\Sprites\Obstacles\Rocks.png");
  
   }
   
+  // NOT IN THE MVP
+  // sets the sprite to a broken rock, setCollision()
   public void break(){
-    //sets destroyed to true and removes image of rock from screen
     destroyed = true;
   }
   

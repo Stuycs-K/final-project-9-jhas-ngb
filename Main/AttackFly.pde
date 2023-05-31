@@ -1,70 +1,25 @@
 public class AttackFly extends Enemies{
-  private PVector acceleration;
   
+  // used by the Normal Room class to make enemies
   public AttackFly(PVector position){
     super(5, 6, position, "Main\Sprites\Enemies\AttackFly.png");
   }
-  /*
-  *Chases the player, stronger gravity than Fly
-  **/
-  public void move(){
-    velocity.add(acceleration);
-    position.add(PVector.add(velocity, acceleration));
-    acceleration.x = 0;
-    acceleration.y = 0;
-    applyForce(attractTo(player));
-    //attracted to the player's position
-    //when in contact with player, cause it damage
-    //create attractTo and apply force methods similar to orb physics with pvectors, use accceleration PVector
-  }
   
+  // changes direction of velocity to go towards player
+  // idk how you are going to do this but you are the vector person so you got this
+  // Maybe find the use the position cordinates or smth (random idea, dont trust)
   public void changeDirection(){
     
-    //the direction is attracted to player
-    //check player;s posiiton, uses slope to adjust position and movement of player
   }
   
-   PVector attractTo(){
-     float distance = this.position.dist(player.position);
-     distance = max(15.0, distance);
-     double mag = (0.01*mass*other.mass)/(distance*distance);
-     PVector force = PVector.sub(other.position, this.position);//direction of the force
-     force.normalize();
-     PVector.mult(force, (float)mag);
-     return force;
-   }
- 
- 
- /*Apply a force to the current position by changing the acceleration.*/
-  void applyForce(PVector f) {
-    //knowing that f = ma, you can rearrange the formula to see how you want to manipulate acceleration:
-    //a = f / m
-    //CHANGE THIS
-    //add  force/mass to the acceleration to apply the force.
-    acceleration.add(PVector.mult(f, (1/mass)));
-  }
-  
+  // if position's distance to player's position is less than a certain range, THEN player.setHealth (DECREASE BY 1)
+  // USE PVECTOR dist function to determine the distance (check PVector documentation online)
   public boolean damage(Player player){
    
-  
-    if(player.getHealth() >= 1){
-     player.setHealth() = player.getHealth()-1;
-  }
-    else{
-     player.setHealth() = 0;
-    }
   }
   
-  /*
-  *checks if in contact with player 
-  **/
-  public boolean contact(Player player){
-    return(Player.position.x == this.position.x && Player.position.y == this.position.y);
-  }
-  
+  //change direction, damage, THEN super.subdraw
   public void subDraw(){
-    changeDirection();
-    move(player);
     
   }
 }

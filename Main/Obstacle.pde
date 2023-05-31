@@ -1,31 +1,27 @@
 public class Obstacle{
   private boolean collision;
-  private PVector position; // This references the location within the ROOM GRID, not the screen
+  private PVector position;
   private PImage sprite;
   
+  // used by subclasses to make obstacles
   public Obstacle(PVector position, boolean collision, String path){
     sprite = loadImage(path);
     this.position = position;
     this.collision = collision;
-   // initializes collision = false and position
-  
   }
   
-  //check edge cases for this
+  // if the abs value difference in x values of the player.position and this.position gets small enough, then move the player position back to the border of the obstacle, same for y values
+  // NOTE: This entire function ONLY RUNS IF collision == true
   public void obstruct(){
-    if(player.position.x + 1 == this.position.x || player.position.x - 1 == this.position.x || player.position.y + 1 == this.position.y || player.position.y - 1 == this.position.y){
-      Pvector change = new PVector(position.x-1);
-      player.setPosition(change);
-    }
-    // keep the player from going inside of the obstacle
 
   }
   
+  // obstruct, THEN draw sprite
   public void subDraw(){
-    // draw the obstacle
-    image(sprite, position.x - sprite.width/2, position.y - sprite.height/2);
+    image(sprite, position.x - sprite.width/2, position.y - sprite.height/2); // look at how I did this to draw the PImage
   }
   
+  // used by rocks, spikes, tnt
   public void setSprite (String newSprite){
    sprite = newSprite; 
   }

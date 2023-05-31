@@ -1,62 +1,26 @@
 public class Fly extends Enemies{
-  private int direction;
+  private int timer;
+  private int rate;
   
+  // used by the Normal Room class to make enemies
+  // 3 health, 5 speed, (position), sprite, timer = 0, and rate = 5
   public Fly(PVector position){
     super(3, 5, position, "Main\Sprites\Enemies\Fly.png");
-    direction = 0;
   }
   
-  /**
-  *Moves around the room randomly
-  */
-  public void move(){
-    if(direction == 0){
-      position.set(position.x +3, position.y);
-    }
-    else if(direction == 1){
-      position.set(position.x -3, position.y);
-    }
-    else if(direction == 2){
-      position.set(position.x, position.y+3);
-    }
-    else if(direction == 3){
-      position.set(position.x, position.y-3);
-    }
-  }
-  
+  // randomly chooses between the 4 directions (North, West,...) and sets velocity
+  // KEEP IN MIND TO USE THE SPEED VARIABLE TO SET VELOCITY
   public int changeDirection(){
-    direction = (int)*Math.Random()* 4;
-    return direction;
-  }
-  
-  public void edge(){
-    int current = direction;
-    if(direction == 0 && position.x + 3> width){
-      while(current == changeDirection()){
-        changeDirection();
-      }
-    }
-    else if(direction == 1 && position.x - 3< 0){
-      while(current == changeDirection()){
-        changeDirection();
-      }
-    }
-    else if(direction == 2 && position.y + 3> height){
-      while(current == changeDirection()){
-        changeDirection();
-      }
-    }
-    else if(direction == 3 && position.y - 3< 0){
-      while(current == changeDirection()){
-        changeDirection();
-      }
-    }
     
   }
   
+  // if an enemy runs into a wall, negate its velocity.x or velocity.y appropriately
+  public void turnAround(){
+    
+  }
+  
+  // if timer <= 0, change direction and reset timer to rate, THEN super.subdraw
   public void subDraw(){
-    changeDirection();
-    edge();
-    move();
+    
   }
 }

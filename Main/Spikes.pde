@@ -1,20 +1,15 @@
 public class Spikes extends Obstacle{
-  private int damage;
+  // NOT DAMAGE VARIABLE BC IT ALWAYS DOES 1 DAMAGE
   
+  // used by Normal Room to make spikes
   public Spikes(PVector position){
-    super(position, false, "Main\Sprites\Obstacles\Spikes.png"); // super constructer arguments (position, collision, path of image)
-    damage = 1;
+    super(position, false, "Main\Sprites\Obstacles\Spikes.png");
   }
   
-  public boolean obstruct(P){
-    if(player.getHealth() >= 1){
-     player.setHealth() = player.getHealth()-1;
+  // hurts the player if inside of hitbox (search up what this means if u dont know)
+  // similar to Blocks class, it detects when player enter the x and y range, BUT this time it does player.setHealth (REDUCE HEALTH BY 1)
+  public void hurt (){
+    
   }
-    else{
-     player.setHealth() = 0;
-    }
-  }
-  public boolean touch(){
-    return(Player.position.x == this.position.x && Player.position.y == this.position.y);
-  }
+  
 }

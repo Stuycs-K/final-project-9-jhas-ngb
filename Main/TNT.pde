@@ -1,3 +1,5 @@
+
+// THIS ENTIRE CLASS IS NOT IN THE MVP
 public class TNT extends Obstacle{
   private boolean destroyed;
   
