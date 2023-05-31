@@ -13,6 +13,7 @@ public class Enemies{
     this.health = health;
     this.speed = speed; //<>//
     this.position = position;
+    this.velocity = new PVector(0,0);
   }
   
   // NOT IN MVP
@@ -23,12 +24,12 @@ public class Enemies{
   
   // apply velocity to position
   public void applyVelocity(){
-    
+    this.position.add(velocity);
   }
   
   // turn velocity to zero
   public void resetVelocity(){
-    
+    velocity = new PVector(0,0);
   }
   
   // used by bullets
@@ -47,7 +48,9 @@ public class Enemies{
   // apply Velocity, Reset Velocity, THEN draw the sprite
   //(NOTE: The image function to draw PImages uses position as the top left corner of the image. Read Processing image() documentation for more info)
   public void subDraw(){
-    
+    applyVelocity();
+    resetVelocity();
+    image(sprite, this.position.x - sprite.width/2, this.position.y - sprite.height/2);
   }
   
 }
