@@ -3,7 +3,7 @@ public class Spikes extends Obstacle{
   
   // used by Normal Room to make spikes
   public Spikes(PVector position){
-    super(position, false, "Main\Sprites\Obstacles\Spikes.png");
+    super(position, false, "./Sprites/Obstacles/Spikes.png");
   }
   
   // hurts the player if inside of hitbox (search up what this means if u dont know)

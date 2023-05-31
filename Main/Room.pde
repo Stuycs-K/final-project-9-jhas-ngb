@@ -3,15 +3,15 @@ public class Room{
  private ArrayList<Integer>doors;
  
  // The 4 bound variables describe the cordinates of the walls of the room
- private final LEFT_BOUND = ;
- private final UP_BOUND = ;
- private final RIGHT_BOUND = ;
- private final DOWN_BOUND = ;
+ private final int LEFT_BOUND = width / 2 - 500;
+ private final int UP_BOUND = height / 2 - 400;
+ private final int RIGHT_BOUND = width / 2 + 500;
+ private final int DOWN_BOUND = height / 2 + 400;
  
  // makeDoors()
  // used by normal room
  public Room(){
-   sprite = loadImage ( place holder text ); // I don't have a sprite for this yet
+   sprite = loadImage ("./Sprites/Room.png");
  }
  
  //four if statements, checks if player enters door && if door exists within doors arraylist (using indexOf ?), move CurrentRoom index appropriately using the setCurrent() in global var map
@@ -31,7 +31,7 @@ public class Room{
  }
  
  // detectDoor(), draw backdrop, draw doors
- public subDraw (){
+ public void subDraw (){
    
  }
  

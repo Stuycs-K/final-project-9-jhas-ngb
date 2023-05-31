@@ -2,7 +2,7 @@ public class AttackFly extends Enemies{
   
   // used by the Normal Room class to make enemies
   public AttackFly(PVector position){
-    super(5, 6, position, "Main\Sprites\Enemies\AttackFly.png");
+    super(5, 6, position, "./Sprites/Enemies/AttackFly.png");
   }
   
   // changes direction of velocity to go towards player
@@ -14,7 +14,7 @@ public class AttackFly extends Enemies{
   
   // if position's distance to player's position is less than a certain range, THEN player.setHealth (DECREASE BY 1)
   // USE PVECTOR dist function to determine the distance (check PVector documentation online)
-  public boolean damage(Player player){
+  public void damage(){
    
   }
   

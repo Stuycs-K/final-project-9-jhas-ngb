@@ -7,8 +7,9 @@ public class Bullet{
   private PImage sprite;
   private static final int firingPower = 2;
   
-  public Bullet(PVector vel, PVector position, char origin){
-    sprite = loadImage("Main\Sprites\Tear.png");
+  // used by Player
+  public Bullet(PVector playerVelocity, PVector playerPosition, char origin){
+    sprite = loadImage("./Sprites/Tear.png");
     // if from player:
     if (origin == 'p'){
       this.origin = 'p';
@@ -26,51 +27,35 @@ public class Bullet{
       if (inputs[D_DOWN]){
         fired = new PVector ();
       }
-      this.velocity = PVector.add(vel, fired);
-      this.position = position;
+      this.velocity = PVector.add(playerVelocity, fired);
+      this.position = playerPosition;
       this.damage = 2;
     }else{
       this.origin = 'e';
       this.damage = 1;
     }
     this.die = false;
-    // initialize damage to 2 if player, 1 if enemy (because player is weak af)
+    // initialize damage to 2
     // sets this.origin to 'p' if from player, 'e' if from enemy
   }
   
+  // if bullet origin is player && position.dist(enemy.position) < range, THEN hurt enemy AND die = true
   public void hurt(String origin){
-    // if bullet origin is player, hurt if on enemy
-    // if bullet origin is enemy, hurt if on player
-    // make die = true if bullet hits either
-    if (origin == 'p'){
-      for (int i = 0; i < map.getCurrent().
-      if (this.position.dist(player.getPosition()) < 30){
-        
-        die = true;
-      }
-    }else{
-      if (this.position.dist(player.getPosition()) < 30){
-        
-        die = true;
-      }
-    }
-  }
-  
-  public void move (){
-    //self explanatory
-    // make sure the bullet dies if it hits enemy or wall
-    // use dist function to inflict damage to any enemy within range, NormalRoom enemies arraylist is PUBLIC
-    // make die = true if moves into a wall
+    
     
   }
   
-  public void subDraw(){
-    // draws bullet
-    move();
-    image(sprite, position.x - sprite.width/2, position.y - sprite.height/2);
+  // if player is out of bounds, set die = true
+  public void applyVelocity (){
+    
   }
   
-  public void getDie (){
+  //move and draw sprite
+  public void subDraw(){
+    
+  }
+  
+  public boolean getDie (){
     return die;
   }
   

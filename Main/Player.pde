@@ -13,7 +13,7 @@ public class Player{
  
  
   public Player (){
-    sprite = loadImage ("Main\Sprites\Player\Isaac.png");
+    sprite = loadImage ("./Sprites/Player/Isaac.png");
     position = new PVector (width / 2, height / 2);
     velocity = new PVector (0,0);
     speed = 3;
@@ -50,7 +50,7 @@ public class Player{
   }
   
   // applys velocity to position
-  private applyVelocity (){
+  private void applyVelocity (){
     position.add(velocity);
   }
   
@@ -84,7 +84,7 @@ public class Player{
   // move()
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
-    
+    image(sprite, position.x, position.y);
   }
   
   //used by enemies

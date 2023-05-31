@@ -23,6 +23,6 @@ public class Obstacle{
   
   // used by rocks, spikes, tnt
   public void setSprite (String newSprite){
-   sprite = newSprite; 
+   sprite = loadImage(newSprite); 
   }
 }

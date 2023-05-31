@@ -92,7 +92,7 @@ void setup(){
 }
 
 void draw(){
-  clear();
+  background(0);
   map.subDraw();
   player.subDraw();
 }

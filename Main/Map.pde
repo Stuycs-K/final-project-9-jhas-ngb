@@ -19,13 +19,13 @@ public class Map{
   }
   
   // used by Room, specifically in detectDoor()
-  public getCurrent(){
-    return this.map[currentRoom.y][currentRoom.x];
+  public Room getCurrent(){
+    return this.map[Math.round(currentRoom.y)][Math.round(currentRoom.x)];
   }
   
   // used by Room, specifically in detectDoor()
   // only activates if the next room exists
-  public setCurrent(int y, int x){
+  public void setCurrent(int y, int x){
     currentRoom.set(y,x);
   }
 }

@@ -5,12 +5,12 @@ public class Fly extends Enemies{
   // used by the Normal Room class to make enemies
   // 3 health, 5 speed, (position), sprite, timer = 0, and rate = 5
   public Fly(PVector position){
-    super(3, 5, position, "Main\Sprites\Enemies\Fly.png");
+    super(3, 5, position, "./Sprites/Enemies/Fly.png");
   }
   
   // randomly chooses between the 4 directions (North, West,...) and sets velocity
   // KEEP IN MIND TO USE THE SPEED VARIABLE TO SET VELOCITY
-  public int changeDirection(){
+  public void changeDirection(){
     
   }
   

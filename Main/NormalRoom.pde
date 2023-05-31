@@ -12,7 +12,7 @@ public class NormalRoom extends Room{
   
   //super.draw, draw obstacles, draw enemies
   public void subDraw(){
-    super.subDraw();
+    
   }
   
   // used by Bullets, specifically the hurt() function
