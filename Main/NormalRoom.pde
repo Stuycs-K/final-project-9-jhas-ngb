@@ -12,12 +12,13 @@ public class NormalRoom extends Room{
   
   //super.draw, draw obstacles, draw enemies
   public void subDraw(){
-    
-  }
-  
-  // used by Bullets, specifically the hurt() function
-  public ArrayList<Enemies> getEnemies (){
-    return enemies;
+    super.subDraw();
+    for (int i = 0; i < obstacles.size(); i++){
+      obstacles.get(i).subDraw();
+    }
+    for (int i = 0; i < enemies.size(); i++){
+      enemies.get(i).subDraw();
+    }
   }
   
 }
