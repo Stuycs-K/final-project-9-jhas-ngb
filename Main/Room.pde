@@ -18,18 +18,6 @@ public class Room{
    doors = new ArrayList<>();
    enemies = new ArrayList<>();
    obstacles = new ArrayList<>();
-   for (int i = 0; i < 4; i++){
-     int enemy = (int)(Math.random() * 2);
-     if (enemy == 0)
-       enemies.add (new Fly (new PVector (Math.random() * sprite.width + (width/2 - sprite.width/2), Math.random() * sprite.height + (height/2 - sprite.height/2);
-     if (enemy == 1)
-       enemies.add (new AttackFly (new PVector (Math.random() * sprite.width + (width/2 - sprite.width/2), Math.random() * sprite.height + (height/2 - sprite.height/2);
-     
-     // randomly choose between obstacle types
-     int obstacle = (int)(Math.random() * 3) ;
-     if (obstacle == 0)
-       obstacles.add (new Block (new PVector (Math.random() * sprite.width + (width/2 - sprite.width/2), Math.random() * sprite.height + (height/2 - sprite.height/2);
-   }
    makeDoors();
  }
  
@@ -106,8 +94,19 @@ public class Room{
  }
  
  // used by Bullets, specifically the hurt() function
+ // used by normal Room
   public ArrayList<Enemies> getEnemies (){
     return enemies;
+  }
+  
+// used by normal Room
+  public ArrayList<Obstacle> getObstacles (){
+    return obstacles;
+  }
+  
+  // used by normal Room
+  public PImage getSprite (){
+    return sprite;
   }
  
 }

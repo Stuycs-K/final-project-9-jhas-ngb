@@ -10,7 +10,7 @@ public class Rocks extends Obstacle{
   // NOT IN THE MVP
   // sets the sprite to a broken rock, setCollision()
   public void destroyed(){
-    //setSprite();
+    setSprite();
     setCollision();
     
   }
