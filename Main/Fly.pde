@@ -13,7 +13,7 @@ public class Fly extends Enemies{
   // randomly chooses between the 4 directions (North, West,...) and sets velocity
   // KEEP IN MIND TO USE THE SPEED VARIABLE TO SET VELOCITY
   public void changeDirection(){
-    int direction = (int)(Math.random()*4);
+    int direction = (int)(Math.random()*8);
     PVector velocity = this.getVelocity();
     int speed = this.getSpeed();
     
@@ -27,6 +27,23 @@ public class Fly extends Enemies{
       velocity.y += speed;
     }
     else if(direction == 3){
+      velocity.y -= speed;
+    }
+    
+    else if(direction == 4){
+      velocity.x += speed;
+      velocity.y += speed;
+    }
+    else if(direction == 5){
+      velocity.x -= speed;
+      velocity.y += speed;
+    }
+    else if(direction == 6){
+      velocity.x += speed;
+      velocity.y -= speed;
+    }
+    else if(direction == 7){
+      velocity.x -= speed;
       velocity.y -= speed;
     }
   }

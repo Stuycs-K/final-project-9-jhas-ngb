@@ -1,7 +1,7 @@
 public class Player{
   private PVector position;
   private PVector velocity;
-  private int speed;
+  private double speed;
   private int health;
   private int fireRate;
   private ArrayList<Bullet> bullets;
@@ -16,7 +16,7 @@ public class Player{
     sprite = loadImage ("./Sprites/Player/Isaac.png");
     position = new PVector (width / 2, height / 2);
     velocity = new PVector (0,0);
-    speed = 3;
+    speed = 4.5;
     health = 6;
     fireRate = 30; // 30 frame delay between shooting
     bullets = new ArrayList <>();

@@ -10,25 +10,24 @@ public class NormalRoom extends Room{
      ArrayList<Obstacle> obstaclesS = this.getObstacles();
      PImage spriteS = this.getSprite();
      if (enemy == 0)
-       enemiesS.add (new Fly (new PVector ((int)(Math.random() * spriteS.width + (width/2 - (0.8 * (spriteS.width/2)))), (int)(Math.random() * spriteS.height + (height/2 - (0.8 * (spriteS.height/2)))))));
+       enemiesS.add (new Fly (new PVector ((int)((Math.random() * (spriteS.width/2) + (width/2 - (0.5 * (spriteS.width/2))))), (int)(Math.random() * (spriteS.height/2) + (height/2 - (0.5 * (spriteS.height/2)))))));
      if (enemy == 1)
-       enemiesS.add (new AttackFly (new PVector ((int)(Math.random() * spriteS.width + (width/2 - (0.8 * (spriteS.width/2)))), (int)(Math.random() * spriteS.height + (height/2 - (0.8 * (spriteS.height/2)))))));
+       enemiesS.add (new AttackFly (new PVector ((int)((Math.random() * (spriteS.width/2) + (width/2 - (0.5 * (spriteS.width/2))))), (int)(Math.random() * (spriteS.height/2) + (height/2 - (0.5 * (spriteS.height/2)))))));
      
      // randomly choose between obstacle types
      int obstacle = (int)(Math.random() * 3) ;
      if (obstacle == 0)
-       obstaclesS.add (new Blocks (new PVector ((int)((Math.random() * spriteS.width + (width/2 - (0.8 * (spriteS.width/2))))), (int)(Math.random() * spriteS.height + (height/2 - (0.8 * (spriteS.height/2)))))));
+       obstaclesS.add (new Blocks (new PVector ((int)((Math.random() * (spriteS.width/2) + (width/2 - (0.5 * (spriteS.width/2))))), (int)(Math.random() * (spriteS.height/2) + (height/2 - (0.5 * (spriteS.height/2)))))));
      if (obstacle == 1)
-       obstaclesS.add (new Rocks (new PVector ((int)((Math.random() * spriteS.width + (width/2 - (0.8 * (spriteS.width/2))))), (int)(Math.random() * spriteS.height + (height/2 - (0.8 * (spriteS.height/2)))))));
+       obstaclesS.add (new Rocks (new PVector ((int)((Math.random() * (spriteS.width/2) + (width/2 - (0.5 * (spriteS.width/2))))), (int)(Math.random() * (spriteS.height/2) + (height/2 - (0.5 * (spriteS.height/2)))))));
      if (obstacle == 2)
-       obstaclesS.add (new Spikes (new PVector ((int)((Math.random() * spriteS.width + (width/2 - (0.8 * (spriteS.width/2))))), (int)(Math.random() * spriteS.height + (height/2 - (0.8 * (spriteS.height/2)))))));
+       obstaclesS.add (new Spikes (new PVector ((int)((Math.random() * (spriteS.width/2) + (width/2 - (0.5 * (spriteS.width/2))))), (int)(Math.random() * (spriteS.height/2) + (height/2 - (0.5 * (spriteS.height/2)))))));
    }
   }
   
   //super.draw, draw obstacles, draw enemies
   public void subDraw(){
     super.subDraw();
-    /*
     for (int i = 0; i < getObstacles().size(); i++){
       getObstacles().get(i).subDraw();
     }
@@ -38,8 +37,6 @@ public class NormalRoom extends Room{
         getEnemies().remove(i);
       }
     }
-    */
-    print ("NAH");
   }
   
 }
