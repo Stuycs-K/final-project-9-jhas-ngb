@@ -107,6 +107,7 @@ void setup(){
 
 void draw(){
   background(0);
+  print("Running ");
   map.subDraw();
   player.subDraw();
 }

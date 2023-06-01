@@ -88,9 +88,9 @@ public class Room{
  
  // detectDoor(), draw backdrop, draw doors
  public void subDraw (){
-   detectDoor();
    image(sprite, width / 2 - sprite.width / 2, height / 2 - sprite.height / 2);
-   drawDoors();
+   drawDoors(); // BROKEN
+   detectDoor();
  }
  
  // used by Bullets, specifically the hurt() function

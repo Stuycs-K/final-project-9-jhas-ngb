@@ -29,7 +29,7 @@ public class Enemies{
   
   // turn velocity to zero
   public void resetVelocity(){
-    velocity = new PVector(0,0);
+    velocity.set(0,0);
   }
   
   // used by bullets

@@ -28,15 +28,18 @@ public class NormalRoom extends Room{
   //super.draw, draw obstacles, draw enemies
   public void subDraw(){
     super.subDraw();
+    /*
     for (int i = 0; i < getObstacles().size(); i++){
       getObstacles().get(i).subDraw();
     }
     for (int i = 0; i < getEnemies().size(); i++){
+      getEnemies().get(i).subDraw();
       if (getEnemies().get(i).getDie()){
         getEnemies().remove(i);
       }
-      getEnemies().get(i).subDraw();
     }
+    */
+    print ("NAH");
   }
   
 }
