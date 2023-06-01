@@ -98,7 +98,7 @@ void keyReleased(){
 }
 
 void setup(){
-  size(1200, 900);
+  size(1920, 1080);
   player = new Player ();
   map = new Map ();
   inputs = new boolean [9];

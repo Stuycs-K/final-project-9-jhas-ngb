@@ -1,7 +1,10 @@
 public class Room{
  private PImage sprite = loadImage ("./Sprites/Room.png"); // 468 x 312
  private ArrayList<Integer>doors;
- private final PImage door = loadImage("./Sprites/Door.png");
+ private final PImage door = loadImage("./Sprites/Door.png"); // upright
+ private final PImage doorL = loadImage("./Sprites/DoorLeft.png");
+ private final PImage doorD = loadImage("./Sprites/DoorDown.png");
+ private final PImage doorR = loadImage("./Sprites/DoorRight.png");
  
  private ArrayList<Enemies> enemies; // these have to be in here so that map can reference them
  private ArrayList<Obstacle> obstacles;
@@ -51,7 +54,7 @@ public class Room{
  //Down = 3
  public void makeDoors(){
    for (int i = 0; i < 4; i++){
-     int direction = (int)(Math.random());
+     int direction = (int)(Math.random() * 4);
      if (doors.indexOf(direction) == -1){
        doors.add(direction);
      }
@@ -62,34 +65,30 @@ public class Room{
  // NEED SOME WAY TO ROTATE THE DOOR IMAGE, MAYBE JUST MAKE NEW SPRITES MANUALLY
  public void drawDoors(){
    for (int i = 0; i < doors.size(); i++){
-     rotate(PI/2);
      if (doors.get(i) == 0){
        // draw left door image
-       image(door, width / 2 - sprite.width / 2 - door.height, height / 2 - door.width);
+       image(doorL, width / 2 - (0.72 * (sprite.width / 2)) - doorL.width, height / 2 - doorL.height/2);
      }
-     rotate(-1 * (PI/2.0));
      if (doors.get(i) == 1){
        // draw top door image
-       image(door, width / 2 - door.width / 2, height / 2 - sprite.height / 2 - door.height);
+       image(door, width / 2 - door.width / 2, height / 2 - (0.58 * (sprite.height / 2)) - door.height);
      }
-     rotate(-1 * (PI/2.0));
      if (doors.get(i) == 2){
        // draw right door image
-       image(door, width / 2 + sprite.width / 2, height / 2 - door.width);
+       image(doorR, width / 2 + (0.72 * (sprite.width / 2)), height / 2 - doorR.height/2);
      }
-     rotate(-1 * (PI/2.0));
      if (doors.get(i) == 3){
        // draw bottom door image
-       image(door, width / 2 - door.width / 2, height / 2 + sprite.height / 2);
+       image(doorD, width / 2 - doorD.width / 2, height / 2 + (0.58 * (sprite.height / 2)));
      }
-     rotate(-1 * (PI/2.0));
    }
  }
  
  // detectDoor(), draw backdrop, draw doors
  public void subDraw (){
    image(sprite, width / 2 - sprite.width / 2, height / 2 - sprite.height / 2);
-   drawDoors(); // BROKEN
+   print(doors);
+   drawDoors();
    detectDoor();
  }
  
