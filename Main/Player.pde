@@ -57,25 +57,25 @@ public class Player{
   //change velocity.x by -speed
   // check if player on left wall
   private void moveL (){
-    
+    velocity.x -= speed;
   }
   
   //change velocity.y by -speed
   // check if player on left wall
   private void moveU (){
-    
+    velocity.y -= speed;
   }
   
   //change velocity.x by speed
   // check if player on left wall
   private void moveR (){
-    
+    velocity.x += speed;
   }
   
   //change velocity.y by speed
   // check if player on left wall
   private void moveD (){
-    
+    velocity.y += speed;
   }
   
   // draws sprite
@@ -84,7 +84,21 @@ public class Player{
   // move()
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
-    //image(sprite, position.x, position.y);
+    for (int i = 0; i < bullets.size(); i++){
+      if (bullets.get(i).getDie()){
+        bullets.remove(i);
+      }
+      bullets.get(i).subDraw();
+    }
+    move();
+    applyVelocity();
+    slowDown();
+    image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
+    if (inputs[SHOOT] && timer <= 0){
+      shoot();
+      timer = fireRate;
+    }
+    timer--;
   }
   
   //used by enemies

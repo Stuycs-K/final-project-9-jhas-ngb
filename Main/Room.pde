@@ -15,6 +15,21 @@ public class Room{
  // makeDoors()
  // used by normal room
  public Room(){
+   doors = new ArrayList<>();
+   enemies = new ArrayList<>();
+   obstacles = new ArrayList<>();
+   for (int i = 0; i < 4; i++){
+     int enemy = (int)(Math.random() * 2);
+     if (enemy == 0)
+       enemies.add (new Fly (new PVector (Math.random() * sprite.width + (width/2 - sprite.width/2), Math.random() * sprite.height + (height/2 - sprite.height/2);
+     if (enemy == 1)
+       enemies.add (new AttackFly (new PVector (Math.random() * sprite.width + (width/2 - sprite.width/2), Math.random() * sprite.height + (height/2 - sprite.height/2);
+     
+     // randomly choose between obstacle types
+     int obstacle = (int)(Math.random() * 3) ;
+     if (obstacle == 0)
+       obstacles.add (new Block (new PVector (Math.random() * sprite.width + (width/2 - sprite.width/2), Math.random() * sprite.height + (height/2 - sprite.height/2);
+   }
    makeDoors();
  }
  
@@ -23,19 +38,19 @@ public class Room{
  public void detectDoor(){
    int x = map.getCurrentX();
    int y = map.getCurrentY();
-   if (player.position.x == width / 2 - sprite.width / 2 + 1 && ){ // left wall
+   if (player.position.x == width / 2 - sprite.width / 2 + 1 && (player.position.y > height / 2 - door.width / 2 || player.position.y < height / 2 + door.width / 2)){ // left wall
      player.position.x += 2 * (sprite.width / 2 + 1);
      map.setCurrent(x - 1, y);
    }
-   if (player.position.x == width / 2 + sprite.width / 2 - 1 && ){ // right wall
+   if (player.position.x == width / 2 + sprite.width / 2 - 1 && ((player.position.y > height / 2 - door.width / 2) || (player.position.y < height / 2 + door.width / 2))){ // right wall
      player.position.x -= 2 * (sprite.width / 2 + 1);
      map.setCurrent(x + 1, y);
    }
-   if (player.position.y == height / 2 - sprite.height / 2 + 1 && ){ // top wall
+   if (player.position.y == height / 2 - sprite.height / 2 + 1 && (player.position.x > width / 2 - door.width / 2 || player.position.x < width / 2 + door.width / 2)){ // top wall
      player.position.y += 2 * (sprite.height / 2 + 1);
      map.setCurrent(x, y - 1);
    }
-   if (player.position.y == height / 2 + sprite.height / 2 - 1 && ){ // bottom wall
+   if (player.position.y == height / 2 + sprite.height / 2 - 1 && (player.position.x > width / 2 - door.width / 2 || player.position.x < width / 2 + door.width / 2)){ // bottom wall
      player.position.y -= 2 * (sprite.height / 2 + 1);
      map.setCurrent(x, y + 1);
    }
@@ -52,7 +67,6 @@ public class Room{
      if (doors.indexOf(direction) == -1){
        doors.add(direction);
      }
-     
    }
  }
  
@@ -60,25 +74,34 @@ public class Room{
  // NEED SOME WAY TO ROTATE THE DOOR IMAGE, MAYBE JUST MAKE NEW SPRITES MANUALLY
  public void drawDoors(){
    for (int i = 0; i < doors.size(); i++){
+     rotate(PI/2);
      if (doors.get(i) == 0){
        // draw left door image
+       image(door, width / 2 - sprite.width / 2 - door.height, height / 2 - door.width);
      }
+     rotate(-1 * (PI/2.0));
      if (doors.get(i) == 1){
        // draw top door image
+       image(door, width / 2 - door.width / 2, height / 2 - sprite.height / 2 - door.height);
      }
+     rotate(-1 * (PI/2.0));
      if (doors.get(i) == 2){
        // draw right door image
+       image(door, width / 2 + sprite.width / 2, height / 2 - door.width);
      }
+     rotate(-1 * (PI/2.0));
      if (doors.get(i) == 3){
        // draw bottom door image
+       image(door, width / 2 - door.width / 2, height / 2 + sprite.height / 2);
      }
+     rotate(-1 * (PI/2.0));
    }
  }
  
  // detectDoor(), draw backdrop, draw doors
  public void subDraw (){
    detectDoor();
-   image(sprite);
+   image(sprite, sprite.width / 2, sprite.height / 2);
    drawDoors();
  }
  
