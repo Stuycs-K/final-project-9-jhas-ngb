@@ -11,15 +11,17 @@ public class Enemies{
   private Enemies(int health, int speed, PVector position, String path){
     sprite = loadImage(path);
     this.health = health;
-    this.speed = speed; //<>// //<>//
+    this.speed = speed; //<>//
     this.position = position;
     this.velocity = new PVector(0,0);
+    die = false;
   }
   
   // NOT IN MVP
   // if enemy is dead (use die variable) and explosive == true, THEN drop an instant exploding bomb
   public void enemyExplosion(){
-    
+    //if(this.die == true && explosive == true){
+    //}
   }
   
   // apply velocity to position
