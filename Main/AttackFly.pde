@@ -11,7 +11,9 @@ public class AttackFly extends Enemies{
   public void changeDirection(){
     PVector velocity = this.getVelocity();
     PVector position = this.getPosition();
-    velocity = new PVector(player.getPosition().x - position.x, player.getPosition().y - position.y);
+    PVector direction = new PVector(player.getPosition().x - position.x, player.getPosition().y - position.y);
+    direction.normalize();
+    direction.mult(getSpeed());
   }
   
   // if position's distance to player's position is less than a certain range, THEN player.setHealth (DECREASE BY 1)

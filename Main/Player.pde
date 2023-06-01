@@ -6,7 +6,7 @@ public class Player{
   private int fireRate;
   private ArrayList<Bullet> bullets;
   private int timer;
-  private PImage sprite; // 148 x 125
+  private PImage sprite;
   
   // PLAYER POSSIBLY NEEDS A DIE VARIABLE AS WELL IN ORDER TO END THE GAME
  
@@ -55,25 +55,21 @@ public class Player{
   }
   
   //change velocity.x by -speed
-  // check if player on left wall
   private void moveL (){
     velocity.x -= speed;
   }
   
   //change velocity.y by -speed
-  // check if player on left wall
   private void moveU (){
     velocity.y -= speed;
   }
   
   //change velocity.x by speed
-  // check if player on left wall
   private void moveR (){
     velocity.x += speed;
   }
   
   //change velocity.y by speed
-  // check if player on left wall
   private void moveD (){
     velocity.y += speed;
   }
@@ -84,7 +80,6 @@ public class Player{
   // move()
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
-    /*
     if (inputs[SHOOT] && timer <= 0){
       shoot();
       timer = fireRate;
@@ -96,7 +91,6 @@ public class Player{
         bullets.remove(i);
       }
     }
-    */
     move();
     applyVelocity();
     slowDown();

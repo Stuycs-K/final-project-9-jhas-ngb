@@ -1,5 +1,5 @@
 public class Room{
- private PImage sprite = loadImage ("./Sprites/Room.png"); // 468 x 312
+ private PImage sprite = loadImage ("./Sprites/Room.png");
  private ArrayList<Integer>doors;
  private final PImage door = loadImage("./Sprites/Door.png"); // upright
  private final PImage doorL = loadImage("./Sprites/DoorLeft.png");
@@ -87,7 +87,6 @@ public class Room{
  // detectDoor(), draw backdrop, draw doors
  public void subDraw (){
    image(sprite, width / 2 - sprite.width / 2, height / 2 - sprite.height / 2);
-   print(doors);
    drawDoors();
    detectDoor();
  }
