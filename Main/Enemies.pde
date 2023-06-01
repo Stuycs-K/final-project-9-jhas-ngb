@@ -1,7 +1,7 @@
 public class Enemies{
   private int health;
   private int speed;
-  private boolean explosive;
+  private boolean explosive; // NOT IN MVP
   private PImage sprite;
   private PVector position;
   private PVector velocity;
@@ -31,7 +31,7 @@ public class Enemies{
   
   // turn velocity to zero
   public void resetVelocity(){
-    velocity = new PVector(0,0);
+    velocity.set(0,0);
   }
   
   // used by bullets
@@ -48,8 +48,23 @@ public class Enemies{
   }
   
   //used by Bullet in hurt()
-  public void getPosition (){
+  public PVector getPosition (){
     return position;
+  }
+  
+  //used by sub classes
+  public PVector getVelocity (){
+    return velocity;
+  }
+  
+  //used by sub classes
+  public int getSpeed(){
+    return speed;
+  }
+  
+  // used by Normal Room
+  public boolean getDie(){
+    return die;
   }
   
   // apply Velocity, Reset Velocity, THEN draw the sprite
@@ -58,6 +73,9 @@ public class Enemies{
     applyVelocity();
     resetVelocity();
     image(sprite, this.position.x - sprite.width/2, this.position.y - sprite.height/2);
+    if (health <= 0){
+      die = true;
+    }
   }
   
 }

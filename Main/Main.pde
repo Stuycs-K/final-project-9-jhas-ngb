@@ -98,15 +98,16 @@ void keyReleased(){
 }
 
 void setup(){
-  size(1200, 900);
+  size(1920, 1080);
   player = new Player ();
   map = new Map ();
   inputs = new boolean [9];
-  frameRate(30); // set framerate to 30 fps
+  frameRate(60); // set framerate to 60 fps
 }
 
 void draw(){
   background(0);
+  print("Running ");
   map.subDraw();
   player.subDraw();
 }

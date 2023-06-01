@@ -1,7 +1,10 @@
 public class Room{
- private PImage sprite = loadImage ("./Sprites/Room.png"); // 468 x 312
+ private PImage sprite = loadImage ("./Sprites/Room.png");
  private ArrayList<Integer>doors;
- private final PImage door = loadImage("./Sprites/Door.png");
+ private final PImage door = loadImage("./Sprites/Door.png"); // upright
+ private final PImage doorL = loadImage("./Sprites/DoorLeft.png");
+ private final PImage doorD = loadImage("./Sprites/DoorDown.png");
+ private final PImage doorR = loadImage("./Sprites/DoorRight.png");
  
  private ArrayList<Enemies> enemies; // these have to be in here so that map can reference them
  private ArrayList<Obstacle> obstacles;
@@ -15,6 +18,9 @@ public class Room{
  // makeDoors()
  // used by normal room
  public Room(){
+   doors = new ArrayList<>();
+   enemies = new ArrayList<>();
+   obstacles = new ArrayList<>();
    makeDoors();
  }
  
@@ -23,19 +29,19 @@ public class Room{
  public void detectDoor(){
    int x = map.getCurrentX();
    int y = map.getCurrentY();
-   if (player.position.x == width / 2 - sprite.width / 2 + 1 && ){ // left wall
+   if (player.position.x == width / 2 - sprite.width / 2 + 1 && (player.position.y > height / 2 - door.width / 2 || player.position.y < height / 2 + door.width / 2)){ // left wall
      player.position.x += 2 * (sprite.width / 2 + 1);
      map.setCurrent(x - 1, y);
    }
-   if (player.position.x == width / 2 + sprite.width / 2 - 1 && ){ // right wall
+   if (player.position.x == width / 2 + sprite.width / 2 - 1 && ((player.position.y > height / 2 - door.width / 2) || (player.position.y < height / 2 + door.width / 2))){ // right wall
      player.position.x -= 2 * (sprite.width / 2 + 1);
      map.setCurrent(x + 1, y);
    }
-   if (player.position.y == height / 2 - sprite.height / 2 + 1 && ){ // top wall
+   if (player.position.y == height / 2 - sprite.height / 2 + 1 && (player.position.x > width / 2 - door.width / 2 || player.position.x < width / 2 + door.width / 2)){ // top wall
      player.position.y += 2 * (sprite.height / 2 + 1);
      map.setCurrent(x, y - 1);
    }
-   if (player.position.y == height / 2 + sprite.height / 2 - 1 && ){ // bottom wall
+   if (player.position.y == height / 2 + sprite.height / 2 - 1 && (player.position.x > width / 2 - door.width / 2 || player.position.x < width / 2 + door.width / 2)){ // bottom wall
      player.position.y -= 2 * (sprite.height / 2 + 1);
      map.setCurrent(x, y + 1);
    }
@@ -48,11 +54,10 @@ public class Room{
  //Down = 3
  public void makeDoors(){
    for (int i = 0; i < 4; i++){
-     int direction = (int)(Math.random());
+     int direction = (int)(Math.random() * 4);
      if (doors.indexOf(direction) == -1){
        doors.add(direction);
      }
-     
    }
  }
  
@@ -62,29 +67,44 @@ public class Room{
    for (int i = 0; i < doors.size(); i++){
      if (doors.get(i) == 0){
        // draw left door image
+       image(doorL, width / 2 - (0.72 * (sprite.width / 2)) - doorL.width, height / 2 - doorL.height/2);
      }
      if (doors.get(i) == 1){
        // draw top door image
+       image(door, width / 2 - door.width / 2, height / 2 - (0.58 * (sprite.height / 2)) - door.height);
      }
      if (doors.get(i) == 2){
        // draw right door image
+       image(doorR, width / 2 + (0.72 * (sprite.width / 2)), height / 2 - doorR.height/2);
      }
      if (doors.get(i) == 3){
        // draw bottom door image
+       image(doorD, width / 2 - doorD.width / 2, height / 2 + (0.58 * (sprite.height / 2)));
      }
    }
  }
  
  // detectDoor(), draw backdrop, draw doors
  public void subDraw (){
-   detectDoor();
-   image(sprite);
+   image(sprite, width / 2 - sprite.width / 2, height / 2 - sprite.height / 2);
    drawDoors();
+   detectDoor();
  }
  
  // used by Bullets, specifically the hurt() function
+ // used by normal Room
   public ArrayList<Enemies> getEnemies (){
     return enemies;
+  }
+  
+// used by normal Room
+  public ArrayList<Obstacle> getObstacles (){
+    return obstacles;
+  }
+  
+  // used by normal Room
+  public PImage getSprite (){
+    return sprite;
   }
  
 }

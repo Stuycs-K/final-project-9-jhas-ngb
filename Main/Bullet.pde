@@ -43,10 +43,12 @@ public class Bullet{
   public void hurt(){
     if (origin == 'p'){
       ArrayList<Enemies> enemies = map.getCurrent().getEnemies();
-      int i = 0;
-      while (position.dist(enemies.get(i).getPosition()) < 20 || !(i < enemies.size())){ // almost 100% sure this conditional is wrong
-        enemies.get(i).setHealth(enemies.get(i).getHealth() - 1);
-        die = true;
+      for (int i = 0; i < enemies.size(); i++){
+        if (position.dist(enemies.get(i).getPosition()) < 20){
+          enemies.get(i).setHealth(enemies.get(i).getHealth() - 1);
+          die = true;
+          break;
+        }
       }
     }
     
@@ -55,7 +57,7 @@ public class Bullet{
   // if player is out of bounds, set die = true
   public void applyVelocity (){
     position.add(velocity);
-    if (position.x < LEFT_BOUND || position.y < UP_BOUND || position.x < RIGHT_BOUND || position.y > DOWN_BOUND){
+    if (position.x < map.getCurrent().LEFT_BOUND || position.y < map.getCurrent().UP_BOUND || position.x < map.getCurrent().RIGHT_BOUND || position.y > map.getCurrent().DOWN_BOUND){
       die = true;
     }
   }

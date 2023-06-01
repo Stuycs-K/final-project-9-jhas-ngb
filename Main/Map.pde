@@ -5,6 +5,7 @@ public class Map{
   //initializes a map with ONLY a startingRoom (dimensions: 5 by 5)
   // load() to load pre-existing map
   public Map (){
+    map = new Room [5][5];
     load();
     currentRoom = new PVector (2,2);
   }

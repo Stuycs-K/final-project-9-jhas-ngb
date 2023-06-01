@@ -1,7 +1,7 @@
 public class Player{
   private PVector position;
   private PVector velocity;
-  private int speed;
+  private double speed;
   private int health;
   private int fireRate;
   private ArrayList<Bullet> bullets;
@@ -16,7 +16,7 @@ public class Player{
     sprite = loadImage ("./Sprites/Player/Isaac.png");
     position = new PVector (width / 2, height / 2);
     velocity = new PVector (0,0);
-    speed = 3;
+    speed = 4.5;
     health = 6;
     fireRate = 30; // 30 frame delay between shooting
     bullets = new ArrayList <>();
@@ -25,7 +25,7 @@ public class Player{
   
   // creates a new bullet in the bullets arraylist
   public void shoot(){
-    
+    bullets.add(new Bullet (velocity, position, 'p'));
   }
   
   // calls all other move functions
@@ -55,27 +55,23 @@ public class Player{
   }
   
   //change velocity.x by -speed
-  // check if player on left wall
   private void moveL (){
-    
+    velocity.x -= speed;
   }
   
   //change velocity.y by -speed
-  // check if player on left wall
   private void moveU (){
-    
+    velocity.y -= speed;
   }
   
   //change velocity.x by speed
-  // check if player on left wall
   private void moveR (){
-    
+    velocity.x += speed;
   }
   
   //change velocity.y by speed
-  // check if player on left wall
   private void moveD (){
-    
+    velocity.y += speed;
   }
   
   // draws sprite
@@ -84,7 +80,21 @@ public class Player{
   // move()
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
-    //image(sprite, position.x, position.y);
+    if (inputs[SHOOT] && timer <= 0){
+      shoot();
+      timer = fireRate;
+    }
+    timer--;
+    for (int i = 0; i < bullets.size(); i++){
+      bullets.get(i).subDraw();
+      if (bullets.get(i).getDie()){
+        bullets.remove(i);
+      }
+    }
+    move();
+    applyVelocity();
+    slowDown();
+    image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
   }
   
   //used by enemies
