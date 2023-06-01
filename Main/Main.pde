@@ -102,7 +102,7 @@ void setup(){
   player = new Player ();
   map = new Map ();
   inputs = new boolean [9];
-  frameRate(30); // set framerate to 30 fps
+  frameRate(60); // set framerate to 60 fps
 }
 
 void draw(){

@@ -46,4 +46,9 @@ public class Obstacle{
   public void setCollision(){
     collision = false;
   }
+  
+  // used by subclasses
+  public PVector getPosition (){
+    return position;
+  }
 }

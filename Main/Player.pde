@@ -25,7 +25,7 @@ public class Player{
   
   // creates a new bullet in the bullets arraylist
   public void shoot(){
-    
+    bullets.add(new Bullet (velocity, position, 'p'));
   }
   
   // calls all other move functions
@@ -84,21 +84,21 @@ public class Player{
   // move()
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
-    for (int i = 0; i < bullets.size(); i++){
-      if (bullets.get(i).getDie()){
-        bullets.remove(i);
-      }
-      bullets.get(i).subDraw();
-    }
-    move();
-    applyVelocity();
-    slowDown();
-    image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
     if (inputs[SHOOT] && timer <= 0){
       shoot();
       timer = fireRate;
     }
     timer--;
+    for (int i = 0; i < bullets.size(); i++){
+      bullets.get(i).subDraw();
+      if (bullets.get(i).getDie()){
+        bullets.remove(i);
+      }
+    }
+    move();
+    applyVelocity();
+    slowDown();
+    image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
   }
   
   //used by enemies

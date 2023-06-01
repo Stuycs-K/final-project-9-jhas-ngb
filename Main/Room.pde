@@ -89,7 +89,7 @@ public class Room{
  // detectDoor(), draw backdrop, draw doors
  public void subDraw (){
    detectDoor();
-   image(sprite, sprite.width / 2, sprite.height / 2);
+   image(sprite, width / 2 - sprite.width / 2, height / 2 - sprite.height / 2);
    drawDoors();
  }
  

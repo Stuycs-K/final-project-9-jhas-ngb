@@ -1,7 +1,7 @@
 public class Enemies{
   private int health;
   private int speed;
-  private boolean explosive;
+  private boolean explosive; // NOT IN MVP
   private PImage sprite;
   private PVector position;
   private PVector velocity;
@@ -11,7 +11,7 @@ public class Enemies{
   private Enemies(int health, int speed, PVector position, String path){
     sprite = loadImage(path);
     this.health = health;
-    this.speed = speed; //<>// //<>// //<>// //<>//
+    this.speed = speed; //<>//
     this.position = position;
     this.velocity = new PVector(0,0);
   }
@@ -50,12 +50,30 @@ public class Enemies{
     return position;
   }
   
+  //used by sub classes
+  public PVector getVelocity (){
+    return velocity;
+  }
+  
+  //used by sub classes
+  public int getSpeed(){
+    return speed;
+  }
+  
+  // used by Normal Room
+  public boolean getDie(){
+    return die;
+  }
+  
   // apply Velocity, Reset Velocity, THEN draw the sprite
   //(NOTE: The image function to draw PImages uses position as the top left corner of the image. Read Processing image() documentation for more info)
   public void subDraw(){
     applyVelocity();
     resetVelocity();
     image(sprite, this.position.x - sprite.width/2, this.position.y - sprite.height/2);
+    if (health <= 0){
+      die = true;
+    }
   }
   
 }
