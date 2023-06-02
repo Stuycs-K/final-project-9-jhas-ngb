@@ -14,30 +14,28 @@ public class Obstacle{
   // NOTE: This entire function ONLY RUNS IF collision == true
   public void obstruct(){
     if(collision == true){
-      
-      if(abs(player.getPosition().x-this.position.x) <sprite.width && abs(player.getPosition().y-this.position.y) <sprite.height){
-        
-          //player.setPosition(new PVector(0,0));
-        if(player.getPosition().x-this.position.x >0){
-          player.position.x = player.getPosition().x +2 ;
-          player.position.y = player.getPosition().y;
-        }
-        else{
-          player.position.x = player.getPosition().x-2 ;
-          player.position.y = player.getPosition().y;
-        }
-        if(player.getPosition().y-this.position.y >0){
-          player.position.x = player.getPosition().x  ;
-          player.position.y = player.getPosition().y+2;
-        }
-        else{
-          player.position.x = player.getPosition().x  ;
-          player.position.y = player.getPosition().y-2;
-        }
-      }
-    }
-    
 
+      // Right side
+      if (((player.getPosition().x - this.position.x <= sprite.width / 2) && (player.getPosition().x - this.position.x > 0)) && (abs(player.getPosition().y - this.position.y) < sprite.height / 2 - 1)){
+        player.getPosition().x = position.x + sprite.width / 2;
+      }
+      
+      // Left side
+      if (((this.position.x - player.getPosition().x < sprite.width / 2) && (this.position.x - player.getPosition().x > 0)) && (abs(player.getPosition().y - this.position.y) < sprite.height / 2 - 1)){
+        player.getPosition().x = position.x - sprite.width / 2;
+      }
+      
+      // Bottom side
+      if (((player.getPosition().y - this.position.y <= sprite.height / 2) && (player.getPosition().y - this.position.y > 0)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2)){
+        player.getPosition().y = position.y + sprite.height / 2;
+      }
+      
+      // Top side
+      if (((this.position.y - player.getPosition().y < sprite.height / 2) && (this.position.y - player.getPosition().y > 0)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2)){
+        player.getPosition().y = position.y - sprite.height / 2;
+      }
+      
+    }
   }
   
   // obstruct, THEN draw sprite
