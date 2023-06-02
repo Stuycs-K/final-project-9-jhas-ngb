@@ -26,12 +26,12 @@ public class Obstacle{
       }
       
       // Bottom side
-      if (((player.getPosition().y - this.position.y <= sprite.height / 2) && (player.getPosition().y - this.position.y > 0)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2)){
+      if (((player.getPosition().y - this.position.y <= sprite.height / 2 + 10) && (player.getPosition().y - this.position.y > 0)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2)){
         player.getPosition().y = position.y + sprite.height / 2;
       }
       
       // Top side
-      if (((this.position.y - player.getPosition().y < sprite.height / 2) && (this.position.y - player.getPosition().y > 0)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2)){
+      if (((this.position.y - player.getPosition().y < sprite.height / 2 + 10) && (this.position.y - player.getPosition().y > 0.6 * sprite.height / 2)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2)){
         player.getPosition().y = position.y - sprite.height / 2;
       }
       

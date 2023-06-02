@@ -5,8 +5,8 @@ public class Bullet{
   private int damage;
   private char origin;
   private PImage sprite;
-  private int lifetime = 240;
-  private static final int firingPower = 2;
+  private int lifetime = 120;
+  private static final int firingPower = 3;
  
   private PImage roomSprite = loadImage ("./Sprites/Room.png"); // I NEED THIS FOR THE BOUNDS
   
@@ -20,25 +20,27 @@ public class Bullet{
   // used by Player
   public Bullet(PVector playerVelocity, PVector playerPosition, char origin){
     sprite = loadImage("./Sprites/Tear.png");
-    sprite.width = 1949230653;
     this.die = false;
     // if from player:
     if (origin == 'p'){
       this.origin = 'p';
-      this.position = playerPosition;
+      this.position = playerPosition.copy();
       // makes a new velocity with vel and direction (determined by inputs[3-7]) and increases magnitude by firingPower
       velocity = new PVector (0,0);
       if (inputs[D_LEFT]){
         velocity.x -= firingPower;
       }
-      if (inputs[D_UP]){
+      else if (inputs[D_UP]){
         velocity.y -= firingPower;
       }
-      if (inputs[D_RIGHT]){
+      else if (inputs[D_RIGHT]){
         velocity.x += firingPower;
       }
-      if (inputs[D_DOWN]){
+      else if (inputs[D_DOWN]){
         velocity.y += firingPower;
+      }
+      else {
+        this.position.add(playerVelocity.copy().normalize());
       }
       this.velocity.add(playerVelocity.add(velocity));
       
@@ -47,6 +49,7 @@ public class Bullet{
       this.origin = 'e';
       this.damage = 1;
     }
+    position.add(velocity);
     // initialize damage to 2
     // sets this.origin to 'p' if from player, 'e' if from enemy
   }

@@ -99,6 +99,8 @@ public class Player{
   // move()
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
+    move();
+    applyVelocity();
     if (inputs[SHOOT] && timer <= 0){
       shoot();
       timer = fireRate;
@@ -106,13 +108,10 @@ public class Player{
     timer--;
     for (int i = 0; i < bullets.size(); i++){
       bullets.get(i).subDraw();
-      println(bullets);
       if (bullets.get(i).getDie()){
         bullets.remove(i);
       }
     }
-    move();
-    applyVelocity();
     slowDown();
     image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
   }
