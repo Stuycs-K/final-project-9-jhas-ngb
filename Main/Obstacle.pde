@@ -21,7 +21,7 @@ public class Obstacle{
       }
       
       // Left side
-      if (((this.position.x - player.getPosition().x < sprite.width / 2) && (this.position.x - player.getPosition().x > 0.6 * sprite.width / 2)) && (abs(player.getPosition().y - this.position.y) < sprite.height / 2)){
+      if (((this.position.x - player.getPosition().x <= sprite.width / 2) && (this.position.x - player.getPosition().x > 0.6 * sprite.width / 2)) && (abs(player.getPosition().y - this.position.y) < sprite.height / 2)){
         player.getPosition().x = position.x - sprite.width / 2;
       }
       
@@ -31,7 +31,7 @@ public class Obstacle{
       }
       
       // Top side
-      if (((this.position.y - player.getPosition().y < sprite.height / 2) && (this.position.y - player.getPosition().y > 0.6 * sprite.height / 2)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2)){
+      if (((this.position.y - player.getPosition().y <= sprite.height / 2) && (this.position.y - player.getPosition().y > 0.6 * sprite.height / 2)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2)){
         player.getPosition().y = position.y - sprite.height / 2;
       }
       
