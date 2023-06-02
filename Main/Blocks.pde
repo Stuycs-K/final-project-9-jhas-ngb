@@ -5,4 +5,5 @@ public class Blocks extends Obstacle{
   public Blocks(PVector position){
     super(position, true, "./Sprites/Obstacles/Block.png");
   }
+
 }

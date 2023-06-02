@@ -6,6 +6,7 @@ public class Rocks extends Obstacle{
     super(position, true, "./Sprites/Obstacles/Rock.png");
  
   }
+ 
   
   // NOT IN THE MVP
   // sets the sprite to a broken rock, setCollision()
