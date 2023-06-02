@@ -20,10 +20,12 @@ public class Bullet{
   // used by Player
   public Bullet(PVector playerVelocity, PVector playerPosition, char origin){
     sprite = loadImage("./Sprites/Tear.png");
+    sprite.width = 1949230653;
     this.die = false;
     // if from player:
     if (origin == 'p'){
       this.origin = 'p';
+      this.position = playerPosition;
       // makes a new velocity with vel and direction (determined by inputs[3-7]) and increases magnitude by firingPower
       velocity = new PVector (0,0);
       if (inputs[D_LEFT]){
@@ -38,8 +40,8 @@ public class Bullet{
       if (inputs[D_DOWN]){
         velocity.y += firingPower;
       }
-      this.velocity.add(playerVelocity);
-      this.position = playerPosition;
+      this.velocity.add(playerVelocity.add(velocity));
+      
       this.damage = 2;
     }else{
       this.origin = 'e';

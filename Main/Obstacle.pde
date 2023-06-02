@@ -19,16 +19,20 @@ public class Obstacle{
         
           //player.setPosition(new PVector(0,0));
         if(player.getPosition().x-this.position.x >0){
-          player.setPosition(new PVector(2, 0));
+          player.position.x = player.getPosition().x +2 ;
+          player.position.y = player.getPosition().y;
         }
         else{
-          player.setPosition(new PVector(-2, 0));
+          player.position.x = player.getPosition().x-2 ;
+          player.position.y = player.getPosition().y;
         }
         if(player.getPosition().y-this.position.y >0){
-          player.setPosition(new PVector(0, 2));
+          player.position.x = player.getPosition().x  ;
+          player.position.y = player.getPosition().y+2;
         }
         else{
-          player.setPosition(new PVector(0, -2));
+          player.position.x = player.getPosition().x  ;
+          player.position.y = player.getPosition().y-2;
         }
       }
     }
