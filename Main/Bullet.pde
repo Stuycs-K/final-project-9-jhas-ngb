@@ -39,14 +39,14 @@ public class Bullet{
       else if (inputs[D_DOWN]){
         velocity.y += firingPower;
       }
-<<<<<<< HEAD
-      this.velocity.add(playerVelocity);
-=======
+
+
+
       else {
         this.position.add(playerVelocity.copy().normalize());
       }
       this.velocity.add(playerVelocity.add(velocity));
->>>>>>> c23487c93dc76ed6633fd5bb9e5b508c6a281953
+
       
       this.damage = 2;
     }else{
