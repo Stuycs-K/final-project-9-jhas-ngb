@@ -112,9 +112,4 @@ public class Player{
   public PVector getPosition (){
     return position;
   }
-  
-  //used by obstacles
-  public void setPosition (PVector change){
-    position.add(change);
-  }
 }
