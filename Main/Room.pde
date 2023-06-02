@@ -9,12 +9,6 @@ public class Room{
  private ArrayList<Enemies> enemies; // these have to be in here so that map can reference them
  private ArrayList<Obstacle> obstacles;
  
- // The 4 bound variables describe the cordinates of the walls of the room
- public final int LEFT_BOUND = width / 2 - sprite.width / 2;
- public final int UP_BOUND = height / 2 - sprite.height / 2;
- public final int RIGHT_BOUND = width / 2 + sprite.width / 2;
- public final int DOWN_BOUND = height / 2 + sprite.height / 2;
- 
  // makeDoors()
  // used by normal room
  public Room(){
