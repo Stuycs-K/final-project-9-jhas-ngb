@@ -23,19 +23,19 @@ public class Room{
  //four if statements, checks if player enters door && if door exists within doors arraylist (using indexOf ?), move CurrentRoom index appropriately using the setCurrent() in global var map
  // FOR THE MVP, don't worry about some doors not linking to rooms, we just need a working product
  public void detectDoor(){
-   int x = map.getCurrentX();
-   int y = map.getCurrentY();
+   int x = Math.round(map.getCurrentVector().x);
+   int y = Math.round(map.getCurrentVector().y);
    
    PVector positionDL = new PVector (width / 2 - sprite.width / 2, height / 2);
    PVector positionDU = new PVector (width / 2, height / 2 - sprite.height / 2);
    PVector positionDR = new PVector (width / 2 + sprite.width / 2, height / 2);
    PVector positionDD = new PVector (width / 2, height / 2 + sprite.height / 2);
-   /*
+   
    image (hitbox,width / 2 - (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
    image (hitbox, width / 2 + (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
    image (hitbox, width / 2 - door.width / 2, height / 2 - (0.75 * (sprite.height / 2)));
    image (hitbox, width / 2 - door.width / 2, height / 2 + (0.55 * (sprite.height / 2)));
-   */
+   
    if (player.getPosition().dist(positionDL) < doorL.height / 2 && (abs(player.getPosition().x - positionDL.x) < 10)){
      player.position.x += 2 * (sprite.width / 2 + 1);
      map.setCurrent(x - 1, y);

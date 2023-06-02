@@ -135,7 +135,6 @@ public class Player{
     }
     timer--;
     invincibilityTimer--;
-    println(invincibilityTimer);
     for (int i = 0; i < bullets.size(); i++){
       bullets.get(i).subDraw();
       if (bullets.get(i).getDie()){
