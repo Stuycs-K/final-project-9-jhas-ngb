@@ -10,8 +10,14 @@ public class Player{
   
   // PLAYER POSSIBLY NEEDS A DIE VARIABLE AS WELL IN ORDER TO END THE GAME
  
- 
- 
+  private PImage roomSprite = loadImage ("./Sprites/Room.png"); // I NEED THIS FOR THE BOUNDS
+  
+  // The 4 bound variables describe the cordinates of the walls of the room
+  private final float LEFT_BOUND = width / 2 - (0.77 * (roomSprite.width / 2));
+  private final float UP_BOUND = height / 2 - (0.75 * (roomSprite.height / 2));
+  private final float RIGHT_BOUND = width / 2 + (0.77 * (roomSprite.width / 2));
+  private final float DOWN_BOUND = height / 2 + (0.55 * (roomSprite.height / 2));
+  
   public Player (){
     sprite = loadImage ("./Sprites/Player/Isaac.png");
     position = new PVector (width / 2, height / 2);
@@ -52,6 +58,19 @@ public class Player{
   // applys velocity to position
   private void applyVelocity (){
     position.add(velocity);
+    if (position.x < LEFT_BOUND){
+      position.x = LEFT_BOUND;
+    }
+    if (position.x > RIGHT_BOUND){
+      position.x = RIGHT_BOUND;
+    }
+    if (position.y < UP_BOUND){
+      position.y = UP_BOUND;
+    }
+    if (position.y > DOWN_BOUND){
+      position.y = DOWN_BOUND;
+    }
+    
   }
   
   //change velocity.x by -speed
@@ -87,6 +106,7 @@ public class Player{
     timer--;
     for (int i = 0; i < bullets.size(); i++){
       bullets.get(i).subDraw();
+      println(bullets);
       if (bullets.get(i).getDie()){
         bullets.remove(i);
       }

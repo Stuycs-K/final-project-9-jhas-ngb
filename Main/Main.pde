@@ -21,23 +21,18 @@ void keyPressed(){
   
   if (key == 'A' || key == 'a'){
     inputs[KEY_LEFT] = true;
-    println("A");
   }
   if (key == 'W' || key == 'w'){
     inputs[KEY_UP] = true;
-    println("W");
   }
   if (key == 'D' || key == 'd'){
     inputs[KEY_RIGHT] = true;
-    println("D");
   }
   if (key == 'S' || key == 's'){
     inputs[KEY_DOWN] = true;
-    println("S");
   }
   if (key == ' '){
     inputs[SHOOT] = true;
-    println("_");
   }
     
   if (key == 'J' || key == 'j'){
@@ -45,28 +40,24 @@ void keyPressed(){
     inputs[D_UP] = false;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = false;
-    println("J");
   }else
   if (key == 'I' || key == 'i'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = true;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = false;
-    println("I");
   }else
   if (key == 'L' || key == 'l'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = false;
     inputs[D_RIGHT] = true;
     inputs[D_DOWN] = false;
-    println("L");
   }else
   if (key == 'K' || key == 'k'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = false;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = true;
-    println("K");
   }
     
 }
@@ -107,7 +98,7 @@ void setup(){
 
 void draw(){
   background(0);
-  print("Running ");
+  print("R");
   map.subDraw();
   player.subDraw();
 }
