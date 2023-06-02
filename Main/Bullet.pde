@@ -20,7 +20,6 @@ public class Bullet{
   // used by Player
   public Bullet(PVector playerVelocity, PVector playerPosition, char origin){
     sprite = loadImage("./Sprites/Tear.png");
-    sprite.width = 1949230653;
     this.die = false;
     // if from player:
     if (origin == 'p'){
@@ -40,7 +39,7 @@ public class Bullet{
       if (inputs[D_DOWN]){
         velocity.y += firingPower;
       }
-      this.velocity.add(playerVelocity.add(velocity));
+      this.velocity.add(playerVelocity);
       
       this.damage = 2;
     }else{
@@ -76,6 +75,8 @@ public class Bullet{
   
   //move and draw sprite
   public void subDraw(){
+    sprite.width = 500;
+    sprite.height = 500;
     image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
     applyVelocity();
     hurt();
