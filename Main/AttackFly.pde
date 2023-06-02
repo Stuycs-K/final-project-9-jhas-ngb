@@ -14,6 +14,35 @@ public class AttackFly extends Enemies{
     PVector direction = new PVector(player.getPosition().x - position.x, player.getPosition().y - position.y);
     direction.normalize();
     velocity.add(direction.mult(getSpeed()));
+    int dir = (int)(Math.random()*8);
+    if(dir == 0){
+      velocity.x += 1;
+    }
+    else if(dir == 1){
+      velocity.x -= 1;
+    }
+    else if(dir == 2){
+      velocity.y += 1;
+    }
+    else if(dir == 3){
+      velocity.y -= 1;
+    }
+    else if(dir == 4){
+      velocity.x += 1;
+      velocity.y += 1;
+    }
+    else if(dir == 5){
+      velocity.x -= 1;
+      velocity.y += 1;
+    }
+    else if(dir == 6){
+      velocity.x += 1;
+      velocity.y -= 1;
+    }
+    else if(dir == 7){
+      velocity.x -= 1;
+      velocity.y -= 1;
+    }
   }
   
   // if position's distance to player's position is less than a certain range, THEN player.setHealth (DECREASE BY 1)
