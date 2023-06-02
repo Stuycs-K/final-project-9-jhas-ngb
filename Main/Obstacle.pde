@@ -41,7 +41,7 @@ public class Obstacle{
   // obstruct, THEN draw sprite
   public void subDraw(){
     obstruct();
-    image(sprite, position.x - sprite.width/2, position.y - sprite.height/2); // look at how I did this to draw the PImage
+    image(sprite, position.x - sprite.width/2, position.y); // look at how I did this to draw the PImage
   }
   
   // used by rocks, spikes, tnt

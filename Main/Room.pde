@@ -26,29 +26,29 @@ public class Room{
    int x = map.getCurrentX();
    int y = map.getCurrentY();
    
-   PVector positionDL = new PVector ();
-   PVector positionDU = new PVector ();
-   PVector positionDR = new PVector ();
-   PVector positionDD = new PVector ();
+   PVector positionDL = new PVector (width / 2 - sprite.width / 2, height / 2);
+   PVector positionDU = new PVector (width / 2, height / 2 - sprite.height / 2);
+   PVector positionDR = new PVector (width / 2 + sprite.width / 2, height / 2);
+   PVector positionDD = new PVector (width / 2, height / 2 + sprite.height / 2);
    /*
    image (hitbox,width / 2 - (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
    image (hitbox, width / 2 + (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
    image (hitbox, width / 2 - door.width / 2, height / 2 - (0.75 * (sprite.height / 2)));
    image (hitbox, width / 2 - door.width / 2, height / 2 + (0.55 * (sprite.height / 2)));
    */
-   if (player.position.x == width / 2 - (0.72 * (sprite.width / 2)) + 1 && (player.position.y > height / 2 - door.width / 2 || player.position.y < height / 2 + door.width / 2)){ // left wall
+   if (player.getPosition().dist(positionDL) < doorL.height / 2 && (abs(player.getPosition().x - positionDL.x) < 10)){
      player.position.x += 2 * (sprite.width / 2 + 1);
      map.setCurrent(x - 1, y);
    }
-   if (player.position.x == width / 2 + (0.72 * (sprite.width / 2)) - 1 && ((player.position.y > height / 2 - door.width / 2) || (player.position.y < height / 2 + door.width / 2))){ // right wall
-     player.position.x -= 2 * (sprite.width / 2 + 1);
-     map.setCurrent(x + 1, y);
-   }
-   if (player.position.y == height / 2 - sprite.height / 2 + 1 && (player.position.x > width / 2 - door.width / 2 || player.position.x < width / 2 + door.width / 2)){ // top wall
+   if (player.getPosition().dist(positionDU) < doorL.width / 2 && (abs(player.getPosition().y - positionDL.y) < 10)){
      player.position.y += 2 * (sprite.height / 2 + 1);
      map.setCurrent(x, y - 1);
    }
-   if (player.position.y == height / 2 + (0.58 * (sprite.height / 2)) - 1 && (player.position.x > width / 2 - door.width / 2 || player.position.x < width / 2 + door.width / 2)){ // bottom wall
+   if (player.getPosition().dist(positionDR) < doorL.height / 2 && (abs(player.getPosition().x - positionDL.x) < 10)){
+     player.position.x -= 2 * (sprite.width / 2 + 1);
+     map.setCurrent(x + 1, y);
+   }
+   if (player.getPosition().dist(positionDD) < doorL.width / 2 && (abs(player.getPosition().y - positionDL.y) < 10)){
      player.position.y -= 2 * (sprite.height / 2 + 1);
      map.setCurrent(x, y + 1);
    }
