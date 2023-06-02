@@ -10,6 +10,8 @@ static final int D_RIGHT = 6;
 static final int D_DOWN = 7;
 
 static final int SHOOT = 8;
+
+PImage GameOver;
 Player player;
 Map map;
 boolean [] inputs;
@@ -90,6 +92,7 @@ void keyReleased(){
 
 void setup(){
   size(1920, 1080);
+  GameOver = loadImage ("./Sprites/GAMEOVER.png");
   player = new Player ();
   map = new Map ();
   inputs = new boolean [9];
@@ -97,8 +100,11 @@ void setup(){
 }
 
 void draw(){
-  background(0);
-  print("R");
-  map.subDraw();
-  player.subDraw();
+  if (!player.getDie()){
+    background(0);
+    map.subDraw();
+    player.subDraw();
+  } else {
+    image(GameOver, width / 2 - GameOver.width / 2, height / 2 - GameOver.height / 2);
+  }
 }

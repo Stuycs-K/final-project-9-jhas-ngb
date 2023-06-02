@@ -11,7 +11,7 @@ public class Spikes extends Obstacle{
   // similar to Blocks class, it detects when player enter the x and y range, BUT this time it does player.setHealth (REDUCE HEALTH BY 1)
   public void hurt (){
     PVector position = this.getPosition();
-    if((abs(player.getPosition().x - position.x) < 20) && (abs(player.getPosition().y - position.y) < 20)){
+    if((abs(player.getPosition().x - position.x) < this.getSprite().width / 2) && (abs(player.getPosition().y - position.y) < this.getSprite().height / 2)){
       player.setHealth(player.getHealth()-1);
     }
     

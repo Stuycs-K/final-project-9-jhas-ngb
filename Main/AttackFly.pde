@@ -49,7 +49,7 @@ public class AttackFly extends Enemies{
   // USE PVECTOR dist function to determine the distance (check PVector documentation online)
   public void damage(){
    PVector position = this.getPosition();
-     if(PVector.dist(player.getPosition(), position) < 2){
+     if(PVector.dist(player.getPosition(), position) < 20){
        player.setHealth(player.getHealth()-1);
      }
   }
