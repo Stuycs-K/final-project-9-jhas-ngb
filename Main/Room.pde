@@ -25,6 +25,11 @@ public class Room{
  public void detectDoor(){
    int x = map.getCurrentX();
    int y = map.getCurrentY();
+   
+   PVector positionDL = new PVector ();
+   PVector positionDU = new PVector ();
+   PVector positionDR = new PVector ();
+   PVector positionDD = new PVector ();
    /*
    image (hitbox,width / 2 - (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
    image (hitbox, width / 2 + (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
