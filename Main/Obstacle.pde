@@ -14,21 +14,25 @@ public class Obstacle{
   // NOTE: This entire function ONLY RUNS IF collision == true
   public void obstruct(){
     if(collision == true){
-      if(abs(player.getPosition().x-this.position.x) <2 && abs(player.getPosition().y-this.position.y) <2){
+      
+      if(abs(player.getPosition().x-this.position.x) <sprite.width && abs(player.getPosition().y-this.position.y) <sprite.height){
+        
+          //player.setPosition(new PVector(0,0));
         if(player.getPosition().x-this.position.x >0){
-          player.setPosition(new PVector(player.getPosition().x +2, player.getPosition().y));
+          player.setPosition(new PVector(2, 0));
         }
         else{
-          player.setPosition(new PVector(player.getPosition().x -2, player.getPosition().y));
+          player.setPosition(new PVector(-2, 0));
         }
         if(player.getPosition().y-this.position.y >0){
-          player.setPosition(new PVector(player.getPosition().x, player.getPosition().y +2));
+          player.setPosition(new PVector(0, 2));
         }
         else{
-          player.setPosition(new PVector(player.getPosition().x, player.getPosition().y - 2));
+          player.setPosition(new PVector(0, -2));
         }
       }
     }
+    
 
   }
   
