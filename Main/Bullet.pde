@@ -58,7 +58,7 @@ public class Bullet{
     if (origin == 'p'){
       ArrayList<Enemies> enemies = map.getCurrent().getEnemies();
       for (int i = 0; i < enemies.size(); i++){
-        if (position.dist(enemies.get(i).getPosition()) < 10){
+        if (position.dist(enemies.get(i).getPosition()) < sprite.width / 2){
           enemies.get(i).setHealth(enemies.get(i).getHealth() - damage);
           die = true;
           break;
