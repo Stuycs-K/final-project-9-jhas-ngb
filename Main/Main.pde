@@ -91,7 +91,7 @@ void keyReleased(){
 }
 
 void setup(){
-  size(1920, 1080);
+  fullScreen();
   GameOver = loadImage ("./Sprites/GAMEOVER.png");
   player = new Player ();
   map = new Map ();

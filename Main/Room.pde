@@ -1,6 +1,10 @@
 public class Room{
  private PImage sprite = loadImage ("./Sprites/Room.png");
  private ArrayList<Integer>doors;
+ 
+ private boolean onDoor;
+ private boolean justEntered;
+ 
  private final PImage door = loadImage("./Sprites/Door.png"); // upright
  private final PImage doorL = loadImage("./Sprites/DoorLeft.png");
  private final PImage doorD = loadImage("./Sprites/DoorDown.png");
@@ -17,19 +21,20 @@ public class Room{
    doors = new ArrayList<>();
    enemies = new ArrayList<>();
    obstacles = new ArrayList<>();
+   justEntered = true;
    makeDoors();
  }
  
  //four if statements, checks if player enters door && if door exists within doors arraylist (using indexOf ?), move CurrentRoom index appropriately using the setCurrent() in global var map
  // FOR THE MVP, don't worry about some doors not linking to rooms, we just need a working product
- public void detectDoor(){
+ public void moveRoom(){
    int x = Math.round(map.getCurrentVector().x);
    int y = Math.round(map.getCurrentVector().y);
    
-   PVector positionDL = new PVector (width / 2 - sprite.width / 2, height / 2);
-   PVector positionDU = new PVector (width / 2, height / 2 - sprite.height / 2);
-   PVector positionDR = new PVector (width / 2 + sprite.width / 2, height / 2);
-   PVector positionDD = new PVector (width / 2, height / 2 + sprite.height / 2);
+   PVector positionDL = new PVector (width / 2 - (0.77 * (sprite.width / 2)), height / 2);
+   PVector positionDU = new PVector (width / 2, height / 2 - (0.75 * (sprite.height / 2)));
+   PVector positionDR = new PVector (width / 2 + (0.77 * (sprite.width / 2)), height / 2);
+   PVector positionDD = new PVector (width / 2, height / 2 + (0.55 * (sprite.height / 2)));
    /*
    image (hitbox,width / 2 - (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
    image (hitbox, width / 2 + (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
@@ -40,15 +45,15 @@ public class Room{
      player.position.x += 2 * (sprite.width / 2 + 1);
      map.setCurrent(x - 1, y);
    }
-   if (player.getPosition().dist(positionDU) < doorL.width / 2 && (abs(player.getPosition().y - positionDL.y) < 10)){
+   else if (player.getPosition().dist(positionDU) < door.width / 2 && (abs(player.getPosition().y - positionDU.y) < 10)){
      player.position.y += 2 * (sprite.height / 2 + 1);
      map.setCurrent(x, y - 1);
    }
-   if (player.getPosition().dist(positionDR) < doorL.height / 2 && (abs(player.getPosition().x - positionDL.x) < 10)){
+   else if (player.getPosition().dist(positionDR) < doorR.height / 2 && (abs(player.getPosition().x - positionDR.x) < 10)){
      player.position.x -= 2 * (sprite.width / 2 + 1);
      map.setCurrent(x + 1, y);
    }
-   if (player.getPosition().dist(positionDD) < doorL.width / 2 && (abs(player.getPosition().y - positionDL.y) < 10)){
+   else if (player.getPosition().dist(positionDD) < doorD.width / 2 && (abs(player.getPosition().y - positionDD.y) < 10)){
      player.position.y -= 2 * (sprite.height / 2 + 1);
      map.setCurrent(x, y + 1);
    }
@@ -66,6 +71,27 @@ public class Room{
        doors.add(direction);
      }
    }
+ }
+ 
+ public boolean onDoor (){
+   int x = Math.round(map.getCurrentVector().x);
+   int y = Math.round(map.getCurrentVector().y);
+   
+   PVector positionDL = new PVector (width / 2 - (0.77 * (sprite.width / 2)), height / 2);
+   PVector positionDU = new PVector (width / 2, height / 2 - (0.75 * (sprite.height / 2)));
+   PVector positionDR = new PVector (width / 2 + (0.77 * (sprite.width / 2)), height / 2);
+   PVector positionDD = new PVector (width / 2, height / 2 + (0.55 * (sprite.height / 2)));
+   /*
+   image (hitbox,width / 2 - (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
+   image (hitbox, width / 2 + (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
+   image (hitbox, width / 2 - door.width / 2, height / 2 - (0.75 * (sprite.height / 2)));
+   image (hitbox, width / 2 - door.width / 2, height / 2 + (0.55 * (sprite.height / 2)));
+   */
+   return (player.getPosition().dist(positionDL) < doorL.height / 2 && (abs(player.getPosition().x - positionDL.x) < 10)) ||
+   (player.getPosition().dist(positionDU) < door.width / 2 && (abs(player.getPosition().y - positionDU.y) < 10)) ||
+   (player.getPosition().dist(positionDR) < doorR.height / 2 && (abs(player.getPosition().x - positionDR.x) < 10)) ||
+   (player.getPosition().dist(positionDD) < doorD.width / 2 && (abs(player.getPosition().y - positionDD.y) < 10));
+     
  }
  
  // draws the doors using the doors arraylist
@@ -95,7 +121,13 @@ public class Room{
  public void subDraw (){
    image(sprite, width / 2 - sprite.width / 2, height / 2 - sprite.height / 2);
    drawDoors();
-   detectDoor();
+   boolean b = onDoor();
+   if (b && !justEntered){
+     moveRoom();
+     justEntered = true;
+   }
+   else if (!b && justEntered)
+     justEntered = false;
  }
  
  // used by Bullets, specifically the hurt() function
