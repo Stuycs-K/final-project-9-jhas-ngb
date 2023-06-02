@@ -24,19 +24,13 @@ public class Map{
     map[Math.round(currentRoom.x)][Math.round(currentRoom.y)].subDraw();
   }
   
-  // used by Room, specifically in detectDoor()
-  public int getCurrentX(){
-    return Math.round(currentRoom.x);
-  }
-  
-  // used by Room, specifically in detectDoor()
-  public int getCurrentY(){
-    return Math.round(currentRoom.y);
-  }
-  
   // used by Bullets to get the room to get the enemies
   public Room getCurrent(){
     return map[Math.round(currentRoom.x)][Math.round(currentRoom.y)];
+  }
+  
+  public PVector getCurrentVector(){
+    return currentRoom;
   }
   
   // used by Room, specifically in detectDoor()
