@@ -7,6 +7,7 @@ public class Player{
   private ArrayList<Bullet> bullets;
   private int timer;
   private PImage sprite;
+  private boolean die;
   
   // PLAYER POSSIBLY NEEDS A DIE VARIABLE AS WELL IN ORDER TO END THE GAME
  
@@ -130,5 +131,10 @@ public class Player{
   //used by obstacles
   public PVector getPosition (){
     return position;
+  }
+  
+  //used by obstacles
+  public double getSpeed(){
+    return speed;
   }
 }
