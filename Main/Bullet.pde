@@ -39,15 +39,10 @@ public class Bullet{
       else if (inputs[D_DOWN]){
         velocity.y += firingPower;
       }
-
-
-
       else {
         this.position.add(playerVelocity.copy().normalize());
       }
-      this.velocity.add(playerVelocity.add(velocity));
-
-      
+      this.velocity.add(playerVelocity.add(velocity));    
       this.damage = 2;
     }else{
       this.origin = 'e';
@@ -83,9 +78,8 @@ public class Bullet{
   
   //move and draw sprite
   public void subDraw(){
-    sprite.width = 500;
-    sprite.height = 500;
     image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
+    print (position);
     applyVelocity();
     hurt();
     lifetime--;

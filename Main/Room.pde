@@ -30,12 +30,12 @@ public class Room{
    PVector positionDU = new PVector (width / 2, height / 2 - sprite.height / 2);
    PVector positionDR = new PVector (width / 2 + sprite.width / 2, height / 2);
    PVector positionDD = new PVector (width / 2, height / 2 + sprite.height / 2);
-   /*
+   
    image (hitbox,width / 2 - (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
    image (hitbox, width / 2 + (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
    image (hitbox, width / 2 - door.width / 2, height / 2 - (0.75 * (sprite.height / 2)));
    image (hitbox, width / 2 - door.width / 2, height / 2 + (0.55 * (sprite.height / 2)));
-   */
+   
    if (player.getPosition().dist(positionDL) < doorL.height / 2 && (abs(player.getPosition().x - positionDL.x) < 10)){
      player.position.x += 2 * (sprite.width / 2 + 1);
      map.setCurrent(x - 1, y);
