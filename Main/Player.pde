@@ -8,6 +8,8 @@ public class Player{
   private int timer;
   private PImage sprite;
   private boolean die;
+  private int invincibilityFrames = 120;
+  private int invincibilityTimer = 0;
   
   // PLAYER POSSIBLY NEEDS A DIE VARIABLE AS WELL IN ORDER TO END THE GAME
  
@@ -48,6 +50,30 @@ public class Player{
     }
     if (inputs[KEY_DOWN]){
       moveD();
+    }
+  }
+  
+  public void drawHearts(){
+    if (health == 6){
+      image(loadImage("./Sprites/Health/sixHP.png"), width / 2 - roomSprite.width / 2, height / 2 - roomSprite.height / 2 - 100);
+    }
+    if (health == 5){
+      image(loadImage("./Sprites/Health/fiveHP.png"), width / 2 - roomSprite.width / 2, height / 2 - roomSprite.height / 2 - 100);
+    }
+    if (health == 4){
+      image(loadImage("./Sprites/Health/fourHP.png"), width / 2 - roomSprite.width / 2, height / 2 - roomSprite.height / 2 - 100);
+    }
+    if (health == 3){
+      image(loadImage("./Sprites/Health/threeHP.png"), width / 2 - roomSprite.width / 2, height / 2 - roomSprite.height / 2 - 100);
+    }
+    if (health == 2){
+      image(loadImage("./Sprites/Health/twoHP.png"), width / 2 - roomSprite.width / 2, height / 2 - roomSprite.height / 2 - 100);
+    }
+    if (health == 1){
+      image(loadImage("./Sprites/Health/oneHP.png"), width / 2 - roomSprite.width / 2, height / 2 - roomSprite.height / 2 - 100);
+    }
+    if (health == 0){
+      image(loadImage("./Sprites/Health/zeroHP.png"), width / 2 - roomSprite.width / 2, height / 2 - roomSprite.height / 2 - 100);
     }
   }
   
@@ -100,6 +126,7 @@ public class Player{
   // move()
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
+    println ("health: " + health);
     move();
     applyVelocity();
     if (inputs[SHOOT] && timer <= 0){
@@ -107,6 +134,8 @@ public class Player{
       timer = fireRate;
     }
     timer--;
+    invincibilityTimer--;
+    println(invincibilityTimer);
     for (int i = 0; i < bullets.size(); i++){
       bullets.get(i).subDraw();
       if (bullets.get(i).getDie()){
@@ -115,6 +144,7 @@ public class Player{
     }
     slowDown();
     image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
+    drawHearts();
   }
   
   //used by enemies
@@ -124,7 +154,12 @@ public class Player{
   
   //used by enemies
   public void setHealth(int change){
-    health = change;
+    if (invincibilityTimer <= 0){
+      health = change;
+      invincibilityTimer = invincibilityFrames;
+      if (health <= 0)
+        die = true;
+    }
   }
   
   //used by enemies
@@ -136,5 +171,9 @@ public class Player{
   //used by obstacles
   public double getSpeed(){
     return speed;
+  }
+  
+  public boolean getDie (){
+    return die;
   }
 }

@@ -25,10 +25,12 @@ public class Room{
  public void detectDoor(){
    int x = map.getCurrentX();
    int y = map.getCurrentY();
+   /*
    image (hitbox,width / 2 - (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
    image (hitbox, width / 2 + (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
    image (hitbox, width / 2 - door.width / 2, height / 2 - (0.75 * (sprite.height / 2)));
    image (hitbox, width / 2 - door.width / 2, height / 2 + (0.55 * (sprite.height / 2)));
+   */
    if (player.position.x == width / 2 - (0.72 * (sprite.width / 2)) + 1 && (player.position.y > height / 2 - door.width / 2 || player.position.y < height / 2 + door.width / 2)){ // left wall
      player.position.x += 2 * (sprite.width / 2 + 1);
      map.setCurrent(x - 1, y);

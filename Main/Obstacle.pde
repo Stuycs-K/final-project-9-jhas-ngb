@@ -57,4 +57,9 @@ public class Obstacle{
   public PVector getPosition (){
     return position;
   }
+  
+  // used by spikes
+  public PImage getSprite (){
+    return sprite;
+  }
 }
