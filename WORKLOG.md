@@ -53,6 +53,19 @@
 - fixed up player inputs
 - worked on Map, Room, NormalRoom, Player, and Bullet (mostly worked on connecting classes properly)
 
+### 6/1/23
+
+- fixed normal Room
+- fixed Room
+- Created boundaries for room and obstacles
+- bug fixed pretty much everything
+- fixed bullet physics
+- made Health bar and game over
+- fixed bullet PImage
+
+### 6/2/23
+
+- made it possible to move between rooms
 
 ## Lana
 
