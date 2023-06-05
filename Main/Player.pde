@@ -26,7 +26,7 @@ public class Player{
     position = new PVector (width / 2, height / 2);
     velocity = new PVector (0,0);
     speed = 4.5;
-    health = 121503910;
+    health = 6;
     fireRate = 30; // 30 frame delay between shooting
     bullets = new ArrayList <>();
     timer = 0;
