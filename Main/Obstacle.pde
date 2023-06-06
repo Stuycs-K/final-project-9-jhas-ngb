@@ -16,23 +16,23 @@ public class Obstacle{
     if(collision == true){
 
       // Right side
-      if (((player.getPosition().x - this.position.x <= sprite.width / 2) && (player.getPosition().x - this.position.x > 0.6 * sprite.width / 2)) && (abs(player.getPosition().y - this.position.y) < sprite.height / 2)){
-        player.getPosition().x = position.x + sprite.width / 2;
+      if (((player.getPosition().x - this.position.x <= 5 + sprite.width / 2) && (player.getPosition().x - this.position.x > 0.6 * sprite.width / 2)) && (abs(player.getPosition().y - this.position.y) < sprite.height / 2 - player.getSpeed() + 1)){
+        player.getPosition().x = position.x + sprite.width / 2 + 5;
       }
       
       // Left side
-      if (((this.position.x - player.getPosition().x <= sprite.width / 2) && (this.position.x - player.getPosition().x > 0.6 * sprite.width / 2)) && (abs(player.getPosition().y - this.position.y) < sprite.height / 2)){
-        player.getPosition().x = position.x - sprite.width / 2;
+      if (((this.position.x - player.getPosition().x <= 5 + sprite.width / 2) && (this.position.x - player.getPosition().x > 0.6 * sprite.width / 2)) && (abs(player.getPosition().y - this.position.y) < sprite.height / 2 - player.getSpeed() + 1)){
+        player.getPosition().x = position.x - sprite.width / 2 - 5;
       }
       
       // Bottom side
-      if (((player.getPosition().y - this.position.y <= sprite.height / 2) && (player.getPosition().y - this.position.y > 0.6 * sprite.height / 2)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2)){
+      if (((player.getPosition().y - this.position.y <= sprite.height / 2) && (player.getPosition().y - this.position.y > 0.6 * sprite.height / 2)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2 - player.getSpeed() + 1)){
         player.getPosition().y = position.y + sprite.height / 2;
       }
       
       // Top side
-      if (((this.position.y - player.getPosition().y <= sprite.height / 2) && (this.position.y - player.getPosition().y > 0.6 * sprite.height / 2)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2)){
-        player.getPosition().y = position.y -  sprite.height / 2;
+      if (((this.position.y - player.getPosition().y <= 34 + sprite.height / 2) && (this.position.y - player.getPosition().y > 0.6 * sprite.height / 2)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2 - player.getSpeed() + 1)){
+        player.getPosition().y = position.y - sprite.height / 2 - 34;
       }
       
     }
@@ -41,7 +41,7 @@ public class Obstacle{
   // obstruct, THEN draw sprite
   public void subDraw(){
     obstruct();
-    image(sprite, position.x - sprite.width/2, position.y); // look at how I did this to draw the PImage
+    image(sprite, position.x - sprite.width/2, position.y - sprite.width/2); // look at how I did this to draw the PImage
   }
   
   // used by rocks, spikes, tnt

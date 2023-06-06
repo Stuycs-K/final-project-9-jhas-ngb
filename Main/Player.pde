@@ -126,7 +126,9 @@ public class Player{
   // move()
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
+    
     println ("health: " + health);
+    
     move();
     applyVelocity();
     if (inputs[SHOOT] && timer <= 0){
@@ -144,6 +146,12 @@ public class Player{
     slowDown();
     image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
     drawHearts();
+    
+    PImage hitbox = loadImage("./Sprites/hitBox.png");
+    hitbox.width = 5;
+    hitbox.height = 5;
+    image(hitbox, position.x, position.y);
+    
   }
   
   //used by enemies
