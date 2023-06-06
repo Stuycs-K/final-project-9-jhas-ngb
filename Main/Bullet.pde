@@ -30,19 +30,16 @@ public class Bullet{
       if (inputs[D_LEFT]){
         velocity.x -= firingPower;
       }
-      else if (inputs[D_UP]){
+      if (inputs[D_UP]){
         velocity.y -= firingPower;
       }
-      else if (inputs[D_RIGHT]){
+      if (inputs[D_RIGHT]){
         velocity.x += firingPower;
       }
-      else if (inputs[D_DOWN]){
+      if (inputs[D_DOWN]){
         velocity.y += firingPower;
       }
-      else {
-        this.position.add(playerVelocity.copy().normalize());
-      }
-      this.velocity.add(playerVelocity.add(velocity));    
+      this.velocity.add(playerVelocity  );    
       this.damage = 2;
     }else{
       this.origin = 'e';

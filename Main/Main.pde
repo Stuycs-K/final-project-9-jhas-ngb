@@ -1,4 +1,6 @@
 
+static final int len = 7;
+
 static final int KEY_LEFT = 0;
 static final int KEY_UP = 1;
 static final int KEY_RIGHT = 2;
@@ -20,19 +22,8 @@ void keyPressed(){
   // checks what button is being pressed and runs the player's corresponding move functions
   // might need to change these characters to lowercase and uppercase
   // not sure if ' ' is the same as the spacebar
+  boolean b = false;
   
-  if (key == 'A' || key == 'a'){
-    inputs[KEY_LEFT] = true;
-  }
-  if (key == 'W' || key == 'w'){
-    inputs[KEY_UP] = true;
-  }
-  if (key == 'D' || key == 'd'){
-    inputs[KEY_RIGHT] = true;
-  }
-  if (key == 'S' || key == 's'){
-    inputs[KEY_DOWN] = true;
-  }
   if (key == ' '){
     inputs[SHOOT] = true;
   }
@@ -60,6 +51,45 @@ void keyPressed(){
     inputs[D_UP] = false;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = true;
+  } else{
+    b = true;
+  }
+    
+  if (key == 'A' || key == 'a'){
+    inputs[KEY_LEFT] = true;
+    if (b){
+      inputs[D_LEFT] = true;
+      inputs[D_UP] = false;
+      inputs[D_RIGHT] = false;
+      inputs[D_DOWN] = false;
+    }
+  }
+  if (key == 'W' || key == 'w'){
+    inputs[KEY_UP] = true;
+    if (b){
+      inputs[D_LEFT] = false;
+      inputs[D_UP] = true;
+      inputs[D_RIGHT] = false;
+      inputs[D_DOWN] = false;
+    }
+  }
+  if (key == 'D' || key == 'd'){
+    inputs[KEY_RIGHT] = true;
+    if (b){
+      inputs[D_LEFT] = false;
+      inputs[D_UP] = false;
+      inputs[D_RIGHT] = true;
+      inputs[D_DOWN] = false;
+    }
+  }
+  if (key == 'S' || key == 's'){
+    inputs[KEY_DOWN] = true;
+    if (b){
+      inputs[D_LEFT] = false;
+      inputs[D_UP] = false;
+      inputs[D_RIGHT] = false;
+      inputs[D_DOWN] = true;
+    }
   }
     
 }

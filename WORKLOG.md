@@ -67,6 +67,15 @@
 
 - made it possible to move between rooms
 
+### 6/5/23
+
+- fixed map out of bounds
+- designed animation
+
+### 6/6/23
+
+- completely fixed obstacle collision
+
 ## Lana
 
 ### 5/22/23

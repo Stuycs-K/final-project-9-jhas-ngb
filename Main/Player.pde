@@ -26,7 +26,7 @@ public class Player{
     position = new PVector (width / 2, height / 2);
     velocity = new PVector (0,0);
     speed = 4.5;
-    health = 6;
+    health = 100;
     fireRate = 30; // 30 frame delay between shooting
     bullets = new ArrayList <>();
     timer = 0;
@@ -54,7 +54,7 @@ public class Player{
   }
   
   public void drawHearts(){
-    if (health == 6){
+    if (health >= 6){
       image(loadImage("./Sprites/Health/sixHP.png"), width / 2 - roomSprite.width / 2, height / 2 - roomSprite.height / 2 - 100);
     }
     if (health == 5){
@@ -126,7 +126,9 @@ public class Player{
   // move()
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
+    
     println ("health: " + health);
+    
     move();
     applyVelocity();
     if (inputs[SHOOT] && timer <= 0){
@@ -144,6 +146,12 @@ public class Player{
     slowDown();
     image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
     drawHearts();
+    
+    PImage hitbox = loadImage("./Sprites/hitBox.png");
+    hitbox.width = 5;
+    hitbox.height = 5;
+    image(hitbox, position.x, position.y);
+    
   }
   
   //used by enemies
