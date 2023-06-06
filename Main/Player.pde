@@ -175,6 +175,11 @@ public class Player{
     return position;
   }
   
+  // used by room to clear bullets when moving to another room
+  public void clearBullets(){
+    bullets = new ArrayList<>();
+  }
+  
   //used by obstacles
   public double getSpeed(){
     return speed;

@@ -33,24 +33,28 @@ void keyPressed(){
     inputs[D_UP] = false;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = false;
+    b = false;
   }else
   if (key == 'I' || key == 'i'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = true;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = false;
+    b = false;
   }else
   if (key == 'L' || key == 'l'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = false;
     inputs[D_RIGHT] = true;
     inputs[D_DOWN] = false;
+    b = false;
   }else
   if (key == 'K' || key == 'k'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = false;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = true;
+    b = false;
   } else{
     b = true;
   }

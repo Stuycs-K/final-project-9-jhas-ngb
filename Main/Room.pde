@@ -28,6 +28,8 @@ public class Room{
  //four if statements, checks if player enters door && if door exists within doors arraylist (using indexOf ?), move CurrentRoom index appropriately using the setCurrent() in global var map
  // FOR THE MVP, don't worry about some doors not linking to rooms, we just need a working product
  public void moveRoom(){
+   player.clearBullets();
+   
    int x = Math.round(map.getCurrentVector().x);
    int y = Math.round(map.getCurrentVector().y);
    
