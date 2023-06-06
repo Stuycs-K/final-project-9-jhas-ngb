@@ -26,7 +26,7 @@ public class Player{
     position = new PVector (width / 2, height / 2);
     velocity = new PVector (0,0);
     speed = 4.5;
-    health = 6;
+    health = 100;
     fireRate = 30; // 30 frame delay between shooting
     bullets = new ArrayList <>();
     timer = 0;
@@ -54,7 +54,7 @@ public class Player{
   }
   
   public void drawHearts(){
-    if (health == 6){
+    if (health >= 6){
       image(loadImage("./Sprites/Health/sixHP.png"), width / 2 - roomSprite.width / 2, height / 2 - roomSprite.height / 2 - 100);
     }
     if (health == 5){

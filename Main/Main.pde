@@ -1,4 +1,6 @@
 
+static final int len = 7;
+
 static final int KEY_LEFT = 0;
 static final int KEY_UP = 1;
 static final int KEY_RIGHT = 2;

@@ -42,20 +42,28 @@ public class Room{
    image (hitbox, width / 2 - door.width / 2, height / 2 + (0.55 * (sprite.height / 2)));
    */
    if (player.getPosition().dist(positionDL) < doorL.height / 2 && (abs(player.getPosition().x - positionDL.x) < 10)){
-     player.position.x += 2 * (sprite.width / 2 + 1);
-     map.setCurrent(x - 1, y);
+     if (x - 1 >= 0 && x - 1 < len){
+         player.position.x += 2 * (sprite.width / 2 + 1);
+         map.setCurrent(x - 1, y);
+     }
    }
    else if (player.getPosition().dist(positionDU) < door.width / 2 && (abs(player.getPosition().y - positionDU.y) < 10)){
-     player.position.y += 2 * (sprite.height / 2 + 1);
-     map.setCurrent(x, y - 1);
+     if (y - 1 >= 0 && y - 1 < len){
+       player.position.y += 2 * (sprite.height / 2 + 1);
+       map.setCurrent(x, y - 1);
+     }
    }
    else if (player.getPosition().dist(positionDR) < doorR.height / 2 && (abs(player.getPosition().x - positionDR.x) < 10)){
-     player.position.x -= 2 * (sprite.width / 2 + 1);
-     map.setCurrent(x + 1, y);
+     if (x + 1 >= 0 && x + 1 < len){
+       player.position.x -= 2 * (sprite.width / 2 + 1);
+       map.setCurrent(x + 1, y);
+     }
    }
    else if (player.getPosition().dist(positionDD) < doorD.width / 2 && (abs(player.getPosition().y - positionDD.y) < 10)){
-     player.position.y -= 2 * (sprite.height / 2 + 1);
-     map.setCurrent(x, y + 1);
+     if (y + 1 >= 0 && y + 1 < len){
+       player.position.y -= 2 * (sprite.height / 2 + 1);
+       map.setCurrent(x, y + 1);
+     }
    }
  }
  

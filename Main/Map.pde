@@ -5,9 +5,9 @@ public class Map{
   //initializes a map with ONLY a startingRoom (dimensions: 5 by 5)
   // load() to load pre-existing map
   public Map (){
-    map = new Room [5][5];
+    map = new Room [len][len];
     load();
-    currentRoom = new PVector (2,2);
+    currentRoom = new PVector (len / 2, len / 2);
   }
   
   // just make a basic map layout of 6 rooms (for the MVP demo)
@@ -35,7 +35,7 @@ public class Map{
   
   // used by Room, specifically in detectDoor()
   // only activates if the next room exists
-  public void setCurrent(int y, int x){
-    currentRoom.set(y,x);
+  public void setCurrent(int x, int y){
+    currentRoom.set(x,y);
   }
 }
