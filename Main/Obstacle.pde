@@ -27,7 +27,7 @@ public class Obstacle{
       
       // Bottom side
       if (((player.getPosition().y - this.position.y <= sprite.height / 2 + player.sprite.height/2) && (player.getPosition().y - this.position.y > 0.6 * sprite.height / 2)) && (abs(player.getPosition().x - this.position.x) < sprite.width / 2)){
-        player.getPosition().y = position.y + sprite.height;
+        player.getPosition().y = position.y + sprite.height/2+ player.sprite.height/2;
       }
       
       // Top side
