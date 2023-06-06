@@ -114,3 +114,12 @@
 
 - finished methods in Enemy classes after the redesign
 - finished methods in Obstacle classes after the redesign
+
+### 6/1/23
+
+- fixed AttackFly movements
+- recreated obstacle collisions
+
+### 6/5/23
+
+- fixed obstacle collisions on the left and bottom
