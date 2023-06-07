@@ -75,6 +75,7 @@
 ### 6/6/23
 
 - completely fixed obstacle collision
+- fixed directions and movement inputs
 
 ## Lana
 
