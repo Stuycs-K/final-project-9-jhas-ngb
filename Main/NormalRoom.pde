@@ -1,4 +1,10 @@
 public class NormalRoom extends Room{
+    private PImage roomSprite = loadImage ("./Sprites/Room.png");//need this for dimensions
+    private PImage singleObstacle = loadImage("./Sprites/Obstacles/Block.png");//need this for dimensions
+    PVector positionDL = new PVector (width / 2 - (0.77 * (roomSprite.width / 2)), height / 2);
+    PVector positionDU = new PVector (width / 2, height / 2 - (0.75 * (roomSprite.height / 2)));
+    PVector positionDR = new PVector (width / 2 + (0.77 * (roomSprite.width / 2)), height / 2);
+    PVector positionDD = new PVector (width / 2, height / 2 + (0.55 * (roomSprite.height / 2)));
   
   // super(), THEN initializes enemies & obstacles
   // THIS FUNCTION HAS TO MAKE THE ENEMIES AND OBSTACLES AS WELL, NOT JUST MAKE THE ARRAYLIST
@@ -6,9 +12,20 @@ public class NormalRoom extends Room{
     super();
  
     ArrayList<PVector> obstacleGrid = new ArrayList<PVector>();
-     for(int k = 0; k <3; k++){
-      for(int j = 0; j <4; j++){
-         obstacleGrid.add(new PVector(400 + 150*j, 250 + 150*k));
+    
+    float L = width / 2 - (0.77 * (roomSprite.width / 2));
+    float U = height / 2 - (0.75 * (roomSprite.height / 2));
+    float R = width / 2 + (0.77 * (roomSprite.width / 2));
+    float D = height / 2 + (0.55 * (roomSprite.height / 2));
+    float x = (R - L-singleObstacle.width)/(singleObstacle.width *1.5);
+    float y = (D - U-singleObstacle.height)/(singleObstacle.height *1.5);
+     for(int k = 0; k <y; k++){
+      for(int j = 0; j <x; j++){
+          PVector add = new PVector(  L +   singleObstacle.width + j*singleObstacle.width  , U + singleObstacle.height + k*singleObstacle.height);
+          if(!inFrontOfDoor(add)){//adds obstacle only if not blocking door
+            obstacleGrid.add(add);
+          }
+          //make so doesnt block doors
       }
     }
     
@@ -35,9 +52,12 @@ public class NormalRoom extends Room{
      }
   }
   
+  public boolean inFrontOfDoor(PVector position){
+    return ( (position.x - positionDL.x < singleObstacle.width) ||  (positionDR.x - position.x < singleObstacle.width) ||   (position.y - positionDU.y <singleObstacle.height) || (positionDD.y - position.y <singleObstacle.height) );
+  }
+  
   //super.draw, draw obstacles, draw enemies
   public void subDraw(){
-    println("height is " + height + " width " +width);
     super.subDraw();
     for (int i = 0; i < getObstacles().size(); i++){
       getObstacles().get(i).subDraw();
