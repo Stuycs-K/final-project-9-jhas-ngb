@@ -40,6 +40,7 @@ public class Obstacle{
   
   // obstruct, THEN draw sprite
   public void subDraw(){
+    println("height is" +  sprite.width + " " + sprite.height);
     obstruct();
     image(sprite, position.x - sprite.width/2, position.y - sprite.width/2); // look at how I did this to draw the PImage
   }
