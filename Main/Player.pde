@@ -127,8 +127,6 @@ public class Player{
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
     
-    println ("health: " + health);
-    
     move();
     applyVelocity();
     if (inputs[SHOOT] && timer <= 0){

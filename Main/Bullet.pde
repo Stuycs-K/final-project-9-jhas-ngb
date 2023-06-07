@@ -76,7 +76,6 @@ public class Bullet{
   //move and draw sprite
   public void subDraw(){
     image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
-    print (position);
     applyVelocity();
     hurt();
     lifetime--;

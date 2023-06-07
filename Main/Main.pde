@@ -18,11 +18,15 @@ Player player;
 Map map;
 boolean [] inputs;
 
+boolean leftKeyNotPressed = true;
+boolean upKeyNotPressed = true;
+boolean rightKeyNotPressed = true;
+boolean downKeyNotPressed = true;
+
 void keyPressed(){
   // checks what button is being pressed and runs the player's corresponding move functions
   // might need to change these characters to lowercase and uppercase
   // not sure if ' ' is the same as the spacebar
-  boolean b = false;
   
   if (key == ' '){
     inputs[SHOOT] = true;
@@ -33,35 +37,33 @@ void keyPressed(){
     inputs[D_UP] = false;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = false;
-    b = false;
+    leftKeyNotPressed = false;
   }else
   if (key == 'I' || key == 'i'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = true;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = false;
-    b = false;
+    upKeyNotPressed = false;
   }else
   if (key == 'L' || key == 'l'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = false;
     inputs[D_RIGHT] = true;
     inputs[D_DOWN] = false;
-    b = false;
+    rightKeyNotPressed = false;
   }else
   if (key == 'K' || key == 'k'){
     inputs[D_LEFT] = false;
     inputs[D_UP] = false;
     inputs[D_RIGHT] = false;
     inputs[D_DOWN] = true;
-    b = false;
-  } else{
-    b = true;
+    downKeyNotPressed = false;
   }
     
   if (key == 'A' || key == 'a'){
     inputs[KEY_LEFT] = true;
-    if (b){
+    if (leftKeyNotPressed && upKeyNotPressed && rightKeyNotPressed && downKeyNotPressed){
       inputs[D_LEFT] = true;
       inputs[D_UP] = false;
       inputs[D_RIGHT] = false;
@@ -70,7 +72,7 @@ void keyPressed(){
   }
   if (key == 'W' || key == 'w'){
     inputs[KEY_UP] = true;
-    if (b){
+    if (leftKeyNotPressed && upKeyNotPressed && rightKeyNotPressed && downKeyNotPressed){
       inputs[D_LEFT] = false;
       inputs[D_UP] = true;
       inputs[D_RIGHT] = false;
@@ -79,7 +81,7 @@ void keyPressed(){
   }
   if (key == 'D' || key == 'd'){
     inputs[KEY_RIGHT] = true;
-    if (b){
+    if (leftKeyNotPressed && upKeyNotPressed && rightKeyNotPressed && downKeyNotPressed){
       inputs[D_LEFT] = false;
       inputs[D_UP] = false;
       inputs[D_RIGHT] = true;
@@ -88,7 +90,7 @@ void keyPressed(){
   }
   if (key == 'S' || key == 's'){
     inputs[KEY_DOWN] = true;
-    if (b){
+    if (leftKeyNotPressed && upKeyNotPressed && rightKeyNotPressed && downKeyNotPressed){
       inputs[D_LEFT] = false;
       inputs[D_UP] = false;
       inputs[D_RIGHT] = false;
@@ -113,14 +115,22 @@ void keyReleased(){
   if (key == ' ')
     inputs[SHOOT] = false;
     
-  if (keyCode == 'J')
+  if (keyCode == 'J'){
     inputs[D_LEFT] = false;
-  if (keyCode == 'I')
+    leftKeyNotPressed = true;
+  }
+  if (keyCode == 'I'){
     inputs[D_UP] = false;
-  if (keyCode == 'L')
+    upKeyNotPressed = true;
+  }
+  if (keyCode == 'L'){
     inputs[D_RIGHT] = false;
-  if (keyCode == 'K')
+    rightKeyNotPressed = true;
+  }
+  if (keyCode == 'K'){
     inputs[D_DOWN] = false;
+    downKeyNotPressed = true;
+  }
    
 }
 
@@ -134,6 +144,8 @@ void setup(){
 }
 
 void draw(){
+  if (frameCount % 60 == 0)
+    println (leftKeyNotPressed + ", " + upKeyNotPressed + ", " + rightKeyNotPressed + ", " + downKeyNotPressed);
   if (!player.getDie()){
     background(0);
     map.subDraw();
