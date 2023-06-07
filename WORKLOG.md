@@ -133,3 +133,7 @@
 ### 6/5/23
 
 - fixed obstacle collisions on the left and bottom
+
+### 6/6/23
+
+- implemented obstacleGrid
