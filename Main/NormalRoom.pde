@@ -6,9 +6,9 @@ public class NormalRoom extends Room{
     super();
  
     ArrayList<PVector> obstacleGrid = new ArrayList<PVector>();
-     for(int j = 0; j <5; j++){
-      for(int k = 0; k <8; k++){
-         obstacleGrid.add(new PVector(90 + 180*j, 90 + 180*k));
+     for(int k = 0; k <3; k++){
+      for(int j = 0; j <4; j++){
+         obstacleGrid.add(new PVector(400 + 150*j, 250 + 150*k));
       }
     }
     
