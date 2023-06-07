@@ -137,3 +137,8 @@
 ### 6/6/23
 
 - implemented obstacleGrid
+
+### 6/7/23
+
+- fixed ObstacleGrid to not add obstacles in front of doors
+- fixed distance between obstacles
