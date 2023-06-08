@@ -18,6 +18,8 @@ Player player;
 Map map;
 boolean [] inputs;
 
+char mostRecentKey; // used by Player
+
 boolean leftKeyNotPressed = true;
 boolean upKeyNotPressed = true;
 boolean rightKeyNotPressed = true;
@@ -63,6 +65,7 @@ void keyPressed(){
     
   if (key == 'A' || key == 'a'){
     inputs[KEY_LEFT] = true;
+    mostRecentKey = 'A';
     if (leftKeyNotPressed && upKeyNotPressed && rightKeyNotPressed && downKeyNotPressed){
       inputs[D_LEFT] = true;
       inputs[D_UP] = false;
@@ -72,6 +75,7 @@ void keyPressed(){
   }
   if (key == 'W' || key == 'w'){
     inputs[KEY_UP] = true;
+    mostRecentKey = 'W';
     if (leftKeyNotPressed && upKeyNotPressed && rightKeyNotPressed && downKeyNotPressed){
       inputs[D_LEFT] = false;
       inputs[D_UP] = true;
@@ -81,6 +85,7 @@ void keyPressed(){
   }
   if (key == 'D' || key == 'd'){
     inputs[KEY_RIGHT] = true;
+    mostRecentKey = 'D';
     if (leftKeyNotPressed && upKeyNotPressed && rightKeyNotPressed && downKeyNotPressed){
       inputs[D_LEFT] = false;
       inputs[D_UP] = false;
@@ -90,6 +95,7 @@ void keyPressed(){
   }
   if (key == 'S' || key == 's'){
     inputs[KEY_DOWN] = true;
+    mostRecentKey = 'S';
     if (leftKeyNotPressed && upKeyNotPressed && rightKeyNotPressed && downKeyNotPressed){
       inputs[D_LEFT] = false;
       inputs[D_UP] = false;
@@ -136,6 +142,7 @@ void keyReleased(){
 
 void setup(){
   fullScreen();
+  mostRecentKey = 'S';
   GameOver = loadImage ("./Sprites/GAMEOVER.png");
   player = new Player ();
   map = new Map ();

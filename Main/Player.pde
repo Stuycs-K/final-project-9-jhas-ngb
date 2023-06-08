@@ -6,10 +6,13 @@ public class Player{
   private int fireRate;
   private ArrayList<Bullet> bullets;
   private int timer;
-  private PImage sprite;
+  private PImage headSprite;
+  private PImage bodySprite;
   private boolean die;
   private int invincibilityFrames = 120;
   private int invincibilityTimer = 0;
+  
+  private int cycle; // for animation
   
   // PLAYER POSSIBLY NEEDS A DIE VARIABLE AS WELL IN ORDER TO END THE GAME
  
@@ -22,7 +25,8 @@ public class Player{
   private final float DOWN_BOUND = height / 2 + (0.55 * (roomSprite.height / 2));
   
   public Player (){
-    sprite = loadImage ("./Sprites/Player/Isaac.png");
+    bodySprite = loadImage ("./Sprites/Player/BodyVerticalIdle.png");
+    headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
     position = new PVector (width / 2, height / 2);
     velocity = new PVector (0,0);
     speed = 4.5;
@@ -35,6 +39,18 @@ public class Player{
   // creates a new bullet in the bullets arraylist
   public void shoot(){
     bullets.add(new Bullet (velocity, position, 'p'));
+    if (inputs[D_LEFT]){
+      headSprite = loadImage ("./Sprites/Player/HeadLeftClosed.png");
+    }else
+    if (inputs[D_RIGHT]){
+      headSprite = loadImage ("./Sprites/Player/HeadRightClosed.png");
+    }else
+    if (inputs[D_UP]){
+      headSprite = loadImage ("./Sprites/Player/HeadUpClosed.png");
+    }else
+    if (inputs[D_DOWN]){
+      headSprite = loadImage ("./Sprites/Player/HeadDownClosed.png");
+    }
   }
   
   // calls all other move functions
@@ -142,13 +158,17 @@ public class Player{
       }
     }
     slowDown();
-    image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
+    animate();
+    image(bodySprite, position.x - bodySprite.width / 2, position.y);
+    image(headSprite, position.x - headSprite.width / 2, position.y - headSprite.height*0.82);
     drawHearts();
     
+    /*
     PImage hitbox = loadImage("./Sprites/hitBox.png");
     hitbox.width = 5;
     hitbox.height = 5;
     image(hitbox, position.x, position.y);
+    */
     
   }
   
@@ -185,5 +205,42 @@ public class Player{
   
   public boolean getDie (){
     return die;
+  }
+  
+  // changes head and body direction
+  public void animate(){
+    switch (mostRecentKey){
+      case 'W':
+        bodySprite = loadImage ("./Sprites/Player/BodyVerticalIdle.png");
+        headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
+        break;
+      case 'A':
+        bodySprite = loadImage ("./Sprites/Player/BodyVerticalIdle.png");
+        headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
+        break;
+      case 'S':
+        bodySprite = loadImage ("./Sprites/Player/BodyVerticalIdle.png");
+        headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
+        break;
+      case 'D':
+        bodySprite = loadImage ("./Sprites/Player/BodyVerticalIdle.png");
+        headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
+        break;
+    }
+    
+    if (inputs[D_LEFT]){
+      headSprite = loadImage ("./Sprites/Player/HeadLeftOpen.png");
+    }else
+    if (inputs[D_RIGHT]){
+      headSprite = loadImage ("./Sprites/Player/HeadRightOpen.png");
+    }else
+    if (inputs[D_UP]){
+      headSprite = loadImage ("./Sprites/Player/HeadUpOpen.png");
+    }else
+    if (inputs[D_DOWN]){
+      headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
+    }
+    
+    if (
   }
 }
