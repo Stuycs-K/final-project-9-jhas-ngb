@@ -49,6 +49,10 @@ public class Obstacle{
    sprite = loadImage(newSprite); 
   }
   
+  public PImage getSprite(){
+   return sprite;
+  }
+  
   public void setCollision(){
     collision = false;
   }
@@ -58,8 +62,4 @@ public class Obstacle{
     return position;
   }
   
-  // used by spikes
-  public PImage getSprite (){
-    return sprite;
-  }
 }

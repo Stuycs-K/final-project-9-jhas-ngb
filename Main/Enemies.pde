@@ -6,6 +6,7 @@ public class Enemies{
   private PVector position;
   private PVector velocity;
   private boolean die;
+  private int state;
  
  // constructor is used by other enemies
   private Enemies(int health, int speed, PVector position, String path){
@@ -76,6 +77,21 @@ public class Enemies{
     if (health <= 0){
       die = true;
     }
+  }
+  
+  // used by subclasses
+  public void setSprite (String s){
+    sprite = loadImage(s);
+  }
+  
+  // used by subclasses
+  public int getState (){
+    return state;
+  }
+  
+  // used by subclasses
+  public void setState (int x){
+    state = x;
   }
   
 }

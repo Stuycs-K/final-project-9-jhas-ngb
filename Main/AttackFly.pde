@@ -58,6 +58,20 @@ public class AttackFly extends Enemies{
   public void subDraw(){
     changeDirection();
     damage();
+    animate();
     super.subDraw(); 
+  }
+  
+  //Has two sprites, flap wings, and flap wings 2
+  public void animate (){
+    if (frameCount % 10 == 0){
+      if (this.getState() == 1){
+        this.setState(2);
+        setSprite("./Sprites/Enemies/AttackFly2.png");
+      }else{
+        this.setState(1);
+        setSprite("./Sprites/Enemies/AttackFly.png");
+      }
+    }
   }
 }

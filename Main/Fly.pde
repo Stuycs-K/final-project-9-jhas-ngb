@@ -1,6 +1,7 @@
 public class Fly extends Enemies{
   private int timer;
   private int rate;
+  private int state;
   
   // used by the Normal Room class to make enemies
   // 3 health, 5 speed, (position), sprite, timer = 0, and rate = 5
@@ -8,6 +9,7 @@ public class Fly extends Enemies{
     super(3, 5, position, "./Sprites/Enemies/Fly.png");
     timer = 0;
     rate = 5;
+    state = 0;
   }
   
   // randomly chooses between the 4 directions (North, West,...) and sets velocity
@@ -72,7 +74,21 @@ public class Fly extends Enemies{
       changeDirection();
       timer = rate;
     }
+    animate();
     super.subDraw();
     
+  }
+  
+  //Has two sprites, flap wings, and flap wings 2
+  public void animate (){
+    if (frameCount % 10 == 0){
+      if (this.getState() == 1){
+        this.setState(2);
+        setSprite("./Sprites/Enemies/Fly2.png");
+      }else{
+        this.setState(1);
+        setSprite("./Sprites/Enemies/Fly.png");
+      }
+    }
   }
 }

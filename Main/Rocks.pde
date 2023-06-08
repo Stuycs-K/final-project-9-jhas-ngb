@@ -16,5 +16,4 @@ public class Rocks extends Obstacle{
     
   }
   
-  
 }
