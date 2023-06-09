@@ -151,8 +151,6 @@ void setup(){
 }
 
 void draw(){
-  if (frameCount % 60 == 0)
-    println (leftKeyNotPressed + ", " + upKeyNotPressed + ", " + rightKeyNotPressed + ", " + downKeyNotPressed);
   if (!player.getDie()){
     background(0);
     map.subDraw();

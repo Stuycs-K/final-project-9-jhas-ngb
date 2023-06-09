@@ -13,6 +13,7 @@ public class Player{
   private int invincibilityTimer = 0;
   
   private int cycle; // for animation
+  private char prevMove;
   
   // PLAYER POSSIBLY NEEDS A DIE VARIABLE AS WELL IN ORDER TO END THE GAME
  
@@ -34,6 +35,8 @@ public class Player{
     fireRate = 30; // 30 frame delay between shooting
     bullets = new ArrayList <>();
     timer = 0;
+    cycle = 0;
+    prevMove = 'N';
   }
   
   // creates a new bullet in the bullets arraylist
@@ -143,6 +146,14 @@ public class Player{
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
     
+    if (frameCount % 6 == 0){
+      animate();
+    }
+    
+    if (timer < fireRate - 5){
+      animateHead();
+    }
+    
     move();
     applyVelocity();
     if (inputs[SHOOT] && timer <= 0){
@@ -158,9 +169,10 @@ public class Player{
       }
     }
     slowDown();
-    animate();
-    image(bodySprite, position.x - bodySprite.width / 2, position.y);
-    image(headSprite, position.x - headSprite.width / 2, position.y - headSprite.height*0.82);
+    
+    
+    image(bodySprite, position.x - bodySprite.width / 2, position.y + 15);
+    image(headSprite, position.x - headSprite.width / 2, position.y - headSprite.height*0.82 + 15);
     drawHearts();
     
     /*
@@ -207,27 +219,8 @@ public class Player{
     return die;
   }
   
-  // changes head and body direction
-  public void animate(){
-    switch (mostRecentKey){
-      case 'W':
-        bodySprite = loadImage ("./Sprites/Player/BodyVerticalIdle.png");
-        headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
-        break;
-      case 'A':
-        bodySprite = loadImage ("./Sprites/Player/BodyVerticalIdle.png");
-        headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
-        break;
-      case 'S':
-        bodySprite = loadImage ("./Sprites/Player/BodyVerticalIdle.png");
-        headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
-        break;
-      case 'D':
-        bodySprite = loadImage ("./Sprites/Player/BodyVerticalIdle.png");
-        headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
-        break;
-    }
-    
+  // used to animate Head
+  public void animateHead(){
     if (inputs[D_LEFT]){
       headSprite = loadImage ("./Sprites/Player/HeadLeftOpen.png");
     }else
@@ -239,8 +232,213 @@ public class Player{
     }else
     if (inputs[D_DOWN]){
       headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
+    }else{
+      switch (mostRecentKey){
+      case 'W':
+        headSprite = loadImage ("./Sprites/Player/HeadUpOpen.png");
+        break;
+      case 'A':
+        headSprite = loadImage ("./Sprites/Player/HeadLeftOpen.png");
+        break;
+      case 'S':
+        headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
+        break;
+      case 'D':
+        headSprite = loadImage ("./Sprites/Player/HeadRightOpen.png");
+        break;
+      default:
+        headSprite = loadImage ("./Sprites/Player/HeadDownOpen.png");
+        break;
+    }
+    }
+  }
+  
+  // changes body direction
+  // if no movement, cycle = 0 which means idle animate
+  // prevMove is used to keep track of changes in movement direction
+  public void animate(){
+    switch (mostRecentKey){
+      case 'W':
+        if (prevMove != 'W'){
+          cycle = 3;
+          prevMove = 'W';
+        }
+        break;
+      case 'A':
+        if (prevMove != 'A'){
+          cycle = 1;
+          prevMove = 'A';
+        }
+        break;
+      case 'S':
+        if (prevMove != 'S'){
+          cycle = 10;
+          prevMove = 'S';
+        }
+        break;
+      case 'D':
+        if (prevMove!= 'D'){
+          cycle = 1;
+          prevMove = 'D';
+        }
+        break;
     }
     
-    if (
+    if (!inputs[KEY_LEFT] && !inputs[KEY_UP] && !inputs[KEY_RIGHT] && !inputs[KEY_DOWN]){
+      cycle = 0;
+    }
+    
+    walkCycle();
+  }
+  
+  // cycles through the walk animation based on movement direction
+  public void walkCycle(){
+    if (cycle == 0){
+      if (prevMove == 'W' || prevMove == 'S'){
+        bodySprite = loadImage("./Sprites/Player/BodyVerticalIdle.png");
+      }else
+      if (prevMove == 'A'){
+        bodySprite = loadImage("./Sprites/Player/BodyLeftIdle.png");
+      }else
+      if (prevMove == 'D'){
+        bodySprite = loadImage("./Sprites/Player/BodyRightIdle.png");
+      }
+    }else{
+    
+    if (prevMove == 'W'){
+        verticalWalk();
+        cycle++;
+        if (cycle > 10){
+          cycle = 1;
+        }
+      }else
+      if (prevMove == 'A'){
+        leftWalk();
+        cycle++;
+        if (cycle > 10){
+          cycle = 1;
+        }
+      }else
+      if (prevMove == 'S'){
+        verticalWalk();
+        cycle--;
+        if (cycle < 1){
+          cycle = 10;
+        }
+      }else
+      if (prevMove == 'D'){
+        rightWalk();
+        cycle++;
+        if (cycle > 10){
+          cycle = 1;
+        }
+      }
+    }
+  }
+  
+  public void verticalWalk (){
+    switch(cycle){
+      case 1:
+        bodySprite = loadImage("./Sprites/Player/BodyVerticalIdle.png");
+        break;
+      case 2:
+        bodySprite = loadImage("./Sprites/Player/BodyVerticalWalk2.png");
+        break;
+      case 3:
+        bodySprite = loadImage("./Sprites/Player/BodyVerticalWalk3.png");
+        break;
+      case 4:
+        bodySprite = loadImage("./Sprites/Player/BodyVerticalWalk4.png");
+        break;
+      case 5:
+        bodySprite = loadImage("./Sprites/Player/BodyVerticalWalk5.png");
+        break;
+      case 6:
+        bodySprite = loadImage("./Sprites/Player/BodyVerticalIdle.png");
+        break;
+      case 7:
+        bodySprite = loadImage("./Sprites/Player/BodyVerticalWalk7.png");
+        break;
+      case 8:
+        bodySprite = loadImage("./Sprites/Player/BodyVerticalWalk8.png");
+        break;
+      case 9:
+        bodySprite = loadImage("./Sprites/Player/BodyVerticalWalk9.png");
+        break;
+      case 10:
+        bodySprite = loadImage("./Sprites/Player/BodyVerticalWalk10.png");
+        break;
+    }
+  }
+  
+  public void rightWalk (){
+    switch(cycle){
+      case 1:
+        bodySprite = loadImage("./Sprites/Player/BodyRightIdle.png");
+        break;
+      case 2:
+        bodySprite = loadImage("./Sprites/Player/BodyRightWalk2.png");
+        break;
+      case 3:
+        bodySprite = loadImage("./Sprites/Player/BodyRightWalk3.png");
+        break;
+      case 4:
+        bodySprite = loadImage("./Sprites/Player/BodyRightWalk4.png");
+        break;
+      case 5:
+        bodySprite = loadImage("./Sprites/Player/BodyRightWalk5.png");
+        break;
+      case 6:
+        bodySprite = loadImage("./Sprites/Player/BodyRightWalk6.png");
+        break;
+      case 7:
+        bodySprite = loadImage("./Sprites/Player/BodyRightWalk7.png");
+        break;
+      case 8:
+        bodySprite = loadImage("./Sprites/Player/BodyRightWalk8.png");
+        break;
+      case 9:
+        bodySprite = loadImage("./Sprites/Player/BodyRightWalk9.png");
+        break;
+      case 10:
+        bodySprite = loadImage("./Sprites/Player/BodyRightWalk10.png");
+        break;
+    }
+  }
+  
+  public void leftWalk (){
+    switch(cycle){
+      case 1:
+        bodySprite = loadImage("./Sprites/Player/BodyLeftIdle.png");
+        break;
+      case 2:
+        bodySprite = loadImage("./Sprites/Player/BodyLeftWalk2.png");
+        break;
+      case 3:
+        bodySprite = loadImage("./Sprites/Player/BodyLeftWalk3.png");
+        break;
+      case 4:
+        bodySprite = loadImage("./Sprites/Player/BodyLeftWalk4.png");
+        break;
+      case 5:
+        bodySprite = loadImage("./Sprites/Player/BodyLeftWalk5.png");
+        break;
+      case 6:
+        bodySprite = loadImage("./Sprites/Player/BodyLeftWalk6.png");
+        break;
+      case 7:
+        bodySprite = loadImage("./Sprites/Player/BodyLeftWalk7.png");
+        break;
+      case 8:
+        bodySprite = loadImage("./Sprites/Player/BodyLeftWalk8.png");
+        break;
+      case 9:
+        bodySprite = loadImage("./Sprites/Player/BodyLeftWalk9.png");
+        break;
+      case 10:
+        bodySprite = loadImage("./Sprites/Player/BodyLeftWalk10.png");
+        break;
+        
+    }
   }
 }
