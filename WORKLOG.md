@@ -77,6 +77,13 @@
 - completely fixed obstacle collision
 - fixed directions and movement inputs
 
+### 6/8/23
+
+- completed player animations
+- completed enemy animations
+- fixed player collisions
+- created sprites for player, enemies, and obstacles
+
 ## Lana
 
 ### 5/22/23
