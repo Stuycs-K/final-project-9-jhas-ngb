@@ -2,7 +2,6 @@ public class Room{
  private PImage sprite = loadImage ("./Sprites/Room.png");
  private ArrayList<Integer>doors;
  
- private boolean onDoor;
  private boolean justEntered;
  
  private final PImage door = loadImage("./Sprites/Door.png"); // upright

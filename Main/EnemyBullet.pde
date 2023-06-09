@@ -1,8 +1,9 @@
-public class Bullet{
+public class EnemyBullet {
   private boolean die;
   private PVector velocity;
   private PVector position;
   private int damage;
+  private char origin;
   private PImage sprite;
   private int lifetime = 120;
   private static final int firingPower = 3;
@@ -17,26 +18,33 @@ public class Bullet{
   
   
   // used by Player
-  public Bullet(PVector playerVelocity, PVector playerPosition){
+  public EnemyBullet(PVector playerVelocity, PVector playerPosition, char origin){
     sprite = loadImage("./Sprites/Tear.png");
     this.die = false;
-    this.position = playerPosition.copy();
-    // makes a new velocity with vel and direction (determined by inputs[3-7]) and increases magnitude by firingPower
-    velocity = new PVector (0,0);
-    if (inputs[D_LEFT]){
-      velocity.x -= firingPower;
+    // if from player:
+    if (origin == 'p'){
+      this.origin = 'p';
+      this.position = playerPosition.copy();
+      // makes a new velocity with vel and direction (determined by inputs[3-7]) and increases magnitude by firingPower
+      velocity = new PVector (0,0);
+      if (inputs[D_LEFT]){
+        velocity.x -= firingPower;
+      }
+      if (inputs[D_UP]){
+        velocity.y -= firingPower;
+      }
+      if (inputs[D_RIGHT]){
+        velocity.x += firingPower;
+      }
+      if (inputs[D_DOWN]){
+        velocity.y += firingPower;
+      }
+      this.velocity.add(playerVelocity  );    
+      this.damage = 2;
+    }else{
+      this.origin = 'e';
+      this.damage = 1;
     }
-    if (inputs[D_UP]){
-      velocity.y -= firingPower;
-    }
-    if (inputs[D_RIGHT]){
-      velocity.x += firingPower;
-    }
-    if (inputs[D_DOWN]){
-      velocity.y += firingPower;
-    }
-    this.velocity.add(playerVelocity);    
-    this.damage = 2;
     position.add(velocity);
     // initialize damage to 2
     // sets this.origin to 'p' if from player, 'e' if from enemy
@@ -44,12 +52,14 @@ public class Bullet{
   
   // if bullet origin is player && position.dist(enemy.position) < range, THEN hurt enemy AND die = true
   public void hurt(){
-    ArrayList<Enemies> enemies = map.getCurrent().getEnemies();
-    for (int i = 0; i < enemies.size(); i++){
-      if (position.dist(enemies.get(i).getPosition()) < sprite.width / 2){
-        enemies.get(i).setHealth(enemies.get(i).getHealth() - damage);
-        die = true;
-        break;
+    if (origin == 'p'){
+      ArrayList<Enemies> enemies = map.getCurrent().getEnemies();
+      for (int i = 0; i < enemies.size(); i++){
+        if (position.dist(enemies.get(i).getPosition()) < sprite.width / 2){
+          enemies.get(i).setHealth(enemies.get(i).getHealth() - damage);
+          die = true;
+          break;
+        }
       }
     }
     
@@ -77,5 +87,4 @@ public class Bullet{
   public boolean getDie (){
     return die;
   }
-  
 }
