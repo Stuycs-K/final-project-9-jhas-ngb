@@ -81,8 +81,6 @@ public class Room{
  }
  
  public boolean onDoor (){
-   int x = Math.round(map.getCurrentVector().x);
-   int y = Math.round(map.getCurrentVector().y);
    
    PVector positionDL = new PVector (width / 2 - (0.77 * (sprite.width / 2)), height / 2);
    PVector positionDU = new PVector (width / 2, height / 2 - (0.75 * (sprite.height / 2)));

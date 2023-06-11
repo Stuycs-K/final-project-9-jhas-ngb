@@ -1,6 +1,5 @@
 public class Spikes extends Obstacle{
   // NO DAMAGE VARIABLE BC IT ALWAYS DOES 1 DAMAGE
-  
   // used by Normal Room to make spikes
   public Spikes(PVector position){
     super(position, false, "./Sprites/Obstacles/Spikes.png");
@@ -11,8 +10,8 @@ public class Spikes extends Obstacle{
   // similar to Blocks class, it detects when player enter the x and y range, BUT this time it does player.setHealth (REDUCE HEALTH BY 1)
   public void hurt (){
     PVector position = this.getPosition();
-    if((abs(player.getPosition().x - position.x) < this.getSprite().width / 2) && ((player.getPosition().y - position.y) > 0 && (player.getPosition().y - position.y) < this.getSprite().height)){
-      player.setHealth(player.getHealth()-1);
+    if((abs(player.getPosition().x - position.x) < this.getSprite().width / 2) && (abs(player.getPosition().y - position.y) < this.getSprite().height / 2)){
+      player.setHealth(player.getHealth() - 1);
     }
     
   }

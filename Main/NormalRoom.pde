@@ -17,11 +17,11 @@ public class NormalRoom extends Room{
     float U = height / 2 - (0.75 * (roomSprite.height / 2));
     float R = width / 2 + (0.77 * (roomSprite.width / 2));
     float D = height / 2 + (0.55 * (roomSprite.height / 2));
-    float x = (R - L-singleObstacle.width)/(singleObstacle.width * 1.5 );
-    float y = (D - U-singleObstacle.height)/(singleObstacle.height* 1.5 );
-     for(int k = 0; k <y; k++){
-      for(int j = 0; j <x; j++){
-          PVector add = new PVector(  L +   singleObstacle.width + j*singleObstacle.width*1.5  , U + singleObstacle.height + k*singleObstacle.height*1.5);
+    float cols = (R - L - singleObstacle.width) / (singleObstacle.width);
+    float rows = (D - U - singleObstacle.height) / (singleObstacle.height);
+     for(int k = 0; k < rows; k++){
+      for(int j = 0; j < cols; j++){
+          PVector add = new PVector(L + singleObstacle.width / 2 + j * singleObstacle.width , U + singleObstacle.height / 2 + k * singleObstacle.height);
           if(!inFrontOfDoor(add)){//adds obstacle only if not blocking door
             obstacleGrid.add(add);
           }
