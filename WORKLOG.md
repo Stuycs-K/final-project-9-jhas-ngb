@@ -84,6 +84,17 @@
 - fixed player collisions
 - created sprites for player, enemies, and obstacles
 
+### 6/9/23
+
+- designed Dingle & Dip
+- created class layouts
+
+### 6/10/23
+
+- designed EnemyBullet & BossRoom
+- implemented EnemyBullet & BossRoom
+- Updated UML diagram
+
 ## Lana
 
 ### 5/22/23
