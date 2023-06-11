@@ -5,7 +5,6 @@ public class EnemyBullet {
   private int damage;
   private PImage sprite;
   private int lifetime = 3000;
-  private static final int firingPower = 3;
  
   private PImage roomSprite = loadImage ("./Sprites/Room.png"); // I NEED THIS FOR THE BOUNDS
   

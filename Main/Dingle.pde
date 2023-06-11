@@ -60,7 +60,7 @@ public class Dingle extends Enemies{
      if(position.y > DOWN_BOUND){
        position.set(position.x , DOWN_BOUND);
      }
-     if(position.x < UP_BOUND){
+     if(position.y < UP_BOUND){
        position.set(position.x , UP_BOUND);
      }
   }
@@ -117,7 +117,7 @@ public class Dingle extends Enemies{
       timer--;
     }
     damage();
-    if((frameCount + 180) % 360 == 0 && frameCount != 360){
+    if((frameCount + 180) % 180 == 0){
       shoot();
     }
     for (int i = 0; i < bullets.size(); i++){

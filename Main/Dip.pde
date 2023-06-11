@@ -11,10 +11,10 @@ public class Dip extends Enemies{
   private final float DOWN_BOUND = height / 2 + (0.55 * (roomSprite.height / 2));
   
   
-  // 3 speed, 3 health
+  // 3 speed, 2 health
   // used by NormalRoom or Dingle
   public Dip (PVector position){
-    super(3,3,position, "./Sprites/Enemies/Dip/Dip1.png");
+    super(2,3,position, "./Sprites/Enemies/Dip/Dip1.png");
   }
   
   // NOTE: this function only runs every 6 seconds / 360 frames
@@ -39,7 +39,7 @@ public class Dip extends Enemies{
      if(position.y > DOWN_BOUND){
        position.set(position.x , DOWN_BOUND - 1);
      }
-     if(position.x < UP_BOUND){
+     if(position.y < UP_BOUND){
        position.set(position.x , UP_BOUND + 1);
      }
   }
@@ -72,9 +72,9 @@ public class Dip extends Enemies{
   // damage() to detect player collision with Boss
   // super.subDraw()
   public void subDraw(){
-    if (frameCount % 360 == 0){
+    if (frameCount % 120 == 0){
       changeDirection();
-      timer = 180;
+      timer = 90;
     }
     bounce();
     if(timer > 0){

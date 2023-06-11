@@ -1,7 +1,16 @@
 public class Fly extends Enemies{
   private int timer;
   private int rate;
-  private int state;
+  
+  
+  private PImage roomSprite = loadImage ("./Sprites/Room.png"); // I NEED THIS FOR THE BOUNDS
+  
+  // The 4 bound variables describe the cordinates of the walls of the room
+  private final float LEFT_BOUND = width / 2 - (0.77 * (roomSprite.width / 2));
+  private final float UP_BOUND = height / 2 - (0.75 * (roomSprite.height / 2));
+  private final float RIGHT_BOUND = width / 2 + (0.77 * (roomSprite.width / 2));
+  private final float DOWN_BOUND = height / 2 + (0.55 * (roomSprite.height / 2));
+  
   
   // used by the Normal Room class to make enemies
   // 3 health, 5 speed, (position), sprite, timer = 0, and rate = 5
@@ -9,7 +18,6 @@ public class Fly extends Enemies{
     super(3, 5, position, "./Sprites/Enemies/Fly.png");
     timer = 0;
     rate = 5;
-    state = 0;
   }
   
   // randomly chooses between the 4 directions (North, West,...) and sets velocity
@@ -55,14 +63,12 @@ public class Fly extends Enemies{
     PVector velocity = this.getVelocity();
     PVector position = this.getPosition();
     //corner
-    if((position.x <= 0 || position.x >= width) &&(position.y <= 0 || position.y >= height)){
-      velocity.x *= -1;
-      velocity.y *= -1;
-    }
-    else if(position.x <= 0 || position.x >= width){
+    //left or right wall
+    if(position.x <= LEFT_BOUND || position.x >= RIGHT_BOUND){
       velocity.x *= -1;
     }
-    else if(position.y <= 0 || position.y >= height){
+    //up or down wall
+    if(position.y <= UP_BOUND || position.y >= DOWN_BOUND){
       velocity.y *= -1;
     }
   }

@@ -5,7 +5,7 @@ public class Bullet{
   private int damage;
   private PImage sprite;
   private int lifetime = 120;
-  private static final int firingPower = 3;
+  private static final int firingPower = 4;
  
   private PImage roomSprite = loadImage ("./Sprites/Room.png"); // I NEED THIS FOR THE BOUNDS
   
@@ -35,7 +35,7 @@ public class Bullet{
     if (inputs[D_DOWN]){
       velocity.y += firingPower;
     }
-    this.velocity.add(playerVelocity);    
+    this.velocity.add(playerVelocity.div(2));    
     this.damage = 2;
     position.add(velocity);
     // initialize damage to 2
