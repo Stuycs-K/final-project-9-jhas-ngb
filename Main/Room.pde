@@ -9,8 +9,6 @@ public class Room{
  private final PImage doorD = loadImage("./Sprites/DoorDown.png");
  private final PImage doorR = loadImage("./Sprites/DoorRight.png");
  
- private final PImage hitbox = loadImage("./Sprites/hitBox.png");
- 
  private ArrayList<Enemies> enemies; // these have to be in here so that map can reference them
  private ArrayList<Obstacle> obstacles;
  
@@ -90,12 +88,7 @@ public class Room{
    PVector positionDU = new PVector (width / 2, height / 2 - (0.75 * (sprite.height / 2)));
    PVector positionDR = new PVector (width / 2 + (0.77 * (sprite.width / 2)), height / 2);
    PVector positionDD = new PVector (width / 2, height / 2 + (0.55 * (sprite.height / 2)));
-   /*
-   image (hitbox,width / 2 - (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
-   image (hitbox, width / 2 + (0.77 * (sprite.width / 2)), height / 2 - door.width / 2);
-   image (hitbox, width / 2 - door.width / 2, height / 2 - (0.75 * (sprite.height / 2)));
-   image (hitbox, width / 2 - door.width / 2, height / 2 + (0.55 * (sprite.height / 2)));
-   */
+   
    return (player.getPosition().dist(positionDL) < doorL.height / 2 && (abs(player.getPosition().x - positionDL.x) < 10)) ||
    (player.getPosition().dist(positionDU) < door.width / 2 && (abs(player.getPosition().y - positionDU.y) < 10)) ||
    (player.getPosition().dist(positionDR) < doorR.height / 2 && (abs(player.getPosition().x - positionDR.x) < 10)) ||
@@ -153,6 +146,10 @@ public class Room{
   // used by normal Room
   public PImage getSprite (){
     return sprite;
+  }
+  
+  public void setDoorSprite(){
+    
   }
  
 }

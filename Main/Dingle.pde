@@ -21,7 +21,7 @@ public class Dingle extends Enemies{
   // initialize bullets arraylist
   // initialize timer as 0
   public Dingle (PVector Position){
-    super(75, 5, Position, "./Sprites/Enemies/Dingle/Dingle.png");
+    super(75, 4, Position, "./Sprites/Enemies/Dingle/Dingle.png");
     initialHealth = 75;
     bullets = new ArrayList<EnemyBullet>();
     timer = 0;
@@ -123,7 +123,7 @@ public class Dingle extends Enemies{
     }
     damage();
     drawHealthBar();
-    if((frameCount + 180) % 180 == 0){
+    if(frameCount % 180 == 0){
       shoot();
     }
     for (int i = 0; i < bullets.size(); i++){
@@ -140,7 +140,6 @@ public class Dingle extends Enemies{
   
   public void drawHealthBar(){
     healthBarFiller.width = initialWidth * this.getHealth() / initialHealth;
-    println (healthBarFiller.width);
     image(healthBar, width / 2 - healthBar.width / 2, height / 2 + roomSprite.height / 2 - healthBar.height);
     image(healthBarFiller, width / 2 - healthBar.width / 2 * 0.8, height / 2 + roomSprite.height / 2 - healthBar.height * 0.81);
   }

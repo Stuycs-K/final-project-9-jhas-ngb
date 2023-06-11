@@ -20,7 +20,10 @@ public class BossRoom extends Room{
         getEnemies().remove(i);
       }
     }
-    boss.subDraw();
+    if (boss.getDie()){
+      PImage win = loadImage("./Sprites/WIN.png");
+      image (win, width / 2 - win.width / 2, height / 2 - win.height / 2);
+    }
   }
   
 }
