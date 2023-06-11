@@ -39,10 +39,9 @@ public class Bullet{
     this.damage = 2;
     position.add(velocity);
     // initialize damage to 2
-    // sets this.origin to 'p' if from player, 'e' if from enemy
   }
   
-  // if bullet origin is player && position.dist(enemy.position) < range, THEN hurt enemy AND die = true
+  // if position.dist(enemy.position) < range, THEN hurt enemy AND die = true
   public void hurt(){
     ArrayList<Enemies> enemies = map.getCurrent().getEnemies();
     for (int i = 0; i < enemies.size(); i++){
@@ -55,7 +54,7 @@ public class Bullet{
     
   }
   
-  // if player is out of bounds, set die = true
+  // if bullet is out of bounds, set die = true
   public void applyVelocity (){
     position.add(velocity);
     if (position.x < LEFT_BOUND || position.y < UP_BOUND || position.x > RIGHT_BOUND || position.y > DOWN_BOUND){

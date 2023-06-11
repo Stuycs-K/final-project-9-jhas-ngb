@@ -7,6 +7,11 @@ public class BossRoom extends Room{
   public BossRoom (){
     
   }
-  // take implementation from normal room and modify it
+  
+  // calls super.subDraw FIRST
+  // calls subdraw of enemies and boss
+  public void subDraw(){
+    
+  }
   
 }
