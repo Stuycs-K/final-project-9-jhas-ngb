@@ -17,27 +17,12 @@ public class EnemyBullet {
   
   
   // used by Player
-  public EnemyBullet(PVector enemyVelocity, PVector enemyPosition){
+  public EnemyBullet(PVector inputVelocity, PVector enemyPosition){
     sprite = loadImage("./Sprites/enemyTear.png");
     this.die = false;
     this.position = enemyPosition.copy();
     // makes a new velocity with vel and direction (determined by inputs[3-7]) and increases magnitude by firingPower
-    velocity = new PVector (0,0);
-    if (inputs[D_LEFT]){
-      velocity.x -= firingPower;
-    }
-    if (inputs[D_UP]){
-      velocity.y -= firingPower;
-    }
-    if (inputs[D_RIGHT]){
-      velocity.x += firingPower;
-    }
-    if (inputs[D_DOWN]){
-      velocity.y += firingPower;
-    }
-    this.velocity.add(enemyVelocity);    
-    this.damage = 1;
-    position.add(velocity);
+    velocity = inputVelocity.copy();
     // initialize damage to 1
   }
   
