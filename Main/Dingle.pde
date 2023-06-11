@@ -110,9 +110,9 @@ public class Dingle extends Enemies{
   // each bullet is initialized with Boss's position and velocity
   // use the PVector.rotate() function to make one of the bullets go straight, one of them go counter clockwise 30 degrees, and one of them go clockwise 30 degrees
   public void shoot(){
-    bullets.add(new EnemyBullet(this.getVelocity(), this.getPosition(), 'e'));//straight
-    bullets.add(new EnemyBullet(this.getVelocity().rotate(PI/6), this.getPosition(), 'e'));//counter
-    bullets.add(new EnemyBullet(this.getVelocity().rotate(5*PI/6), this.getPosition(), 'e'));//clock
+    bullets.add(new EnemyBullet(this.getVelocity(), this.getPosition()));//straight
+    bullets.add(new EnemyBullet(this.getVelocity().rotate(PI/6), this.getPosition()));//counter
+    bullets.add(new EnemyBullet(this.getVelocity().rotate(5*PI/6), this.getPosition()));//clock
   }
   
   // Every 360 frames, changeDirection() and summon() and set timer to 180 to start applying velocity
