@@ -18,6 +18,7 @@ public class EnemyBullet {
   public EnemyBullet(PVector inputVelocity, PVector enemyPosition){
     sprite = loadImage("./Sprites/enemyTear.png");
     this.die = false;
+    damage = 1;
     this.position = enemyPosition.copy();
     // makes a new velocity with vel and direction (determined by inputs[3-7]) and increases magnitude by firingPower
     velocity = inputVelocity.copy();

@@ -6,9 +6,9 @@ public class Dip extends Enemies{
   
   // The 4 bound variables describe the cordinates of the walls of the room
   private final float LEFT_BOUND = width / 2 - (0.77 * (roomSprite.width / 2));
-  private final float UP_BOUND = height / 2 - (0.75 * (roomSprite.height / 2));
+  private final float UP_BOUND = height / 2 - (0.70 * (roomSprite.height / 2));
   private final float RIGHT_BOUND = width / 2 + (0.77 * (roomSprite.width / 2));
-  private final float DOWN_BOUND = height / 2 + (0.55 * (roomSprite.height / 2));
+  private final float DOWN_BOUND = height / 2 + (0.6 * (roomSprite.height / 2));
   
   
   // 3 speed, 2 health
