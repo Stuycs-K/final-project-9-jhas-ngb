@@ -19,8 +19,7 @@ public class Dip extends Enemies{
   
   // NOTE: this function only runs every 6 seconds / 360 frames
   public void changeDirection(){
-    PVector position = this.getPosition();
-    PVector direction = PVector.sub(player.getPosition(), position);
+    PVector direction = PVector.random2D();
     direction.normalize();
     this.getVelocity().set(direction.mult(this.getSpeed()));
     
@@ -72,9 +71,9 @@ public class Dip extends Enemies{
   // damage() to detect player collision with Boss
   // super.subDraw()
   public void subDraw(){
-    if (frameCount % 120 == 0){
+    if (frameCount % 50 == 0){
       changeDirection();
-      timer = 90;
+      timer = 30;
     }
     bounce();
     if(timer > 0){

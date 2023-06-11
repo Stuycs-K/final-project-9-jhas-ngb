@@ -7,6 +7,7 @@ public class BossRoom extends Room{
     super();
     PImage spriteS = this.getSprite();
     boss = new Dingle (new PVector ((int)((Math.random() * (spriteS.width/2) + (width/2 - (0.5 * (spriteS.width/2))))), (int)(Math.random() * (spriteS.height/2) + (height/2 - (0.5 * (spriteS.height/2))))));
+    this.getEnemies().add(boss);
   }
   
   // calls super.subDraw FIRST

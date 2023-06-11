@@ -1,7 +1,11 @@
 public class Dingle extends Enemies{
   private int timer;
+  private int initialHealth;
   private ArrayList <EnemyBullet> bullets;
   
+  private PImage healthBar = loadImage("./Sprites/BossHealthBar.png");
+  private PImage healthBarFiller = loadImage("./Sprites/BossHealthBarFiller.png");
+  private int initialWidth = healthBarFiller.width;
   
   private PImage roomSprite = loadImage ("./Sprites/Room.png"); // I NEED THIS FOR THE BOUNDS
   
@@ -12,12 +16,13 @@ public class Dingle extends Enemies{
   private final float DOWN_BOUND = height / 2 + (0.55 * (roomSprite.height / 2));
   
   
-  // 5 speed, 300 health
+  // 5 speed, 75 health
   // used by BossRoom class
   // initialize bullets arraylist
   // initialize timer as 0
   public Dingle (PVector Position){
-    super(300, 5, Position, "./Sprites/Enemies/Dingle/Dingle.png");
+    super(75, 5, Position, "./Sprites/Enemies/Dingle/Dingle.png");
+    initialHealth = 75;
     bullets = new ArrayList<EnemyBullet>();
     timer = 0;
   }
@@ -77,9 +82,9 @@ public class Dingle extends Enemies{
   // adds 3 dips to the enemies arraylist of the currentRoom
   // make sure each dip position is a little different from each other
   public void summon(){
-    map.getCurrent().getEnemies().add(new Dip(new PVector(this.getPosition().x - 35 ,this.getPosition().y + 35)));
-    map.getCurrent().getEnemies().add(new Dip(new PVector(this.getPosition().x + 35,this.getPosition().y + 35)));
-    map.getCurrent().getEnemies().add(new Dip(new PVector(this.getPosition().x ,this.getPosition().y - 50)));
+    map.getCurrent().getEnemies().add(new Dip(new PVector(this.getPosition().x,this.getPosition().y)));
+    map.getCurrent().getEnemies().add(new Dip(new PVector(this.getPosition().x,this.getPosition().y)));
+    map.getCurrent().getEnemies().add(new Dip(new PVector(this.getPosition().x ,this.getPosition().y)));
     
   }
   
@@ -91,7 +96,7 @@ public class Dingle extends Enemies{
     PVector position = this.getPosition();
     PVector direction = PVector.sub(player.getPosition(), position);
     direction.normalize();
-    direction.mult(this.getSpeed());
+    direction.mult(this.getSpeed() + 3);
     
     bullets.add(new EnemyBullet(direction, this.getPosition()));//straight
     bullets.add(new EnemyBullet(direction.rotate(PI/6), this.getPosition()));//counter
@@ -117,6 +122,7 @@ public class Dingle extends Enemies{
       timer--;
     }
     damage();
+    drawHealthBar();
     if((frameCount + 180) % 180 == 0){
       shoot();
     }
@@ -130,5 +136,12 @@ public class Dingle extends Enemies{
     if (this.getHealth() <= 0){
       super.die = true;
     }
+  }
+  
+  public void drawHealthBar(){
+    healthBarFiller.width = initialWidth * this.getHealth() / initialHealth;
+    println (healthBarFiller.width);
+    image(healthBar, width / 2 - healthBar.width / 2, height / 2 + roomSprite.height / 2 - healthBar.height);
+    image(healthBarFiller, width / 2 - healthBar.width / 2 * 0.8, height / 2 + roomSprite.height / 2 - healthBar.height * 0.81);
   }
 }

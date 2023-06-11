@@ -4,7 +4,6 @@ public class EnemyBullet {
   private PVector position;
   private int damage;
   private PImage sprite;
-  private int lifetime = 3000;
  
   private PImage roomSprite = loadImage ("./Sprites/Room.png"); // I NEED THIS FOR THE BOUNDS
   
@@ -47,10 +46,6 @@ public class EnemyBullet {
     image(sprite, position.x - sprite.width / 2, position.y - sprite.height / 2);
     applyVelocity();
     hurt();
-    lifetime--;
-    if (lifetime <= 0){
-      die = true;
-    }
   }
   
   public boolean getDie (){
