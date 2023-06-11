@@ -146,7 +146,7 @@ public class Player{
   // if timer <= 0 && shoot input is pressed, THEN shoot and reset timer to firerate
   public void subDraw(){
     
-    if (frameCount % 6 == 0){
+    if (frameCount % 3 == 0){
       animate();
     }
     

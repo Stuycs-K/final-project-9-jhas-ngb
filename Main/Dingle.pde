@@ -7,7 +7,7 @@ public class Dingle extends Enemies{
   // initialize bullets arraylist
   // initialize timer as 0
   public Dingle (PVector Position){
-    super(300, 5, Position, "./Sprites/Enemies/Dingle.png");
+    super(300, 5, Position, "./Sprites/Enemies/Dingle/Dingle.png");
     bullets = new ArrayList<EnemyBullet>();
     timer = 0;
   }

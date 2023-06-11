@@ -17,6 +17,10 @@ public class Map{
         map[i][j] = new NormalRoom();
       }
     }
+    int row = (int)(Math.random() * len);
+    int col = (int)(Math.random() * len);
+    map[row][col] = new BossRoom();
+    print(row + " " + col);
   }
   
   // calls draw of currentRoom
@@ -37,5 +41,6 @@ public class Map{
   // only activates if the next room exists
   public void setCurrent(int x, int y){
     currentRoom.set(x,y);
+    println(x + " " + y);
   }
 }
