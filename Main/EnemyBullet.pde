@@ -3,7 +3,6 @@ public class EnemyBullet {
   private PVector velocity;
   private PVector position;
   private int damage;
-  private char origin;
   private PImage sprite;
   private int lifetime = 120;
   private static final int firingPower = 3;
@@ -18,54 +17,40 @@ public class EnemyBullet {
   
   
   // used by Player
-  public EnemyBullet(PVector playerVelocity, PVector playerPosition, char origin){
-    sprite = loadImage("./Sprites/Tear.png");
+  public EnemyBullet(PVector enemyVelocity, PVector enemyPosition){
+    sprite = loadImage("./Sprites/enemyTear.png");
     this.die = false;
-    // if from player:
-    if (origin == 'p'){
-      this.origin = 'p';
-      this.position = playerPosition.copy();
-      // makes a new velocity with vel and direction (determined by inputs[3-7]) and increases magnitude by firingPower
-      velocity = new PVector (0,0);
-      if (inputs[D_LEFT]){
-        velocity.x -= firingPower;
-      }
-      if (inputs[D_UP]){
-        velocity.y -= firingPower;
-      }
-      if (inputs[D_RIGHT]){
-        velocity.x += firingPower;
-      }
-      if (inputs[D_DOWN]){
-        velocity.y += firingPower;
-      }
-      this.velocity.add(playerVelocity  );    
-      this.damage = 2;
-    }else{
-      this.origin = 'e';
-      this.damage = 1;
+    this.position = enemyPosition.copy();
+    // makes a new velocity with vel and direction (determined by inputs[3-7]) and increases magnitude by firingPower
+    velocity = new PVector (0,0);
+    if (inputs[D_LEFT]){
+      velocity.x -= firingPower;
     }
+    if (inputs[D_UP]){
+      velocity.y -= firingPower;
+    }
+    if (inputs[D_RIGHT]){
+      velocity.x += firingPower;
+    }
+    if (inputs[D_DOWN]){
+      velocity.y += firingPower;
+    }
+    this.velocity.add(enemyVelocity);    
+    this.damage = 1;
     position.add(velocity);
-    // initialize damage to 2
-    // sets this.origin to 'p' if from player, 'e' if from enemy
+    // initialize damage to 1
   }
   
-  // if bullet origin is player && position.dist(enemy.position) < range, THEN hurt enemy AND die = true
+  // if position.dist(enemy.position) < range, THEN hurt player AND die = true
   public void hurt(){
-    if (origin == 'p'){
-      ArrayList<Enemies> enemies = map.getCurrent().getEnemies();
-      for (int i = 0; i < enemies.size(); i++){
-        if (position.dist(enemies.get(i).getPosition()) < sprite.width / 2){
-          enemies.get(i).setHealth(enemies.get(i).getHealth() - damage);
-          die = true;
-          break;
-        }
-      }
+    if (position.dist(player.getPosition()) < sprite.width / 2){
+      player.setHealth(player.getHealth() - damage);
+      die = true;
     }
     
   }
   
-  // if player is out of bounds, set die = true
+  // if enemy bullet is out of bounds, set die = true
   public void applyVelocity (){
     position.add(velocity);
     if (position.x < LEFT_BOUND || position.y < UP_BOUND || position.x > RIGHT_BOUND || position.y > DOWN_BOUND){

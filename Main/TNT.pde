@@ -6,6 +6,7 @@ public class TNT extends Obstacle{
   }
   
   public void explode(){
-    
+    setSprite("./Sprites/Obstacles/TNTExploded.png");
+    setCollision();
   }
 }

@@ -41,7 +41,7 @@ public class Player{
   
   // creates a new bullet in the bullets arraylist
   public void shoot(){
-    bullets.add(new Bullet (velocity, position, 'p'));
+    bullets.add(new Bullet (velocity, position));
     if (inputs[D_LEFT]){
       headSprite = loadImage ("./Sprites/Player/HeadLeftClosed.png");
     }else
