@@ -53,10 +53,6 @@ public class Enemies{
     return position;
   }
   
-  public void setPosition(PVector newposition){
-    position = newposition;
-  }
-  
   //used by sub classes
   public PVector getVelocity (){
     return velocity;

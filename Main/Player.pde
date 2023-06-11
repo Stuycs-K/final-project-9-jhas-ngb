@@ -15,8 +15,6 @@ public class Player{
   private int cycle; // for animation
   private char prevMove;
   
-  // PLAYER POSSIBLY NEEDS A DIE VARIABLE AS WELL IN ORDER TO END THE GAME
- 
   private PImage roomSprite = loadImage ("./Sprites/Room.png"); // I NEED THIS FOR THE BOUNDS
   
   // The 4 bound variables describe the cordinates of the walls of the room
@@ -31,7 +29,7 @@ public class Player{
     position = new PVector (width / 2, height / 2);
     velocity = new PVector (0,0);
     speed = 4.5;
-    health = 100;
+    health = 6;
     fireRate = 30; // 30 frame delay between shooting
     bullets = new ArrayList <>();
     timer = 0;

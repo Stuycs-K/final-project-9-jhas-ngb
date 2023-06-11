@@ -1,19 +1,28 @@
 public class Dip extends Enemies{
   private int timer;
   
+  
+  private PImage roomSprite = loadImage ("./Sprites/Room.png"); // I NEED THIS FOR THE BOUNDS
+  
+  // The 4 bound variables describe the cordinates of the walls of the room
+  private final float LEFT_BOUND = width / 2 - (0.77 * (roomSprite.width / 2));
+  private final float UP_BOUND = height / 2 - (0.75 * (roomSprite.height / 2));
+  private final float RIGHT_BOUND = width / 2 + (0.77 * (roomSprite.width / 2));
+  private final float DOWN_BOUND = height / 2 + (0.55 * (roomSprite.height / 2));
+  
+  
   // 3 speed, 3 health
   // used by NormalRoom or Dingle
   public Dip (PVector position){
-    super(3,3,position, "./Sprites/Enemies/Dip.png");
+    super(3,3,position, "./Sprites/Enemies/Dip/Dip1.png");
   }
   
-  // same as the changeDirection for Dingle
+  // NOTE: this function only runs every 6 seconds / 360 frames
   public void changeDirection(){
-    PVector velocity = this.getVelocity();
     PVector position = this.getPosition();
-    PVector direction = new PVector(player.getPosition().x - position.x, player.getPosition().y - position.y);
+    PVector direction = PVector.sub(player.getPosition(), position);
     direction.normalize();
-    velocity.add(direction.mult(getSpeed()));
+    this.getVelocity().set(direction.mult(this.getSpeed()));
     
   }
   
@@ -21,43 +30,38 @@ public class Dip extends Enemies{
   public void applyVelocity(){
     super.applyVelocity();
     PVector position = this.getPosition();
-     if(position.x > width){
-       this.setPosition(new PVector(width -1 ,position.y));
+     if(position.x > RIGHT_BOUND){
+       position.set(RIGHT_BOUND - 1, position.y);
      }
-     if(position.x < 0){
-       this.setPosition(new PVector(1 ,position.y));
+     if(position.x < LEFT_BOUND){
+       position.set(LEFT_BOUND + 1, position.y);
      }
-     if(position.y > height){
-       this.setPosition(new PVector(position.x ,height -1));
+     if(position.y > DOWN_BOUND){
+       position.set(position.x , DOWN_BOUND - 1);
      }
-     if(position.x < 0){
-       this.setPosition(new PVector(position.x ,1));
+     if(position.x < UP_BOUND){
+       position.set(position.x , UP_BOUND + 1);
      }
   }
   
   // same as the damage function for Dingle
   public void damage(){
     PVector position = this.getPosition();
-   if(PVector.dist(player.getPosition(), position) < 20){
-     player.setHealth(player.getHealth()-1);
-   }
+    if(PVector.dist(player.getPosition(), position) < (super.sprite.height + super.sprite.width) / 4){
+      player.setHealth(player.getHealth() - 1);
+    }
   }
   
   // same as the bounce function for Dingle
   public void bounce(){
     PVector velocity = this.getVelocity();
     PVector position = this.getPosition();
-    //corner
-    if((position.x <= 0 || position.x >= width) &&(position.y <= 0 || position.y >= height)){
-      velocity.x *= -1;
-      velocity.y *= -1;
-    }
     //left or right wall
-    else if(position.x <= 0 || position.x >= width){
+    if(position.x <= LEFT_BOUND || position.x >= RIGHT_BOUND){
       velocity.x *= -1;
     }
     //up or down wall
-    else if(position.y <= 0 || position.y >= height){
+    if(position.y <= UP_BOUND || position.y >= DOWN_BOUND){
       velocity.y *= -1;
     }
   }
@@ -74,10 +78,13 @@ public class Dip extends Enemies{
     }
     bounce();
     if(timer > 0){
-       applyVelocity();
-       timer--;
+      applyVelocity();
+      timer--;
     }
     damage();
-    super.subDraw();
+    image(super.sprite, this.getPosition().x - super.sprite.width/2, this.getPosition().y - super.sprite.height/2);
+    if (this.getHealth() <= 0){
+      super.die = true;
+    }
   }
 }

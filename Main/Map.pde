@@ -17,10 +17,14 @@ public class Map{
         map[i][j] = new NormalRoom();
       }
     }
+    /*
     int row = (int)(Math.random() * len);
     int col = (int)(Math.random() * len);
     map[row][col] = new BossRoom();
     print(row + " " + col);
+    */
+    
+    map[len / 2][len / 2] = new BossRoom();
   }
   
   // calls draw of currentRoom
