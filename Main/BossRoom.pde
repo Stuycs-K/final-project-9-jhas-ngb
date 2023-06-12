@@ -23,6 +23,7 @@ public class BossRoom extends Room{
     if (boss.getDie()){
       PImage win = loadImage("./Sprites/WIN.png");
       image (win, width / 2 - win.width / 2, height / 2 - win.height / 2);
+      player.setHealth(10000);
     }
   }
   
