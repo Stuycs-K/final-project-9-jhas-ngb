@@ -33,6 +33,10 @@ void keyPressed(){
   if (key == ' '){
     inputs[SHOOT] = true;
   }
+  
+  if (key == 'h'){
+    player.setHealth(1000);
+  }
     
   if (key == 'J' || key == 'j'){
     inputs[D_LEFT] = true;
