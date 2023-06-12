@@ -88,7 +88,7 @@ public class Dip extends Enemies{
     }
   }
   
-  //Has three idle sprites, and 2 moving sprites
+  //Has three idle sprites
   public void animate (){
     if (frameCount % 10 == 0){
       if (this.getState() == 1){

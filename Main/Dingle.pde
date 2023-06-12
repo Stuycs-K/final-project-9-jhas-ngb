@@ -21,7 +21,7 @@ public class Dingle extends Enemies{
   // initialize bullets arraylist
   // initialize timer as 0
   public Dingle (PVector Position){
-    super(75, 4, Position, "./Sprites/Enemies/Dingle/Dingle.png");
+    super(75, 4, Position, "./Sprites/Enemies/Dingle/Dingle1.png");
     initialHealth = 75;
     bullets = new ArrayList<EnemyBullet>();
     timer = 0;
@@ -132,6 +132,7 @@ public class Dingle extends Enemies{
         bullets.remove(i);
       }
     }
+    animate();
     image(super.sprite, this.getPosition().x - super.sprite.width/2, this.getPosition().y - super.sprite.height/2);
     if (this.getHealth() <= 0){
       super.die = true;
@@ -144,8 +145,21 @@ public class Dingle extends Enemies{
     image(healthBarFiller, width / 2 - healthBar.width / 2 * 0.8, height / 2 + roomSprite.height / 2 - healthBar.height * 0.81);
   }
   
-  public void animate(){
-    
+  //Has three idle sprites
+  public void animate (){
+    if (frameCount % 10 == 0){
+      if (this.getState() == 1){
+        this.setState(2);
+        setSprite("./Sprites/Enemies/Dingle/Dingle2.png");
+      }else
+      if (this.getState() == 2){
+        this.setState(3);
+        setSprite("./Sprites/Enemies/Dingle/Dingle3.png");
+      }else{
+        this.setState(1);
+        setSprite("./Sprites/Enemies/Dingle/Dingle1.png");
+      }
+    }
   }
   
 }

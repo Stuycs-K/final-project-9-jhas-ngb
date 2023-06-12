@@ -95,6 +95,11 @@
 - implemented EnemyBullet & BossRoom
 - Updated UML diagram
 
+### 6/11/23
+
+- Bug fixed everything (mostly)
+- animated enemies
+
 ## Lana
 
 ### 5/22/23
