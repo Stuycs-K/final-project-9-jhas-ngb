@@ -143,4 +143,9 @@ public class Dingle extends Enemies{
     image(healthBar, width / 2 - healthBar.width / 2, height / 2 + roomSprite.height / 2 - healthBar.height);
     image(healthBarFiller, width / 2 - healthBar.width / 2 * 0.8, height / 2 + roomSprite.height / 2 - healthBar.height * 0.81);
   }
+  
+  public void animate(){
+    
+  }
+  
 }

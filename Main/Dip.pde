@@ -81,9 +81,27 @@ public class Dip extends Enemies{
       timer--;
     }
     damage();
+    animate();
     image(super.sprite, this.getPosition().x - super.sprite.width/2, this.getPosition().y - super.sprite.height/2);
     if (this.getHealth() <= 0){
       super.die = true;
+    }
+  }
+  
+  //Has three idle sprites, and 2 moving sprites
+  public void animate (){
+    if (frameCount % 10 == 0){
+      if (this.getState() == 1){
+        this.setState(2);
+        setSprite("./Sprites/Enemies/Dip/Dip2.png");
+      }else
+      if (this.getState() == 2){
+        this.setState(3);
+        setSprite("./Sprites/Enemies/Dip/Dip3.png");
+      }else{
+        this.setState(1);
+        setSprite("./Sprites/Enemies/Dip/Dip1.png");
+      }
     }
   }
 }

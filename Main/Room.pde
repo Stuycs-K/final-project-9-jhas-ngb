@@ -145,9 +145,5 @@ public class Room{
   public PImage getSprite (){
     return sprite;
   }
-  
-  public void setDoorSprite(){
-    
-  }
  
 }
