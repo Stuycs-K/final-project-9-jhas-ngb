@@ -169,6 +169,24 @@
 ### 6/10/23
 
 - implemented boss (Dingle)
-- impleneted dip
+- implemented dip
 
+### DEV LOG
+### Working Features:
+
+- Player movement
+- Shooting Bullets
+- Enemy Bullets
+- Boss & enemies
+- Moving between rooms
+- Directional buttons
+- Losing & Winning
+- Obstacle Collision
+- Animation
+
+### Broken Features / Bugs:
+
+- Obstacles collision is buggy on the corners
+- The obstacles don’t spawn close together and around the room enough
+- Player’s head doesn’t change after correctly after pressing two movement buttons
 
