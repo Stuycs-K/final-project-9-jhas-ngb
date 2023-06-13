@@ -165,3 +165,10 @@
 
 - fixed ObstacleGrid to not add obstacles in front of doors
 - fixed distance between obstacles
+
+### 6/10/23
+
+- implemented boss (Dingle)
+- impleneted dip
+
+
